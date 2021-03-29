@@ -45,6 +45,13 @@ module.exports = {
           '^/api2':'/api/users'
         }
       },
+      '/api3':{
+        target:'http://jinpeng.wiseweb.com.cn/',
+        changeOrigin: true,
+        pathRewrite:{
+          '^/api3':''
+        }
+      },
       '/api':{
         target:'http://192.168.0.208:8083/',
         changeOrigin: true,

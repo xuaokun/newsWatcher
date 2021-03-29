@@ -176,16 +176,16 @@
                         </div>
                         <!--end::Card-->
 
-                        <PublishList :tableHead="tableHead" :dataList="tableData"/>
+                        <PublishList :tableHead="tableHead" :dataList="tableData" class="list-box"/>
                     </div>
                     <div class="col-lg-3">
 
-                        <!-- 处罚详情信息开始 -->
-                        <div class="card card-custom">
+                        <!-- 事件信息开始 -->
+                        <div v-if="eventInfoList.length > 0" class="card card-custom">
                             <!--begin::Header-->
                             <div class="card-header h-auto py-4">
                                 <div class="card-title">
-                                    <h3 class="card-label">相关法规及案例
+                                    <h3 class="card-label">相关事件
                                         <!-- <span class="d-block text-muted pt-2 font-size-sm">company Info
                                         </span> -->
                                     </h3>
@@ -196,8 +196,44 @@
                             <div class="card-body py-4">
                                 <div class="form-group row my-2">
                                     <!-- <label class="col-4 col-form-label">全称:</label> -->
-                                    <div class="col-8">
-                                        <span class="form-control-plaintext font-weight-bolder">相关法规：证券发行上市保荐业务管理办法（2017年修正）</span>
+                                    <div v-for="item in eventInfoList" :key="item.ID" class="col-8">
+                                        <router-link
+                                            :to="{path:'/fkgHome/oneEventDetail/' + item.ID, query:{info: item}}"
+                                            class="form-control-plaintext font-weight-bolder">{{item.name}}
+                                        </router-link>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Body-->
+                            <!--begin::Footer-->
+                            <!-- <div class="card-footer">
+                                <a href="#" class="btn btn-primary font-weight-bold mr-2">Manage company</a>
+                                <a href="#" class="btn btn-light-primary font-weight-bold">Learn more</a>
+                            </div> -->
+                            <!--end::Footer-->
+                        </div>
+                        <!-- 事件信息结束 -->
+
+                        <!-- 相关案例信息开始 -->
+                        <div v-if="caseInfoList.length > 0" class="card card-custom case-box">
+                            <!--begin::Header-->
+                            <div class="card-header h-auto py-4">
+                                <div class="card-title">
+                                    <h3 class="card-label">相关案例
+                                        <!-- <span class="d-block text-muted pt-2 font-size-sm">company Info
+                                        </span> -->
+                                    </h3>
+                                </div>
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Body-->
+                            <div class="card-body py-4">
+                                <div class="form-group row my-2">
+                                    <!-- <label class="col-4 col-form-label">全称:</label> -->
+                                    <div v-for="item in caseInfoList" :key="item.ID" class="col-8">
+                                        <router-link :to="{path:'/fkgHome/eventDetail/' + item.ID, query:{info: item}}"
+                                            class="form-control-plaintext font-weight-bolder">{{item.title}}
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -268,8 +304,10 @@
                         currentSort: -1//0代表升序
                     }
                 ],
-                tableData:[]
-
+                tableData: [],
+                relationEventsAndCase: {},
+                eventInfoList: [],
+                caseInfoList: []
             };
         },
         props: ['movieId'],
@@ -290,8 +328,8 @@
                 punishmentType,
                 decisonName
             })
-            if(this.detailInfo.punishedPersons){
-                for(let person of this.detailInfo.punishedPersons){
+            if (this.detailInfo.punishedPersons) {
+                for (let person of this.detailInfo.punishedPersons) {
                     list.push({
                         name: person.name,
                         objType: '-',
@@ -302,9 +340,54 @@
                 }
             }
             this.tableData = list;
+
         },
         created() {
+            this.getRelationEvents();
+        },
+        methods: {
+            getRelationEvents() {
+                let detailInfo = this.$route.query.info;
+                this.axios.post('/api/sykg/query/punish_infos/related', {
+                    punishName: detailInfo.title
+                })
+                    .then((data) => {
+                        console.log(data);
+                        if (data.data.status == 0) {
+                            this.relationEventsAndCase = data.data.message.data;
+                            console.log(this.relationEventsAndCase)
+                            let eventIDs = Object.keys(this.relationEventsAndCase.events);//获取事件信息
+                            if (eventIDs && eventIDs.length > 0) {
+                                return this.axios.post('/api/sykg/query/events_infos/basicbyeventID', {
+                                    "IDs": eventIDs
+                                })
+                            }
+                        }
+                    })
+                    .then((data) => {
+                        console.log('案例详情')
+                        console.log(data)
+                        if (data.data.status == 0) {
+                            this.eventInfoList = data.data.message.data;
+                        }
 
+                        //获取案例信息
+                        // console.log(this.relationEventsAndCase)
+                        let caseIDs = Object.keys(this.relationEventsAndCase.case);//获取事件信息
+                        console.log(caseIDs);
+                        if (caseIDs && caseIDs.length > 0) {
+                            let params = { "ID": caseIDs, "startTime": {}, "endTime": {}, "or": { "content": [], "title": [] }, "and": { "subject": [], "caseType": [] } }
+                            return this.axios.post('/api/sykg/query/case_infos/keywords', params)
+                        }
+
+                    }).then((data) => {
+                        console.log('案例详情')
+                        console.log(data)
+                        if (data.data.status == 0) {
+                            this.caseInfoList = data.data.message.data[0] ? [data.data.message.data[0]] : [];
+                        }
+                    })
+            }
         },
     };
 </script>
@@ -321,5 +404,13 @@
 
     .row {
         align-items: flex-start;
+    }
+
+    .case-box{
+        margin-top: 10px;
+    }
+
+    .list-box{
+        margin-top: 10px;
     }
 </style>

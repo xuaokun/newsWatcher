@@ -120,11 +120,14 @@
       BranchTopChart
     },
     computed: {
-      ...mapGetters(["currentUserPhoto"])
+      ...mapGetters(["currentUserPhoto", "currentUser"]),
+      commanyName:function(){
+        return this.$route && this.$route.query && this.$route.query.name ? this.$route.query.name : this.currentUser.companyInfo.companyName;
+      }
     },
     data() {
       return {
-        commanyName: this.$route && this.$route.query && this.$route.query.name ? this.$route.query.name : '中国农业银行股份有限公司',
+        // commanyName: this.$route && this.$route.query && this.$route.query.name ? this.$route.query.name : '中国农业银行股份有限公司',
         // commanyName:'中国农业银行股份有限公司',
         companyInfo: {},
         tableHead: [
@@ -135,9 +138,10 @@
             currentSort: -1//0代表升序
           },
           {
-            name: '违规类型',
+            name: '违规原因',
             property: 'decisionResion',
             sortAble: true,
+            maxLen: 15,
             currentSort: -1//0代表升序
           },
           {
@@ -164,6 +168,7 @@
             property: 'title',
             router: '/fkgHome/punishmentDetail/',
             sortAble: true,
+            maxLen: 15,
             currentSort: -1//0代表升序
           },
           {
@@ -183,7 +188,7 @@
     watch: {
       $route: {
         handler() {
-          this.commanyName = this.$route.query.name;
+          this.commanyName = this.$route.query.name ? this.$route.query.name: this.currentUser.companyInfo.commanyName;
           this.getData();
         }
       }
@@ -260,7 +265,7 @@
               let status = data.data.status;
               // console.log(status);
               if (status == 0) {
-                this.recentPunishment = data.data.message.data;
+                this.recentPunishment = data.data.message.data.slice(0,5);
                 console.log(this.recentPunishment);
               }
             })

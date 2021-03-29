@@ -92,7 +92,8 @@
                                     <!--begin::Title-->
                                     <div class="d-flex flex-column mr-2 py-2">
                                         <a href="#"
-                                            class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3">{{$route.query.info && $route.query.info.title ? $route.query.info.title :'-'}}</a>
+                                            class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3">{{$route.query.info
+                                            && $route.query.info.title ? $route.query.info.title :'-'}}</a>
                                         <!-- <div class="d-flex align-items-center py-1">
                                             <a href="#"
                                                 class="d-flex align-items-center text-muted text-hover-primary mr-2">
@@ -174,7 +175,9 @@
                                 <div class="form-group row my-2" v-for="(item,index) in relationObjects" :key="index">
                                     <!-- <label class="col-4 col-form-label">全称:</label> -->
                                     <div class="col-8">
-                                        <router-link v-if="item.length > 3" router-link :to="{path:'/fkgHome/home',query:{name:item}}" class="form-control-plaintext font-weight-bolder">{{item}}</router-link>
+                                        <router-link v-if="item.length > 3" router-link
+                                            :to="{path:'/fkgHome/home',query:{name:item}}"
+                                            class="form-control-plaintext font-weight-bolder">{{item}}</router-link>
                                         <span v-else class="form-control-plaintext font-weight-bolder">{{item}}</span>
                                     </div>
                                 </div>
@@ -304,7 +307,7 @@
                     <!-- 事件脉络结束 -->
                     <div class=" col-lg-6">
                         <div class="card card-custom history-timeline first-row">
-                            <SeeksRelationGraph :graphData="graphData"/>
+                            <SeeksRelationGraph :graphData="graphData" />
                         </div>
                     </div>
 
@@ -355,7 +358,7 @@
                     '严重': 'text-warning',
                     '很严重': 'text-danger'
                 },
-                graphData:{}
+                graphData: {}
             };
         },
         props: ['eventId'],
@@ -377,8 +380,8 @@
                 .catch((e) => {
                     console.log(e);
                 });
-            
-                this.axios.post('/api/sykg/query/gremlin',{"query":`V().hasLabel('Case').has('udfID','${this.eventId}').repeat(both()).times(1).bothE().bothV().bothE()`})
+
+            this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Case').has('udfID','${this.eventId}').repeat(both()).times(1).bothE().bothV().bothE()` })
                 .then((data) => {
                     console.log("图谱结果", data);
                     let status = data.data.status;
@@ -386,26 +389,37 @@
                     console.log(data.data.message);
                     let message = data.data.message;
                     if (status == 0) {
-                        
+
                         let data = {
-                            nodes:[],
-                            links:[]
+                            nodes: [],
+                            links: []
                         }
-                        for(let item of message.nodes){
-                            data.nodes.push({
+                        for (let item of message.nodes) {
+                            let oneNode = {
                                 id: item.id,
-                                text: item.name,
+                                text: item.alias ? item.alias.slice(0,10) : item.name.slice(0,10),
                                 classType: item.classType,
                                 ID: item.ID,
+                                data: {
+                                    fullName: item.name
+                                }
                                 // color: '#43a2f1', 
-                                // fontColor: 'yellow'
-                            })
+                                // fontColor: '#000',
+                                // borderWidth: 2
+                            }
+                            if((item.alias && item.alias.length > 10) || item.name.length > 10){
+                                oneNode.text += '...'
+                            }
+                            // if (item.img) {
+                            //     oneNode.innerHTML = `<div class="c-my-node" style="background-image: url(https://dss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2110325119,1633583088&fm=58&app=83&f=JPEG?w=120&h=120&s=971E35C05A43305DCA7C1C0B030080C)"><div class="c-node-name">${item.name}</div></div>`
+                            // }
+                            data.nodes.push(oneNode)
                         }
-                        for(let item of message.links){
+                        for (let item of message.links) {
                             data.links.push({
                                 from: item.source,
                                 to: item.target,
-                                text: item.relation, 
+                                text: item.relation,
                                 // color: '#43a2f1'
                             })
                         }
@@ -416,7 +430,7 @@
                 .catch((e) => {
                     console.log(e);
                 });
-            },
+        },
     };
 </script>
 <style scoped>

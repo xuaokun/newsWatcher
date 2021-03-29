@@ -27,7 +27,7 @@
               </th>
               <!-- <th class="pl-0" style="min-width: 120px">法规名称</th>
               <th style="min-width: 110px">Country</th> -->
-              <th style="min-width: 110px" @click="sortDataListByContent(item)" v-for="item in tableHead.slice(0,-1)"
+              <th style="" @click="sortDataListByContent(item)" v-for="item in tableHead.slice(0,-1)"
                 :key="item.name">
                 <span class="text-primary">{{item.name}}</span>
                 <span class="svg-icon svg-icon-sm svg-icon-primary">
@@ -71,10 +71,10 @@
                     :to="{path:oneHead.router.concat(item._id), query:{info:dataList[i]}}"><span
                       class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item[oneHead.property] ?
                       (oneHead.time ? $moment(item[oneHead.property]): (oneHead.maxLen ?
-                      item[oneHead.property].slice(0,200)+ '...':item[oneHead.property])): '-' }}</span></router-link>
+                      item[oneHead.property].slice(0,oneHead.maxLen)+ '...':item[oneHead.property])): '-' }}</span></router-link>
                   <span v-else class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item[oneHead.property] ?
                     (oneHead.time ? $moment(item[oneHead.property]).format("YYYY-MM-DD"): (oneHead.maxLen ?
-                    item[oneHead.property].slice(0,200) + '...':item[oneHead.property])) : '-' }}</span>
+                    item[oneHead.property].slice(0,oneHead.maxLen) + '...':item[oneHead.property])) : '-' }}</span>
                 </td>
                 <!-- <td>
                   <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.release_date | formatDate

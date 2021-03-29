@@ -31,7 +31,8 @@
                   欢迎使用星图声誉知识图谱
                 </h3>
                 <span class="text-muted font-weight-bold font-size-h4">新用户？
-                  <a id="kt_login_signup" class="text-primary font-weight-bolder" @click="showForm('signup')">创建新用户</a></span>
+                  <a id="kt_login_signup" class="text-primary font-weight-bolder"
+                    @click="showForm('signup')">创建新用户</a></span>
               </div>
               <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">邮箱/手机</label>
@@ -75,12 +76,9 @@
                 <p class="text-muted font-weight-bold font-size-h4">
                   {{tipInfo}}
                 </p>
-                <v-alert
-                dense
-                outlined
-                type="error">
-                  I'm an warning alert.
-                </v-alert>
+                <!-- <v-alert dense outlined type="error">
+                  {{tipInfo}}
+                </v-alert> -->
               </div>
               <div class="form-group">
                 <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text"
@@ -263,6 +261,16 @@
               }
             }
           },
+          phoneNumber: {
+            validators: {
+              notEmpty: {
+                message: "email地址不能为空"
+              },
+              emailAddress: {
+                message: "请填入有效的email地址"
+              }
+            }
+          },
           password: {
             validators: {
               notEmpty: {
@@ -336,21 +344,18 @@
         const submitButton = this.$refs["kt_login_signin_submit"];
         submitButton.classList.add("spinner", "spinner-light", "spinner-right");
 
-        // dummy delay
-        setTimeout(() => {
-          // send login request
-          this.$store
-            .dispatch(LOGIN, { email, password })
-            // go to which page after successfully login
-            .then(() => this.$router.push('/fkgHome/home'))
-            .catch(() => { });
+        // send login request
+        this.$store
+          .dispatch(LOGIN, { email, password })
+          // go to which page after successfully login
+          .then(() => this.$router.push('/fkgHome/home'))
+          .catch(() => { });
 
-          submitButton.classList.remove(
-            "spinner",
-            "spinner-light",
-            "spinner-right"
-          );
-        }, 2000);
+        submitButton.classList.remove(
+          "spinner",
+          "spinner-light",
+          "spinner-right"
+        );
       });
 
       this.fv.on("core.form.invalid", () => {
@@ -378,16 +383,41 @@
         submitButton.classList.add("spinner", "spinner-light", "spinner-right");
 
         // send register request
-        this.$store
+
+        //请求api获得对应企业信息
+        this.axios.get('/api3/report/infos?creditCode=' + creditCode)
+        .then((res)=>{
+          console.log('获取企业信息：' + res);
+          let companyInfo = {}
+          if(res.data.msg == '请求成功'){
+            // this.tipInfo = '企业信息正确'
+            companyInfo = res.data.data;
+          }else{
+            throw new Error('企业信息有误或查询不到')
+          }
+          return  this.$store
           .dispatch(REGISTER, {
             userName: userName,
             creditCode: creditCode,
             phoneNumber: phoneNumber,
             email: email,
-            password: password
+            password: password,
+            companyInfo
           })
-          .then(() => this.$router.push('/fkgHome/home'))
-
+        })
+          .then((data) => {
+            console.log(data)
+            if(data.status == -1){
+              throw new Error('邮箱或者手机号已经注册')
+            }
+            if(data.status == -2){
+              throw new Error('注册出错了')
+            }
+            this.$router.push('/fkgHome/home')
+          })
+          .catch((e)=>{
+            this.tipInfo = e;
+          })
         submitButton.classList.remove(
           "spinner",
           "spinner-light",
@@ -398,7 +428,7 @@
       this.fv1.on("core.form.invalid", () => {
         Swal.fire({
           title: "",
-          text: "Please, provide correct data!",
+          text: "请提供正确的数据哦",
           icon: "error",
           confirmButtonClass: "btn btn-secondary",
           heightAuto: false

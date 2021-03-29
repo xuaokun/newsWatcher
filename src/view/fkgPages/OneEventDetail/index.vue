@@ -119,7 +119,7 @@
                                 <!--begin::Messages-->
                                 <div class="mb-3">
                                     <!--begin::Message-->
-                                    <div class="cursor-pointer shadow-xs toggle-on" data-inbox="message">
+                                    <div class="cursor-pointer toggle-on" data-inbox="message">
                                         <!--begin::Comment-->
                                         <div class="card-spacer-x pt-2 pb-5 toggle-off-item">
                                             <!--begin::Text-->
@@ -291,15 +291,25 @@
                             nodes: [],
                             links: []
                         }
+                        let color_map = {}, cnt = 0;
                         for (let item of message.nodes) {
-                            data.nodes.push({
+                            console.log(item.classType);
+                            cnt++;
+                        }
+                        console.log('一共' + cnt + '个type',color_map)
+                        for (let item of message.nodes) {
+                            let oneNode = {
                                 id: item.id,
-                                text: item.name,
+                                text: item.alias ? item.alias.slice(0,10) : item.name.slice(0,10),
                                 classType: item.classType,
                                 ID: item.ID,
                                 // color: '#43a2f1',
                                 // fontColor: '#fff'
-                            })
+                            };
+                            if((item.alias && item.alias.length > 10) || item.name.length > 10){
+                                oneNode.text += '...'
+                            }
+                            data.nodes.push(oneNode);
                         }
                         for (let item of message.links) {
                             data.links.push({
