@@ -91,6 +91,13 @@
         chartOptions: {},
         series: [60, 50, 75, 80],
         radarOptions: {
+          chart: {
+            type: "radialBar",
+            // height: 454,
+            toolbar: {
+              show: false
+            }
+          },
           series: [
             {
               name: "企业分值",
@@ -134,10 +141,10 @@
           height: 200,
           type: "radialBar",
           toolbar: {
-              show: false,
-            }
+            show: false,
+          }
         },
-        
+
         plotOptions: {
           radialBar: {
             hollow: {

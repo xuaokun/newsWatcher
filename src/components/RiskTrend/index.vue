@@ -103,7 +103,7 @@
         console.log('day变化', this.dataList)
         return[
           {
-            name: "违规统计",
+            name: "处罚文件个数",
             data: this.dataList
           },
           // {

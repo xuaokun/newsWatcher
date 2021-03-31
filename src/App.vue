@@ -1,5 +1,8 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <router-view></router-view>
+    <Snackbar />
+  </div>
 </template>
 
 <style lang="scss">
@@ -17,6 +20,7 @@
 // Main demo style scss
 @import "assets/sass/style.vue";
 
+
 // Check documentation for RTL css
 // Update HTML with RTL attribute at public/index.html
 /*@import "assets/css/style.vue.rtl";*/
@@ -24,9 +28,12 @@
 
 <script>
 import { OVERRIDE_LAYOUT_CONFIG } from "@/core/services/store/config.module";
-
+import Snackbar from '@/components/Snackbar'
 export default {
   name: "MetronicVue",
+  components:{
+    Snackbar
+  },
   mounted() {
     /**
      * this is to override the layout config using saved data from localStorage

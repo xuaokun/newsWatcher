@@ -66,6 +66,7 @@
                         name: '相关对象',
                         property: 'subject',
                         sortAble: true,
+                        maxLen:15,
                         currentSort: -1//0代表升序
                     },
                     {
@@ -89,10 +90,10 @@
                     }
                 ],
                 riskType: [
-                    "信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险", "全部"
+                    "全部", "信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险"
                 ],
-                currentRiskType:'',
-                graphData:{},
+                currentRiskType: '',
+                graphData: {},
             };
         },
         mounted() {
@@ -101,12 +102,12 @@
         methods: {
             async searchByCondition(params) {
                 this.params = params;
-                if(this.currentRiskType){
+                if (this.currentRiskType) {
                     this.params.and.eventType = [this.currentRiskType]
-                }else{
+                } else {
                     this.params.and.eventType = []
                 }
-                console.log('start search',params);
+                console.log('start search', params);
                 if (params) {
                     let res = await this.axios.post('/api/sykg/query/events_infos/keywords', params)
                     console.log(res)
@@ -130,7 +131,7 @@
 
             handleRiskType(item) {
                 // console.log(item)
-                if(item == '全部'){
+                if (item == '全部') {
                     item = '';
                 }
                 this.currentRiskType = item;

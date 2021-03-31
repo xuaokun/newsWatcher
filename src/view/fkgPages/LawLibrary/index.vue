@@ -2,16 +2,16 @@
   <div>
     <div class="row">
       <div class="col-lg-6">
-        <PieChart :dataObj="pieDataObj" title="法律位阶"/>
+        <PieChart :dataObj="pieDataObj" title="法律位阶" />
       </div>
       <div class="col-lg-6">
-        <PieChart :dataObj="pieDataObj" title="预警风险" />
+        <PieChart :dataObj="warningPieData" title="预警风险" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-12">
-        <PublishList></PublishList>
+        <PublishList tableTitle="最新法规"></PublishList>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
     computed: {
       ...mapGetters(["currentUserPhoto"]),
       pieDataObj: function () {
-        if(this.lawTypeData.length == 0){
+        if (this.lawTypeData.length == 0) {
           return {};
         }
         let nameList = [];
@@ -50,7 +50,13 @@
     },
     data() {
       return {
-        lawTypeData: []
+        lawTypeData: [],
+        warningPieData: {
+          nameList: [
+            "信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险"
+          ],
+          numList:[133,231,34,56,66,129]
+        }
       };
     },
     mounted() {

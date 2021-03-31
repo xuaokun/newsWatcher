@@ -57,18 +57,12 @@
                             <!--begin::Header-->
                             <div
                                 class="card-header align-items-center flex-wrap justify-content-between border-0 py-6 h-auto">
-                                <!--begin::Left-->
-                                <div class="d-flex align-items-center my-2">
-                                    <div class="d-flex align-items-center">
-                                        <!-- <div class="symbol symbol-35 mr-3">
-                                            <div class="symbol-label"
-                                                style="background-image: url('assets/media/users/100_12.jpg')"></div>
-                                        </div> -->
-                                        <a href="#"
-                                            class="text-dark-75 font-size-lg text-hover-primary font-weight-bolder">案例正文</a>
-                                    </div>
-                                </div>
-                                <!--end::Left-->
+                                <!--begin::Header-->
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="font-weight-bolder text-dark">案例正文</span>
+                                    <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">890,344 Sales</span> -->
+                                </h3>
+                                <!--end::Header-->
                                 <!--begin::Right-->
                                 <div class="d-flex align-items-center justify-content-end text-right my-2">
                                     <!-- <span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip"
@@ -76,8 +70,8 @@
                                         <span class="svg-icon svg-icon-md">
                                         </span>
                                     </span> -->
-                                    <span class="btn btn-light-danger btn-sm text-uppercase font-weight-bolder mr-2"
-                                        data-toggle="tooltip" title="Change due date">复制</span>
+                                    <!-- <span class="btn btn-light-danger btn-sm text-uppercase font-weight-bolder mr-2"
+                                        data-toggle="tooltip" title="Change due date">复制</span> -->
                                     <span class="btn btn-light-success btn-sm text-uppercase font-weight-bolder"
                                         data-toggle="tooltip" title="Mark as complete">收藏</span>
                                 </div>
@@ -91,9 +85,9 @@
                                     class="d-flex align-items-center justify-content-between flex-wrap card-spacer-x py-3">
                                     <!--begin::Title-->
                                     <div class="d-flex flex-column mr-2 py-2">
-                                        <a href="#"
-                                            class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3">{{$route.query.info
-                                            && $route.query.info.title ? $route.query.info.title :'-'}}</a>
+                                        <span
+                                            class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3">{{caseTitle
+                                            ? caseTitle : '-'}}</span>
                                         <!-- <div class="d-flex align-items-center py-1">
                                             <a href="#"
                                                 class="d-flex align-items-center text-muted text-hover-primary mr-2">
@@ -120,7 +114,7 @@
                                 <!--begin::Messages-->
                                 <div class="mb-3">
                                     <!--begin::Message-->
-                                    <div class="cursor-pointer shadow-xs toggle-on" data-inbox="message">
+                                    <div class="cursor-pointer toggle-on" data-inbox="message">
                                         <!--begin::Comment-->
                                         <div class="card-spacer-x pt-2 pb-5 toggle-off-item">
                                             <!--begin::Text-->
@@ -133,14 +127,14 @@
                                             <!--end::Text-->
                                             <!--begin::Attachments-->
                                             <div class="d-flex flex-column font-size-sm font-weight-bold">
-                                                <a href="#"
-                                                    class="d-flex align-items-center text-muted text-hover-primary py-1">
-                                                    <span
-                                                        class="flaticon2-clip-symbol text-warning icon-1x mr-2"></span>相关法规</a>
-                                                <a href="#"
-                                                    class="d-flex align-items-center text-muted text-hover-primary py-1">
-                                                    <span
-                                                        class="flaticon2-clip-symbol text-warning icon-1x mr-2"></span>相关案例</a>
+                                                <div v-for="oneEvent in eventInfo" :key="oneEvent.ID">
+                                                    <router-link v-if="oneEvent.relatedLaw"
+                                                        :to="'/fkgHome/lawDetail/' + oneEvent.lawInfos[0]._source"
+                                                        class="d-flex align-items-center text-muted text-hover-primary py-1">
+                                                        <span
+                                                            class="flaticon2-clip-symbol text-warning icon-1x mr-2"></span>{{oneEvent.relatedLaw}}
+                                                    </router-link>
+                                                </div>
                                             </div>
                                             <!--end::Attachments-->
                                         </div>
@@ -163,9 +157,8 @@
                             <!--begin::Header-->
                             <div class="card-header h-auto py-4">
                                 <div class="card-title">
-                                    <h3 class="card-label">相关对象
-                                        <!-- <span class="d-block text-muted pt-2 font-size-sm">company Info
-                                        </span> -->
+                                    <h3 class="card-label">
+                                        <span class="font-weight-bolder text-dark">相关对象</span>
                                     </h3>
                                 </div>
                             </div>
@@ -175,10 +168,11 @@
                                 <div class="form-group row my-2" v-for="(item,index) in relationObjects" :key="index">
                                     <!-- <label class="col-4 col-form-label">全称:</label> -->
                                     <div class="col-8">
-                                        <router-link v-if="item.length > 3" router-link
+                                        <!-- <router-link v-if="item.length > 3" router-link
                                             :to="{path:'/fkgHome/home',query:{name:item}}"
-                                            class="form-control-plaintext font-weight-bolder">{{item}}</router-link>
-                                        <span v-else class="form-control-plaintext font-weight-bolder">{{item}}</span>
+                                            class="form-control-plaintext font-weight-bolder">{{item}}</router-link> -->
+                                        <span class="form-control-plaintext font-weight-bolder"
+                                            @click="checkHaveCompany(item)">{{item}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -204,74 +198,9 @@
                                     <span class="font-weight-bolder text-dark">事件脉络</span>
                                     <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">890,344 Sales</span> -->
                                 </h3>
-                                <div class="card-toolbar">
-                                    <div class="dropdown dropdown-inline">
-                                        <a href="#" class="btn btn-clean btn-hover-light-primary btn-sm btn-icon"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="ki ki-bold-more-hor"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                                            <!--begin::Navigation-->
-                                            <ul class="navi navi-hover">
-                                                <li class="navi-header font-weight-bold py-4">
-                                                    <span class="font-size-lg">Choose Label:</span>
-                                                    <i class="flaticon2-information icon-md text-muted"
-                                                        data-toggle="tooltip" data-placement="right" title=""
-                                                        data-original-title="Click to learn more..."></i>
-                                                </li>
-                                                <li class="navi-separator mb-3 opacity-70"></li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-success">Customer</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-danger">Partner</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-primary">Member</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-dark">Staff</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-separator mt-3 opacity-70"></li>
-                                                <li class="navi-footer py-4">
-                                                    <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                        <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                                </li>
-                                            </ul>
-                                            <!--end::Navigation-->
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!--end::Header-->
+                            <!-- <v-virtual-scroll height="100" item-height="20"> -->
                             <!--begin::Body-->
                             <div class="card-body pt-4">
                                 <!--begin::Timeline-->
@@ -292,7 +221,96 @@
                                         <!--end::Badge-->
                                         <!--begin::Text-->
                                         <div class="font-weight-bolder font-size-lg timeline-content pl-3">
-                                            {{item.name}}
+                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
+                                            </router-link>
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>
+                                    <!--end::Item-->
+                                    <!--begin::Item-->
+                                    <div class="timeline-item align-items-start" v-for="item in eventInfo"
+                                        :key="item.ID">
+                                        <!--begin::Label-->
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
+                                        </div>
+                                        <!--end::Label-->
+                                        <!--begin::Badge-->
+                                        <div class="timeline-badge">
+                                            <i
+                                                :class="['fa', 'fa-genderless', importantDict[item.important], 'icon-xl']"></i>
+                                        </div>
+                                        <!--end::Badge-->
+                                        <!--begin::Text-->
+                                        <div class="font-weight-bolder font-size-lg timeline-content pl-3">
+                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
+                                            </router-link>
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>
+                                    <!--end::Item-->
+                                    <!--begin::Item-->
+                                    <div class="timeline-item align-items-start" v-for="item in eventInfo"
+                                        :key="item.ID">
+                                        <!--begin::Label-->
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
+                                        </div>
+                                        <!--end::Label-->
+                                        <!--begin::Badge-->
+                                        <div class="timeline-badge">
+                                            <i
+                                                :class="['fa', 'fa-genderless', importantDict[item.important], 'icon-xl']"></i>
+                                        </div>
+                                        <!--end::Badge-->
+                                        <!--begin::Text-->
+                                        <div class="font-weight-bolder font-size-lg timeline-content pl-3">
+                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
+                                            </router-link>
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>
+                                    <!--end::Item-->
+                                    <!--begin::Item-->
+                                    <div class="timeline-item align-items-start" v-for="item in eventInfo"
+                                        :key="item.ID">
+                                        <!--begin::Label-->
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
+                                        </div>
+                                        <!--end::Label-->
+                                        <!--begin::Badge-->
+                                        <div class="timeline-badge">
+                                            <i
+                                                :class="['fa', 'fa-genderless', importantDict[item.important], 'icon-xl']"></i>
+                                        </div>
+                                        <!--end::Badge-->
+                                        <!--begin::Text-->
+                                        <div class="font-weight-bolder font-size-lg timeline-content pl-3">
+                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
+                                            </router-link>
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>
+                                    <!--end::Item-->
+                                    <!--begin::Item-->
+                                    <div class="timeline-item align-items-start" v-for="item in eventInfo"
+                                        :key="item.ID">
+                                        <!--begin::Label-->
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
+                                        </div>
+                                        <!--end::Label-->
+                                        <!--begin::Badge-->
+                                        <div class="timeline-badge">
+                                            <i
+                                                :class="['fa', 'fa-genderless', importantDict[item.important], 'icon-xl']"></i>
+                                        </div>
+                                        <!--end::Badge-->
+                                        <!--begin::Text-->
+                                        <div class="font-weight-bolder font-size-lg timeline-content pl-3">
+                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
+                                            </router-link>
                                         </div>
                                         <!--end::Text-->
                                     </div>
@@ -301,12 +319,21 @@
                                 <!--end::Timeline-->
                             </div>
                             <!--end: Card Body-->
+                            <!-- </v-virtual-scroll> -->
                         </div>
                     </div>
 
                     <!-- 事件脉络结束 -->
                     <div class=" col-lg-6">
                         <div class="card card-custom history-timeline first-row">
+                            <!--begin::Header-->
+                            <div class="card-header align-items-center border-0 mt-4">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="font-weight-bolder text-dark">案例图谱</span>
+                                    <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">890,344 Sales</span> -->
+                                </h3>
+                            </div>
+                            <!--end::Header-->
                             <SeeksRelationGraph :graphData="graphData" />
                         </div>
                     </div>
@@ -324,9 +351,9 @@
     import SeeksRelationGraph from "@/components/RelationshipGraph";
     // import PublishList from "@/components/PublishList";
     // import AsideMenu from "@/components/Aside/Aside";
-
+    // import snackbar from "@/core/services/store/snackbar.module";
     export default {
-        name: "PunishmentDetail",
+        name: "EventDetail",
         components: {
             SeeksRelationGraph,
             // AsideMenu,
@@ -340,10 +367,14 @@
                 for (let item of this.eventInfo) {
                     // list = list.concat(item.orgs, item.person);
                     for (let org of item.orgs) {
-                        list[org] = 1
+                        if (org) {
+                            list[org] = 1
+                        }
                     }
                     for (let person of item.person) {
-                        list[person] = 1
+                        if (person) {
+                            list[person] = 1
+                        }
                     }
                 }
                 console.log(Object.keys(list))
@@ -358,7 +389,9 @@
                     '严重': 'text-warning',
                     '很严重': 'text-danger'
                 },
-                graphData: {}
+                graphData: {},
+                caseTitle: '',
+                graphLinkNameDict: { 'eventObjectC': '关联事件(企业)', 'CONTAINS': '牵连事件', 'RELATED': '涉事相关人', 'PUNISHC': '相关处罚' }
             };
         },
         props: ['eventId'],
@@ -367,6 +400,20 @@
         },
         created() {
             console.log(this.eventId)
+            //获取案例title
+            this.caseTitle = this.$route.query.info && this.$route.query.info.title ? this.$route.query.info.title : '';
+            if (!this.caseTitle) {
+                this.axios.post('/api/sykg/query/case_infos/keywords', { "ID": this.eventId, "startTime": {}, "endTime": {}, "or": { "content": [], "title": [] }, "and": { "subject": [], "caseType": '' } })
+                    .then((data) => {
+                        console.log("获取案例title", data);
+                        let status = data.data.status;
+                        // console.log('状态', status)
+                        if (status == 0 && data.data.message.size == 1) {
+                            console.log(data.data.message.data[0].title);
+                            this.caseTitle = data.data.message.data[0].title;
+                        }
+                    })
+            }
             this.axios.post("/api/sykg/query/events_infos/basic", { "IDs": [this.eventId] })
                 .then((data) => {
                     // console.log("事件脉络结果", data);
@@ -381,7 +428,7 @@
                     console.log(e);
                 });
 
-            this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Case').has('udfID','${this.eventId}').repeat(both()).times(1).bothE().bothV().bothE()` })
+            this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Case').has('udfID','${this.eventId}').out('caseObjectC').inE().not(hasLabel('RELATED'))` })
                 .then((data) => {
                     console.log("图谱结果", data);
                     let status = data.data.status;
@@ -394,20 +441,38 @@
                             nodes: [],
                             links: []
                         }
+                        let colorDict = {
+                            "Company": "#ffc93c",
+                            "Punishment": "#2581ff",
+                            "Person": "#00b0f0",
+                            "Event": "#9ddfd3",
+                            "Case": "#31326f"
+                        }
+                        // let colorList = ['#31326f', '#2581ff', '#00b0f0', '#9ddfd3', '#ffc93c']
+                        let color_map = {};
+                        for (let item of message.nodes) {
+                            if (color_map[item.classType]) {
+                                continue;
+                            } else {
+                                color_map[item.classType] = colorDict[item.classType] ? colorDict[item.classType] : '#8ac4d0';
+                            }
+
+                        }
+                        console.log(color_map)
                         for (let item of message.nodes) {
                             let oneNode = {
                                 id: item.id,
-                                text: item.alias ? item.alias.slice(0,10) : item.name.slice(0,10),
+                                text: item.alias ? item.alias.slice(0, 10) : item.name.slice(0, 10),
                                 classType: item.classType,
                                 ID: item.ID,
                                 data: {
                                     fullName: item.name
-                                }
-                                // color: '#43a2f1', 
+                                },
+                                color: color_map[item.classType],
                                 // fontColor: '#000',
                                 // borderWidth: 2
                             }
-                            if((item.alias && item.alias.length > 10) || item.name.length > 10){
+                            if ((item.alias && item.alias.length > 10) || item.name.length > 10) {
                                 oneNode.text += '...'
                             }
                             // if (item.img) {
@@ -419,7 +484,7 @@
                             data.links.push({
                                 from: item.source,
                                 to: item.target,
-                                text: item.relation,
+                                text: this.graphLinkNameDict[item.relation],
                                 // color: '#43a2f1'
                             })
                         }
@@ -430,6 +495,36 @@
                 .catch((e) => {
                     console.log(e);
                 });
+        },
+        methods: {
+            createdSnackbar() {
+                console.log('显示提示')
+                this.$store.dispatch('snackbar/openSnackbar', {
+                    msg: '温馨提示：抱歉，暂无企业数据，后台将尽快更新，换个企业试试~ ',
+                    color: 'warning'
+                })
+            },
+            checkHaveCompany(item) {
+                let that = this;
+                if (item.length < 4) {
+                    return;
+                }
+                this.axios.post("/api/sykg/query/company_detail", { "params": { "name": item }, "label": "Company" })
+                    .then((data) => {
+                        console.log("Here what post returns", data);
+                        let status = data.data.status;
+                        // console.log(status);
+                        if (status == 0 && data.data.message.nodes[0] && data.data.message.nodes[0].organizationCode) {
+                            console.log(data.data.message.nodes[0]);
+                            that.$router.push({ path: '/fkgHome/home', query: { name: item } })
+                        } else {
+                            that.createdSnackbar()
+                        }
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
+            }
         },
     };
 </script>

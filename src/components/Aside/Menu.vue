@@ -30,7 +30,7 @@
     </li> -->
 
     <li v-for="(mainItem,index) in menus" :key="index" aria-haspopup="true" data-menu-toggle="hover" class="menu-item menu-item-submenu"
-      v-bind:class="{ 'menu-item-open': hasActiveChildren('/vue-bootstrap') }">
+      v-bind:class="{ 'menu-item-open': index == 0 }">
       <a href="#" class="menu-link menu-toggle">
         <i class="menu-icon flaticon2-digital-marketing"></i>
         <span class="menu-text">{{Object.keys(mainItem)[0]}}</span>
@@ -93,7 +93,7 @@
     },
     data() {
       return {
-        activteSubItemId: -1
+        activteSubItemId: -1,
       }
     },
     methods: {
@@ -102,7 +102,7 @@
       },
       navigateToItem(subItem, index){
         // console.log(subItem);
-        if(index == -1){
+        if(index == this.activteSubItemId){
           this.activteSubItemId = -1;
           this.$emit("gotoItem",'')
         }else{

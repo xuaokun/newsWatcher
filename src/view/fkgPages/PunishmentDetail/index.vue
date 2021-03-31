@@ -76,8 +76,8 @@
                                         <span class="svg-icon svg-icon-md">
                                         </span>
                                     </span> -->
-                                    <span class="btn btn-light-danger btn-sm text-uppercase font-weight-bolder mr-2"
-                                        data-toggle="tooltip" title="Change due date">复制</span>
+                                    <!-- <span class="btn btn-light-danger btn-sm text-uppercase font-weight-bolder mr-2"
+                                        data-toggle="tooltip" title="Change due date">复制</span> -->
                                     <span class="btn btn-light-success btn-sm text-uppercase font-weight-bolder"
                                         data-toggle="tooltip" title="Mark as complete">收藏</span>
                                 </div>
@@ -91,8 +91,9 @@
                                     class="d-flex align-items-center justify-content-between flex-wrap card-spacer-x py-3">
                                     <!--begin::Title-->
                                     <div class="d-flex flex-column mr-2 py-2">
-                                        <a target="_blank" :href="$route.query.info.url"
-                                            class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3">{{$route.query.info.title}}</a>
+                                        <a target="_blank" :href="detailInfo && detailInfo.url ? detailInfo.url: '#'"
+                                            class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3">{{detailInfo
+                                            && detailInfo.title ? detailInfo.title : '-'}}</a>
                                         <!-- <div class="d-flex align-items-center py-1">
                                             <a href="#"
                                                 class="d-flex align-items-center text-muted text-hover-primary mr-2">
@@ -124,7 +125,8 @@
                                         <div class="card-spacer-x pt-2 pb-5 toggle-off-item">
                                             <!--begin::Text-->
                                             <div class="mb-1">
-                                                <p v-html="$route.query.info.content"></p>
+                                                <p v-html="detailInfo && detailInfo.content ? detailInfo.content : ''">
+                                                </p>
                                                 <!-- <p>关于对海通证券股份有限公司及曾军、周威采取出具警示函监管措施的决定(2020-12-24)
 
                                                     一、案情简介
@@ -154,15 +156,14 @@
                                             <!--end::Text-->
                                             <!--begin::Attachments-->
                                             <div class="d-flex flex-column font-size-sm font-weight-bold">
-                                                <a href="#"
-                                                    class="d-flex align-items-center text-muted text-hover-primary py-1">
-                                                    <span
-                                                        class="flaticon2-clip-symbol text-warning icon-1x mr-2"></span>相关法规：证券发行上市保荐业务管理办法（2017年修正）
-                                                </a>
-                                                <a href="#"
-                                                    class="d-flex align-items-center text-muted text-hover-primary py-1">
-                                                    <span
-                                                        class="flaticon2-clip-symbol text-warning icon-1x mr-2"></span>关联案例：关于对四方光电股份有限公司采取出具警示函监管措施的决定</a>
+                                                <div v-for="law in relationLaw" :key="law._source">
+                                                    <router-link v-if="law._source"
+                                                        :to="'/fkgHome/lawDetail/' + law._source"
+                                                        class="d-flex align-items-center text-muted text-hover-primary py-1">
+                                                        <span
+                                                            class="flaticon2-clip-symbol text-warning icon-1x mr-2"></span>{{law.name}}
+                                                    </router-link>
+                                                </div>
                                             </div>
                                             <!--end::Attachments-->
                                         </div>
@@ -176,7 +177,7 @@
                         </div>
                         <!--end::Card-->
 
-                        <PublishList :tableHead="tableHead" :dataList="tableData" class="list-box"/>
+                        <PublishList :tableHead="tableHead" :dataList="tableData" class="list-box" />
                     </div>
                     <div class="col-lg-3">
 
@@ -275,6 +276,7 @@
                 tableHead: [
                     {
                         name: '处罚对象',
+                        router: '/fkgHome/home/',
                         property: 'name',
                         sortAble: true,
                         currentSort: -1//0代表升序
@@ -307,49 +309,75 @@
                 tableData: [],
                 relationEventsAndCase: {},
                 eventInfoList: [],
-                caseInfoList: []
+                caseInfoList: [],
+                detailInfo: null,
+                relationLaw: []
             };
         },
-        props: ['movieId'],
+        props: ['punishmentId'],
         mounted() {
             this.$store.dispatch(SET_BREADCRUMB, [{ title: "处罚详情" }]);
-            console.log(this.$route.query.info)
-            this.detailInfo = this.$route.query.info;
-            let list = [];
-            let name = this.detailInfo.punishedCompany ? this.detailInfo.punishedCompany.name : '-';
-            let objType = this.detailInfo.punishedCompany ? this.detailInfo.punishedCompany.type : '-';
-            let reason = this.detailInfo.decisionResion;
-            let punishmentType = '-';
-            let decisonName = this.detailInfo.decisionOrganName.name;
-            list.push({
-                name,
-                objType,
-                reason,
-                punishmentType,
-                decisonName
-            })
-            if (this.detailInfo.punishedPersons) {
-                for (let person of this.detailInfo.punishedPersons) {
-                    list.push({
-                        name: person.name,
-                        objType: '-',
-                        reason,
-                        punishmentType: person.type,
-                        decisonName
-                    })
-                }
-            }
-            this.tableData = list;
-
         },
         created() {
-            this.getRelationEvents();
+            // console.log(this.$route.query.info)
+            //查看是否含有其他页面的传参
+            // this.detailInfo = this.$route.query.info;
+            // console.log(this.$route.query)
+            //没有参数则请求数据
+            //不用路由传参，直接接口获取
+            this.getDetailInfo()
+                .then(() => {
+                    this.relationLaw = this.detailInfo.lawInfos ? this.detailInfo.lawInfos : [];
+                    console.log('相关法律', this.relationLaw)
+                    let list = [];
+                    let name = this.detailInfo.punishedCompany ? this.detailInfo.punishedCompany.name : '-';
+                    let objType = this.detailInfo.punishedCompany ? this.detailInfo.punishedCompany.type : '-';
+                    let reason = this.detailInfo.decisionResion;
+                    let punishmentType = '-';
+                    let decisonName = this.detailInfo.decisionOrganName.name;
+                    list.push({
+                        name,
+                        objType,
+                        reason,
+                        punishmentType,
+                        decisonName
+                    })
+                    if (this.detailInfo.punishedPersons) {
+                        for (let person of this.detailInfo.punishedPersons) {
+                            list.push({
+                                name: person.name,
+                                objType: '-',
+                                reason,
+                                punishmentType: person.type,
+                                decisonName
+                            })
+                        }
+                    }
+                    this.tableData = list;
+                    this.getRelationEvents();
+                })
+
         },
         methods: {
+            //获取处罚详情
+            async getDetailInfo() {
+                let res = await this.axios.post('/api/sykg/query/punish_infos/basic', {
+                    IDs: [this.punishmentId]
+                })
+                console.log('获取处罚详情', res.data)
+                if (res.data.status == 0 && res.data.message.data[0]) {
+                    console.log(res.data.message.data)
+                    //获取相关法律
+                    let res02 = await this.axios.post('/api/sykg/query/punish_infos/lawrelated', res.data.message.data[0])
+                    // console.log('获取相关法规', res02.data)
+                    if (res02.data.status == 0) {
+                        this.detailInfo = res02.data.message;
+                    }
+                }
+            },
             getRelationEvents() {
-                let detailInfo = this.$route.query.info;
                 this.axios.post('/api/sykg/query/punish_infos/related', {
-                    punishName: detailInfo.title
+                    punishName: this.detailInfo.title
                 })
                     .then((data) => {
                         console.log(data);
@@ -367,7 +395,7 @@
                     .then((data) => {
                         console.log('案例详情')
                         console.log(data)
-                        if (data.data.status == 0) {
+                        if (data && data.data && data.data.status == 0) {
                             this.eventInfoList = data.data.message.data;
                         }
 
@@ -383,12 +411,54 @@
                     }).then((data) => {
                         console.log('案例详情')
                         console.log(data)
-                        if (data.data.status == 0) {
+                        if (data && data.data && data.data.status == 0) {
                             this.caseInfoList = data.data.message.data[0] ? [data.data.message.data[0]] : [];
                         }
                     })
+            },
+            createdSnackbar() {
+                console.log('显示提示')
+                this.$store.dispatch('snackbar/openSnackbar', {
+                    msg: '温馨提示：抱歉，暂无企业数据，后台将尽快更新，换个企业试试~ ',
+                    color: 'warning'
+                })
+            },
+            checkHaveCompany(item, next) {
+                let that = this;
+                if (item.length < 4) {
+                    next(false);
+                }
+                this.axios.post("/api/sykg/query/company_detail", { "params": { "name": item }, "label": "Company" })
+                    .then((data) => {
+                        console.log("Here what post returns", data);
+                        let status = data.data.status;
+                        // console.log(status);
+                        if (status == 0 && data.data.message.nodes[0] && data.data.message.nodes[0].organizationCode) {
+                            console.log('信息存在');
+                            next({});
+                        } else {
+                            that.createdSnackbar();
+                            next(false);
+                        }
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        next(false);
+                    });
             }
+
         },
+        beforeRouteLeave(to, from, next) {
+            console.log('路由>>>', to)
+            if (to.path != '/fkgHome/home') {
+                next();
+                return;
+            }
+            if (to.query.info && to.query.info.name) {
+                let item = to.query.info.name;
+                this.checkHaveCompany(item,next);
+            }
+        }
     };
 </script>
 <style scoped>
@@ -406,11 +476,11 @@
         align-items: flex-start;
     }
 
-    .case-box{
+    .case-box {
         margin-top: 10px;
     }
 
-    .list-box{
+    .list-box {
         margin-top: 10px;
     }
 </style>

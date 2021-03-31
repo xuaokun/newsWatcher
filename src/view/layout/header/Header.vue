@@ -119,28 +119,27 @@
       return {
         tabIndex: 0,
         menus0: [],
-        menus1: [{
-          menuName: '法库概况',
-          url: '/fkgHome/lawLibrary' //
-        },
+        menus1: [
         {
           menuName: '法规检索',
           url: '/fkgHome/lawSearch'
-        }
-        ],
-        menus2: [{
-          menuName: '处罚概况',
-          url: '/fkgHome/punishmentLibrary'
         },
+        {
+          menuName: '法库概况',
+          url: '/fkgHome/lawLibrary' //
+        },
+        ],
+        menus2: [
         {
           menuName: '处罚检索',
           url: '/fkgHome/punishmentSearch'
-        }
-        ],
-        menus3: [{
-          menuName: '事件展示',
-          url: '/fkgHome/eventsView'
         },
+        {
+          menuName: '处罚概况',
+          url: '/fkgHome/punishmentLibrary'
+        },
+        ],
+        menus3: [
         {
           menuName: '案例查询',
           url: '/fkgHome/eventsSearch'
@@ -148,7 +147,11 @@
         {
           menuName: '事件查询',
           url: '/fkgHome/oneEventSearch'
-        }
+        },
+        {
+          menuName: '事件展示',
+          url: '/fkgHome/eventsView'
+        },
         ],
         menus4: []
       };

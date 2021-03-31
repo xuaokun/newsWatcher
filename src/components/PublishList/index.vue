@@ -19,16 +19,15 @@
         <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
           <thead>
             <tr class="text-left">
-              <th class="pl-0" style="width: 30px">
+              <!-- <th class="pl-0" style="width: 30px">
                 <label class="checkbox checkbox-lg checkbox-single mr-2">
                   <input type="checkbox" @input="setCheck($event.target.checked)" />
                   <span></span>
                 </label>
-              </th>
+              </th> -->
               <!-- <th class="pl-0" style="min-width: 120px">法规名称</th>
               <th style="min-width: 110px">Country</th> -->
-              <th style="" @click="sortDataListByContent(item)" v-for="item in tableHead.slice(0,-1)"
-                :key="item.name">
+              <th style="" @click="sortDataListByContent(item)" v-for="item in tableHead.slice(0,-1)" :key="item.name">
                 <span class="text-primary">{{item.name}}</span>
                 <span class="svg-icon svg-icon-sm svg-icon-primary">
                   <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Down-2.svg-->
@@ -47,12 +46,12 @@
           <tbody>
             <template v-for="(item, i) in itemProperty">
               <tr v-bind:key="i">
-                <td class="pl-0 py-6">
+                <!-- <td class="pl-0 py-6">
                   <label class="checkbox checkbox-lg checkbox-single">
                     <input type="checkbox" :value="i" :checked="checked" />
                     <span></span>
                   </label>
-                </td>
+                </td> -->
                 <!--  <td class="pl-0">
                   <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ item.order_id
                     }}</a>
@@ -70,10 +69,13 @@
                   <router-link v-if="oneHead.router"
                     :to="{path:oneHead.router.concat(item._id), query:{info:dataList[i]}}"><span
                       class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item[oneHead.property] ?
-                      (oneHead.time ? $moment(item[oneHead.property]): (oneHead.maxLen ?
-                      item[oneHead.property].slice(0,oneHead.maxLen)+ '...':item[oneHead.property])): '-' }}</span></router-link>
+                      (oneHead.time ? $moment(item[oneHead.property]): (oneHead.maxLen && item[oneHead.property].length
+                      > oneHead.maxLen ?
+                      item[oneHead.property].slice(0,oneHead.maxLen)+ '...':item[oneHead.property])): '-' }}</span>
+                  </router-link>
                   <span v-else class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item[oneHead.property] ?
-                    (oneHead.time ? $moment(item[oneHead.property]).format("YYYY-MM-DD"): (oneHead.maxLen ?
+                    (oneHead.time ? $moment(item[oneHead.property]).format("YYYY-MM-DD"): (oneHead.maxLen &&
+                    item[oneHead.property].length > oneHead.maxLen ?
                     item[oneHead.property].slice(0,oneHead.maxLen) + '...':item[oneHead.property])) : '-' }}</span>
                 </td>
                 <!-- <td>
@@ -111,13 +113,12 @@
     <!--end::Body-->
 
     <!-- 分页 -->
-    <div class="text-center" v-if="showPagination">
+    <div class="text-center" v-if="showPagination && pageLength > 1">
       <v-container>
         <v-row justify="center">
           <v-col cols="12">
             <v-container class="max-width">
-              <v-pagination color="#3699FF" v-model="page" class="my-4" :length="pageLength"
-                @input="onPageChange">
+              <v-pagination color="#3699FF" v-model="page" class="my-4" :length="pageLength" @input="onPageChange">
               </v-pagination>
             </v-container>
           </v-col>
@@ -313,6 +314,7 @@
         }
       }
     },
+
   };
 </script>
 

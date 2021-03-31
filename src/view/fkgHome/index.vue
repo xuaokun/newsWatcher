@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <KTStickyToolbar v-if="toolbarDisplay"></KTStickyToolbar>
+    <!-- <KTStickyToolbar v-if="toolbarDisplay"></KTStickyToolbar> -->
     <KTScrollTop></KTScrollTop>
   </div>
 </template>
@@ -58,7 +58,7 @@
   // import KTSubheader from "@/view/layout/subheader/Subheader.vue";
   import KTFooter from "@/view/layout/footer/Footer.vue";
   import HtmlClass from "@/core/services/htmlclass.service";
-  import KTStickyToolbar from "@/view/layout/extras/StickyToolbar.vue";
+  // import KTStickyToolbar from "@/view/layout/extras/StickyToolbar.vue";
   import KTScrollTop from "@/view/layout/extras/ScrollTop";
   import Loader from "@/view/content/Loader.vue";
   import {
@@ -74,7 +74,7 @@
       KTHeaderMobile,
       // KTSubheader,
       KTFooter,
-      KTStickyToolbar,
+      // KTStickyToolbar,
       KTScrollTop,
       Loader
     },

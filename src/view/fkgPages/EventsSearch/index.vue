@@ -130,10 +130,11 @@
                     }
                 ],
                 riskType: [
-                    "信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险", "全部"
+                "全部","信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险"
                 ],
-                currentRiskType:''
-            };
+                currentRiskType:'',
+                params:{"ID":"","startTime":{},"endTime":{},"or":{"content":[],"title":[]},"and":{"subject":[]}},
+            }
         },
         mounted() {
             this.$store.dispatch(SET_BREADCRUMB, [{ title: "事件查询" }]);

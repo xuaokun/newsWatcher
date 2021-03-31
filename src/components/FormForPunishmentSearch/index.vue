@@ -76,19 +76,19 @@
                 <div class="form-group row">
                     <label for="example-datetime-local-input" class="col-1 col-form-label">发布时间</label>
                     <div class="col-2">
-                        <input class="form-control" type="datetime-local" v-model="public_start" />
+                        <input class="form-control" type="date" v-model="public_start" />
                     </div>
                     <label for="example-datetime-local-input" class="col-1 col-form-label">至</label>
                     <div class="col-2">
-                        <input class="form-control" type="datetime-local" v-model="public_end" />
+                        <input class="form-control" type="date" v-model="public_end" />
                     </div>
                     <label for="example-datetime-local-input" class="col-1 col-form-label">决策时间</label>
                     <div class="col-2">
-                        <input class="form-control" type="datetime-local" v-model="decision_start" />
+                        <input class="form-control" type="date" v-model="decision_start" />
                     </div>
                     <label for="example-datetime-local-input" class="col-1 col-form-label">至</label>
                     <div class="col-2">
-                        <input class="form-control" type="datetime-local" v-model="decision_end" />
+                        <input class="form-control" type="date" v-model="decision_end" />
                     </div>
                 </div>
             </div>
@@ -110,8 +110,8 @@
         name: 'FormForPunishmentSearch',
         data() {
             return {
-                public_start: this.$moment().subtract('days', 180).format('YYYY-MM-DDThh:mm'),
-                public_end: this.$moment().format('YYYY-MM-DDThh:mm'),
+                public_start: this.$moment().subtract('days', 180).format('YYYY-MM-DD'),
+                public_end: this.$moment().format('YYYY-MM-DD'),
                 decision_start: '',
                 decision_end: '',
                 title_include: '',
@@ -124,10 +124,10 @@
                 let title_include = this.title_include ? this.title_include.split(' ') : [];
                 let content_include = this.content_include ? this.content_include.split(' ') : [];
                 let org_include = this.org_include ? this.org_include.split(' ') : [];
-                let public_start = this.public_start ? this.public_start.replace('T', ' ') + ':00' : null;
-                let public_end = this.public_end ? this.public_end.replace('T', ' ') + ':00' : null;
-                let decision_start = this.decision_start ? this.decision_start.replace('T', ' ') + ':00' : null;
-                let decision_end = this.decision_end ? this.decision_end.replace('T', ' ') + ':00' : null;
+                let public_start = this.public_start ? this.public_start + ' 00:00:00' : null;
+                let public_end = this.public_end ? this.public_end + ' 00:00:00' : null;
+                let decision_start = this.decision_start ? this.decision_start + ' 00:00:00' : null;
+                let decision_end = this.decision_end ? this.decision_end + ' 00:00:00' : null;
                 console.log(title_include, content_include, org_include, public_start, public_end, decision_start, decision_end);
 
                 let dec_time_cond = {}, pub_time_cond = {}

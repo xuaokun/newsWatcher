@@ -18,8 +18,8 @@
                     allowSwitchLineShape: true,
                     allowSwitchJunctionPoint: true,
                     defaultJunctionPoint: 'border',
-                    defaultNodeBorderWidth: 2,
-                    defaultNodeFontColor: "#000",
+                    defaultNodeBorderWidth: 0,
+                    defaultNodeFontColor: "#fff",
                     layouts: [
                         {
                             'label': '自动布局',

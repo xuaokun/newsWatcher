@@ -6,7 +6,7 @@ import htmlClass from "./htmlclass.module";
 import config from "./config.module";
 import breadcrumbs from "./breadcrumbs.module";
 import profile from "./profile.module";
-
+import snackbar from "./snackbar.module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -15,6 +15,7 @@ export default new Vuex.Store({
     htmlClass,
     config,
     breadcrumbs,
-    profile
+    profile,
+    snackbar,
   }
 });

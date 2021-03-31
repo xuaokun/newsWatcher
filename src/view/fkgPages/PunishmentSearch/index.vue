@@ -128,6 +128,7 @@
                     {
                         name: '处罚对象',
                         property: 'punishedOrgan.name',
+                        router: '/fkgHome/home/',
                         sortAble: true,
                         currentSort: -1//0代表升序
                     },
@@ -136,7 +137,7 @@
                         property: 'decisionResion',
                         sortAble: true,
                         currentSort: -1,//0代表升序
-                        maxLen:200
+                        maxLen: 15
                     },
                     {
                         name: '处罚类型',
@@ -165,7 +166,7 @@
                     }
                 ],
                 riskType: [
-                    "信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险", "全部"
+                "全部","信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险",
                 ],
                 punish_type: {
                     "1": "警告处分", "2": "终身禁止从事银行业工作", "3": "禁止十五年从事银行业工作", "4": "取消高级管理人员任职资格2年", "7": "禁止从事银行业工作终身", "8": "警告并罚款", "9": "禁止从事银行业工作1年", "10": "取消高管资格终身",
@@ -240,8 +241,47 @@
                 console.log(this.params)
                 this.searchByCondition(this.params);
             },
-
+            createdSnackbar() {
+                console.log('显示提示')
+                this.$store.dispatch('snackbar/openSnackbar', {
+                    msg: '温馨提示：抱歉，暂无企业数据，后台将尽快更新，换个企业试试~ ',
+                    color: 'warning'
+                })
+            },
+            checkHaveCompany(item, next) {
+                let that = this;
+                if (item.length < 4) {
+                    next(false);
+                }
+                return this.axios.post("/api/sykg/query/company_detail", { "params": { "name": item }, "label": "Company" })
+                    .then((data) => {
+                        console.log("Here what post returns", data);
+                        let status = data.data.status;
+                        // console.log(status);
+                        if (status == 0 && data.data.message.nodes[0] && data.data.message.nodes[0].organizationCode) {
+                            console.log('信息存在');
+                            next();
+                        } else {
+                            that.createdSnackbar();
+                            next(false);
+                        }
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        next(false);
+                    });
+            }
         },
+        beforeRouteLeave(to, from, next) {
+            console.log('路由离开',to)
+            if(to.path != '/fkgHome/home'){
+                next();
+                return;
+            }
+            if(to.query.info && to.query.info.punishedOrgan && to.query.info.punishedOrgan.name){
+                this.checkHaveCompany(to.query.info.punishedOrgan.name, next);
+            }
+        }
     };
 </script>
 <style scoped>

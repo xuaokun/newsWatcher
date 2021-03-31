@@ -55,33 +55,10 @@
                         <!--begin::Card-->
                         <div class="card card-custom card-stretch" id="kt_todo_view">
                             <!--begin::Header-->
-                            <div
-                                class="card-header align-items-center flex-wrap justify-content-between border-0 py-6 h-auto">
-                                <!--begin::Left-->
-                                <div class="d-flex align-items-center my-2">
-                                    <div class="d-flex align-items-center">
-                                        <!-- <div class="symbol symbol-35 mr-3">
-                                            <div class="symbol-label"
-                                                style="background-image: url('assets/media/users/100_12.jpg')"></div>
-                                        </div> -->
-                                        <a href="#"
-                                            class="text-dark-75 font-size-lg text-hover-primary font-weight-bolder">法规正文</a>
-                                    </div>
-                                </div>
-                                <!--end::Left-->
-                                <!--begin::Right-->
-                                <div class="d-flex align-items-center justify-content-end text-right my-2">
-                                    <!-- <span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip"
-                                        title="Archive">
-                                        <span class="svg-icon svg-icon-md">
-                                        </span>
-                                    </span> -->
-                                    <span class="btn btn-light-danger btn-sm text-uppercase font-weight-bolder mr-2"
-                                        data-toggle="tooltip" title="Change due date">复制</span>
-                                    <span class="btn btn-light-success btn-sm text-uppercase font-weight-bolder"
-                                        data-toggle="tooltip" title="Mark as complete">收藏</span>
-                                </div>
-                                <!--end::Right-->
+                            <div class="card-header align-items-center border-0 mt-4">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="font-weight-bolder text-dark">法规正文</span>
+                                </h3>
                             </div>
                             <!--end::Header-->
                             <!--begin::Body-->
@@ -152,11 +129,13 @@
                                             <!--begin::User Details-->
                                             <div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
                                                 <div class="d-flex">
-                                                    <span class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2"></span>
+                                                    <span
+                                                        class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2"></span>
                                                 </div>
                                                 <div class="d-flex flex-column">
                                                     <div class="toggle-off-item">
-                                                        <p class="font-weight-bolder" v-if="index-1 == -1 || lawInfo[index-1].index_f != item.index_f">
+                                                        <p class="font-weight-bolder"
+                                                            v-if="index-1 == -1 || lawInfo[index-1].index_f != item.index_f">
                                                             {{item.index_f}}</p>
                                                         <!-- <span class="font-weight-bold text-muted cursor-pointer"
                                                             data-toggle="dropdown">to me
@@ -247,13 +226,10 @@
                         <!-- 法律文件信息开始 -->
                         <div class="card card-custom">
                             <!--begin::Header-->
-                            <div class="card-header h-auto py-4">
-                                <div class="card-title">
-                                    <h3 class="card-label">法律详情
-                                        <!-- <span class="d-block text-muted pt-2 font-size-sm">company Info
-                                        </span> -->
-                                    </h3>
-                                </div>
+                            <div class="card-header align-items-center border-0 mt-4">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="font-weight-bolder text-dark">法规详情</span>
+                                </h3>
                             </div>
                             <!--end::Header-->
                             <!--begin::Body-->
@@ -261,8 +237,11 @@
                                 <div class="form-group row my-2" v-if="lawInfo[0] && lawInfo[0].important">
                                     <label class="col-4 col-form-label">重要性指数</label>
                                     <div class="col-8">
-                                        <span class="form-control-plaintext font-weight-bolder">{{lawInfo[0].important *
+                                        <span v-if="lawInfo[0].important < 6"
+                                            class="form-control-plaintext font-weight-bolder">{{lawInfo[0].important *
                                             20}}</span>
+                                        <span v-else
+                                            class="form-control-plaintext font-weight-bolder">{{lawInfo[0].important}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row my-2" v-if="lawInfo[0] && lawInfo[0].file_type">
@@ -297,72 +276,6 @@
                                 <h3 class="card-title align-items-start flex-column">
                                     <span class="font-weight-bolder text-dark">法规历史沿革</span>
                                 </h3>
-                                <div class="card-toolbar">
-                                    <div class="dropdown dropdown-inline">
-                                        <a href="#" class="btn btn-clean btn-hover-light-primary btn-sm btn-icon"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="ki ki-bold-more-hor"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                                            <!--begin::Navigation-->
-                                            <ul class="navi navi-hover">
-                                                <li class="navi-header font-weight-bold py-4">
-                                                    <span class="font-size-lg">Choose Label:</span>
-                                                    <i class="flaticon2-information icon-md text-muted"
-                                                        data-toggle="tooltip" data-placement="right" title=""
-                                                        data-original-title="Click to learn more..."></i>
-                                                </li>
-                                                <li class="navi-separator mb-3 opacity-70"></li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-success">Customer</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-danger">Partner</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-primary">Member</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-text">
-                                                            <span
-                                                                class="label label-xl label-inline label-light-dark">Staff</span>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-separator mt-3 opacity-70"></li>
-                                                <li class="navi-footer py-4">
-                                                    <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                        <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                                </li>
-                                            </ul>
-                                            <!--end::Navigation-->
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!--end::Header-->
                             <!--begin::Body-->
@@ -372,7 +285,8 @@
                                     <!--begin::Item-->
                                     <div class="timeline-item align-items-start">
                                         <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">2015-4-24
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            2015-4-24
                                         </div>
                                         <!--end::Label-->
                                         <!--begin::Badge-->
@@ -389,7 +303,8 @@
                                     <!--begin::Item-->
                                     <div class="timeline-item align-items-start">
                                         <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">2014-8-31
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            2014-8-31
                                         </div>
                                         <!--end::Label-->
                                         <!--begin::Badge-->
@@ -399,7 +314,8 @@
                                         <!--end::Badge-->
                                         <!--begin::Content-->
                                         <div class="timeline-content d-flex">
-                                            <span class="font-weight-bolder text-dark-75 pl-3 font-size-lg">第十二届全国人民代表大会常务委员会第十次会议《关于修改〈中华人民共和国保险法〉等五部法律的决定》第二次修正</span>
+                                            <span
+                                                class="font-weight-bolder text-dark-75 pl-3 font-size-lg">第十二届全国人民代表大会常务委员会第十次会议《关于修改〈中华人民共和国保险法〉等五部法律的决定》第二次修正</span>
                                         </div>
                                         <!--end::Content-->
                                     </div>
@@ -407,7 +323,8 @@
                                     <!--begin::Item-->
                                     <div class="timeline-item align-items-start">
                                         <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">2002-10-28
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            2002-10-28
                                         </div>
                                         <!--end::Label-->
                                         <!--begin::Badge-->
@@ -425,7 +342,8 @@
                                     <!--begin::Item-->
                                     <div class="timeline-item align-items-start">
                                         <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">1995-6-30
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            1995-6-30
                                         </div>
                                         <!--end::Label-->
                                         <!--begin::Badge-->
@@ -446,14 +364,12 @@
                         </div>
                         <!-- 历史沿革结束 -->
 
-                        <!-- 相关处罚文件开始 -->
+                        <!-- 相关处罚开始 -->
                         <div class="card card-custom relative-events">
                             <!--begin::Header-->
-                            <div class="card-header border-0 pt-7">
+                            <div class="card-header align-items-center border-0 mt-4">
                                 <h3 class="card-title align-items-start flex-column">
-                                    <span class="card-label font-weight-bold font-size-h4 text-dark-75">相关处罚</span>
-                                    <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">Last week 
-                                    <span class="text-primary font-weight-bolder">9 accidents</span></span> -->
+                                    <span class="font-weight-bolder text-dark">相关处罚</span>
                                 </h3>
                             </div>
                             <!--end::Header-->
@@ -464,45 +380,21 @@
                                     <div class="tab-pane fade active show" id="kt_tab_pane_1_1" role="tabpanel"
                                         aria-labelledby="kt_tab_pane_1_1">
                                         <!--begin::Form-->
-                                        <div class="form">
+                                        <div class="form" v-if="relationData.punish">
                                             <!--begin::Item-->
-                                            <div class="d-flex align-items-center pb-9">
+                                            <div class="d-flex align-items-center pb-9"
+                                                v-for="item in relationData.punish.slice(0,10)" :key="item.ID">
                                                 <!--begin::Section-->
                                                 <div class="d-flex flex-column flex-grow-1">
                                                     <!--begin::Title-->
-                                                    <a href="#"
+                                                    <router-link :to="{path:'/fkgHome/punishmentDetail/' + item.ID}"
                                                         class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-1">
-                                                        黑市银保监罚决字〔2019〕6号</a>
+                                                        {{item.name}}</router-link>
                                                     <!--end::Title-->
                                                 </div>
                                                 <!--end::Section-->
                                             </div>
                                             <!--end::Item-->
-                                             <!--begin::Item-->
-                                             <div class="d-flex align-items-center pb-9">
-                                                <!--begin::Section-->
-                                                <div class="d-flex flex-column flex-grow-1">
-                                                    <!--begin::Title-->
-                                                    <a href="#"
-                                                        class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-1">黑市银保监罚决字〔2019〕7号</a>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Section-->
-                                            </div>
-                                            <!--end::Item-->
-                                             <!--begin::Item-->
-                                             <div class="d-flex align-items-center pb-9">
-                                                <!--begin::Section-->
-                                                <div class="d-flex flex-column flex-grow-1">
-                                                    <!--begin::Title-->
-                                                    <a href="#"
-                                                        class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-1">黑市银保监罚决字〔2019〕8号</a>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Section-->
-                                            </div>
-                                            <!--end::Item-->
-                                            
                                         </div>
                                         <!--end::Form-->
                                     </div>
@@ -545,16 +437,14 @@
                             </div>
                             <!--end::Body-->
                         </div>
-                        <!-- 相关处罚文件结束 -->
+                        <!-- 相关处罚结束 -->
 
                         <!-- 相关案例开始 -->
                         <div class="card card-custom relative-events">
                             <!--begin::Header-->
-                            <div class="card-header border-0 pt-7">
+                            <div class="card-header align-items-center border-0 mt-4">
                                 <h3 class="card-title align-items-start flex-column">
-                                    <span class="card-label font-weight-bold font-size-h4 text-dark-75">相关案例</span>
-                                    <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">Last week 
-                                    <span class="text-primary font-weight-bolder">9 accidents</span></span> -->
+                                    <span class="font-weight-bolder text-dark">相关案例</span>
                                 </h3>
                             </div>
                             <!--end::Header-->
@@ -566,33 +456,20 @@
                                         aria-labelledby="kt_tab_pane_1_1">
                                         <!--begin::Form-->
                                         <div class="form">
-                                             <!--begin::Item-->
-                                             <div class="d-flex align-items-center pb-9">
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center pb-9"
+                                                v-for="item in relationData.case" :key="item.ID">
                                                 <!--begin::Section-->
                                                 <div class="d-flex flex-column flex-grow-1">
                                                     <!--begin::Title-->
-                                                    <a href="#"
-                                                        class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-1">华晨宝马债券违约</a>
+                                                    <router-link :to="{path:'/fkgHome/eventDetail/' + item.ID}"
+                                                        class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-1">
+                                                        {{item.name}}</router-link>
                                                     <!--end::Title-->
                                                 </div>
                                                 <!--end::Section-->
                                             </div>
                                             <!--end::Item-->
-                                             <!--begin::Item-->
-                                             <div class="d-flex align-items-center pb-9">
-                                                <!--begin::Section-->
-                                                <div class="d-flex flex-column flex-grow-1">
-                                                    <!--begin::Title-->
-                                                    <a href="#"
-                                                        class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-1">华夏幸福债务危机爆雷事件
-
-                                                    </a>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Section-->
-                                            </div>
-                                            <!--end::Item-->
-                                            
                                         </div>
                                         <!--end::Form-->
                                     </div>
@@ -636,6 +513,82 @@
                             <!--end::Body-->
                         </div>
                         <!-- 相关案例结束 -->
+
+
+                        <!-- 相关事件开始 -->
+                        <div class="card card-custom relative-events">
+                            <!--begin::Header-->
+                            <div class="card-header align-items-center border-0 mt-4">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="font-weight-bolder text-dark">相关事件</span>
+                                </h3>
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Body-->
+                            <div class="card-body pt-1">
+                                <div class="tab-content mt-5" id="myTabLIist18">
+                                    <!--begin::Tap pane-->
+                                    <div class="tab-pane fade active show" id="kt_tab_pane_1_1" role="tabpanel"
+                                        aria-labelledby="kt_tab_pane_1_1">
+                                        <!--begin::Form-->
+                                        <div class="form">
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center pb-9"
+                                                v-for="item in relationData.events" :key="item.ID">
+                                                <!--begin::Section-->
+                                                <div class="d-flex flex-column flex-grow-1">
+                                                    <!--begin::Title-->
+                                                    <router-link :to="{path:'/fkgHome/oneEventDetail/' + item.ID}"
+                                                        class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-1">
+                                                        {{item.name}}</router-link>
+                                                    <!--end::Title-->
+                                                </div>
+                                                <!--end::Section-->
+                                            </div>
+                                            <!--end::Item-->
+                                        </div>
+                                        <!--end::Form-->
+                                    </div>
+                                    <!--end::Tap pane-->
+                                    <!--begin::Tap pane-->
+                                    <div class="tab-pane fade" id="kt_tab_pane_2_2" role="tabpanel"
+                                        aria-labelledby="kt_tab_pane_2_2">
+                                        <!--begin::Form-->
+                                        <div class="form">
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center pb-9">
+                                                <!--begin::Symbol-->
+                                                <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
+                                                    <div class="symbol-label"
+                                                        style="background-image: url('/metronic/theme/html/demo7/dist/assets/media/stock-600x400/img-20.jpg')">
+                                                    </div>
+                                                </div>
+                                                <!--end::Symbol-->
+                                                <!--begin::Section-->
+                                                <div class="d-flex flex-column flex-grow-1">
+                                                    <!--begin::Title-->
+                                                    <a href="#"
+                                                        class="text-dark-75 font-weight-bolder font-size-lg text-hover-primary mb-1">Cup
+                                                        &amp; Green</a>
+                                                    <!--end::Title-->
+                                                    <!--begin::Desc-->
+                                                    <span class="text-dark-50 font-weight-normal font-size-sm">Your
+                                                        company your website have long term business objectives. You
+                                                        should think about</span>
+                                                    <!--begin::Desc-->
+                                                </div>
+                                                <!--end::Section-->
+                                            </div>
+                                            <!--end::Item-->
+                                        </div>
+                                        <!--end::Form-->
+                                    </div>
+                                    <!--end::Tap pane-->
+                                </div>
+                            </div>
+                            <!--end::Body-->
+                        </div>
+                        <!-- 相关事件结束 -->
                     </div>
                 </div>
             </div>
@@ -686,6 +639,11 @@
             return {
                 lawInfo: [],
                 pre_index_f: '#',//记录前一章节，确定当前是否需要更换章节
+                relationData: {
+                    case: [],
+                    events: [],
+                    punish: []
+                }
             };
         },
         props: ['lawId'],
@@ -697,6 +655,7 @@
                     if (status == 0) {
                         // console.log(data.data.message.size);
                         this.lawInfo = data.data.message.data;
+                        this.relationData = data.data.message.extra_data;
                     }
                 })
                 .catch((e) => {

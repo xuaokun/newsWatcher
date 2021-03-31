@@ -93,7 +93,7 @@
         computed: {
             ...mapGetters(["currentUserPhoto"]),
             pageLength: function () {
-                let len = parseInt(this.searchResultIdList.length / 1000) + 1;
+                let len = parseInt(this.searchResultIdList.length / 20) + 1;
                 // console.log(len);
                 return len;
             },
@@ -113,7 +113,7 @@
             return {
                 params: { "legalHierarchy": "", "publishDepartment": "", "pubTime": {}, "actionTime": {}, "or": { "content": [], "title": [] }, "and": { "content": [], "title": [] }, "not": { "content": [], "title": [] } },
                 riskType: [
-                    "信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险", "全部"
+                "全部","信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险",
                 ],
                 searchResultIdList: [],
                 searchResultSize: 0,
@@ -187,13 +187,13 @@
                         console.log(this.searchResultIdList, this.searchResultSize)
                     }
                     let res2 = await this.axios.post('/api/sykg/query/law_infos/basic', {
-                        IDs: this.searchResultIdList.slice(0, 1000)
+                        IDs: this.searchResultIdList.slice(0, 20)
                     })
                     if (res2.data.status == 0) {
                         this.resultLawInfoList = res2.data.message.data;
                         this.resultLawInfoSize = res2.data.message.size;
                     }
-                    this.currentStartId += 1000;
+                    this.currentStartId += 20;
                     console.log(this.resultLawInfoList);
                 }
             },
@@ -202,7 +202,7 @@
                 console.log(page);
                 console.log(this.searchResultIdList.length);
                 let where = {
-                    IDs: this.searchResultIdList.slice((page - 1) * 1000, page * 1000)
+                    IDs: this.searchResultIdList.slice((page - 1) * 20, page * 20)
                 };
                 console.log(where);
                 let res2 = await this.axios.post('/api/sykg/query/law_infos/basic', where)

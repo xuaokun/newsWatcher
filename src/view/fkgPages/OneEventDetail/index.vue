@@ -57,18 +57,12 @@
                             <!--begin::Header-->
                             <div
                                 class="card-header align-items-center flex-wrap justify-content-between border-0 py-6 h-auto">
-                                <!--begin::Left-->
-                                <div class="d-flex align-items-center my-2">
-                                    <div class="d-flex align-items-center">
-                                        <!-- <div class="symbol symbol-35 mr-3">
-                                            <div class="symbol-label"
-                                                style="background-image: url('assets/media/users/100_12.jpg')"></div>
-                                        </div> -->
-                                        <a href="#"
-                                            class="text-dark-75 font-size-lg text-hover-primary font-weight-bolder">案例正文</a>
-                                    </div>
-                                </div>
-                                <!--end::Left-->
+                                <!--begin::Header-->
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="font-weight-bolder text-dark">事件正文</span>
+                                    <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">890,344 Sales</span> -->
+                                </h3>
+                                <!--end::Header-->
                                 <!--begin::Right-->
                                 <div class="d-flex align-items-center justify-content-end text-right my-2">
                                     <!-- <span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip"
@@ -92,7 +86,8 @@
                                     <!--begin::Title-->
                                     <div class="d-flex flex-column mr-2 py-2">
                                         <a href="#"
-                                            class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3">{{eventInfo[0] && eventInfo[0].name ? eventInfo[0].name:'标题暂无'}}</a>
+                                            class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3">{{eventInfo[0]
+                                            && eventInfo[0].name ? eventInfo[0].name:'标题暂无'}}</a>
                                         <!-- <div class="d-flex align-items-center py-1">
                                             <a href="#"
                                                 class="d-flex align-items-center text-muted text-hover-primary mr-2">
@@ -164,9 +159,8 @@
                             <!--begin::Header-->
                             <div class="card-header h-auto py-4">
                                 <div class="card-title">
-                                    <h3 class="card-label">相关对象
-                                        <!-- <span class="d-block text-muted pt-2 font-size-sm">company Info
-                                        </span> -->
+                                    <h3 class="card-label">
+                                        <span class="font-weight-bolder text-dark">相关对象</span>
                                     </h3>
                                 </div>
                             </div>
@@ -176,8 +170,11 @@
                                 <div class="form-group row my-2" v-for="(item,index) in relationObjects" :key="index">
                                     <!-- <label class="col-4 col-form-label">全称:</label> -->
                                     <div class="col-8">
-                                        <router-link v-if="item.length > 3" router-link :to="{path:'/fkgHome/home',query:{name:item}}" class="form-control-plaintext font-weight-bolder">{{item}}</router-link>
-                                        <span v-else class="form-control-plaintext font-weight-bolder">{{item}}</span>
+                                        <!-- <router-link v-if="item.length > 3" router-link
+                                            :to="{path:'/fkgHome/home',query:{name:item}}"
+                                            class="form-control-plaintext font-weight-bolder">{{item}}</router-link> -->
+                                        <span class="form-control-plaintext font-weight-bolder"
+                                            @click="checkHaveCompany(item)">{{item}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +193,15 @@
                 <div class="row">
                     <div class=" col-lg-12">
                         <div class="card card-custom history-timeline relationship-graph">
-                            <SeeksRelationGraph :graphData="graphData"/>
+                            <!--begin::Header-->
+                            <div class="card-header align-items-center border-0 mt-4">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="font-weight-bolder text-dark">事件图谱</span>
+                                    <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">890,344 Sales</span> -->
+                                </h3>
+                            </div>
+                            <!--end::Header-->
+                            <SeeksRelationGraph :graphData="graphData" />
                         </div>
                     </div>
 
@@ -258,7 +263,9 @@
                     '一般': 'text-success',
                     '严重': 'text-warning',
                     '很严重': 'text-danger'
-                }
+                },
+                graphData: {},
+                graphLinkNameDict: { 'eventObjectC': '关联事件(企业)', 'CONTAINS': '牵连事件', 'RELATED': '涉事相关人', 'PUNISHC': '相关处罚' }
             };
         },
         props: ['eventId'],
@@ -274,7 +281,7 @@
                     if (status == 0) {
                         console.log(data.data.message.data)
                         this.eventInfo = data.data.message.data;
-                        return this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Event').has('eventID','${this.eventId}').repeat(both()).times(1).bothE()` })
+                        return this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Event').has('eventID','${this.eventId}').out('eventObjectC').inE().not(hasLabel('RELATED'))` })
                     }
                 })
                 .then((data) => {
@@ -291,22 +298,34 @@
                             nodes: [],
                             links: []
                         }
-                        let color_map = {}, cnt = 0;
-                        for (let item of message.nodes) {
-                            console.log(item.classType);
-                            cnt++;
+                        let colorDict = {
+                            "Company": "#ffc93c",
+                            "Punishment": "#2581ff",
+                            "Person": "#00b0f0",
+                            "Event": "#9ddfd3",
+                            "Case": "#31326f"
                         }
-                        console.log('一共' + cnt + '个type',color_map)
+                        // let colorList = ['#31326f', '#2581ff', '#00b0f0', '#9ddfd3', '#ffc93c']
+                        let color_map = {};
+                        for (let item of message.nodes) {
+                            if (color_map[item.classType]) {
+                                continue;
+                            } else {
+                                color_map[item.classType] = colorDict[item.classType] ? colorDict[item.classType] : '#8ac4d0';
+                            }
+
+                        }
+                        // console.log(color_map)
                         for (let item of message.nodes) {
                             let oneNode = {
                                 id: item.id,
-                                text: item.alias ? item.alias.slice(0,10) : item.name.slice(0,10),
+                                text: item.alias ? item.alias.slice(0, 10) : item.name.slice(0, 10),
                                 classType: item.classType,
                                 ID: item.ID,
-                                // color: '#43a2f1',
+                                color: color_map[item.classType],
                                 // fontColor: '#fff'
                             };
-                            if((item.alias && item.alias.length > 10) || item.name.length > 10){
+                            if ((item.alias && item.alias.length > 10) || item.name.length > 10) {
                                 oneNode.text += '...'
                             }
                             data.nodes.push(oneNode);
@@ -315,7 +334,7 @@
                             data.links.push({
                                 from: item.source,
                                 to: item.target,
-                                text: item.relation,
+                                text: this.graphLinkNameDict[item.relation],
                                 // color: '#43a2f1'
                             })
                         }
@@ -323,10 +342,10 @@
                         this.graphData = data;
                     }
                     return this.axios.post('/api/sykg/query/case_infos/keywords',
-                        {"ID":this.eventInfo[0].caseID,"startTime":{},"endTime":{},"or":{"content":[],"title":[]},"and":{"subject":[],"caseType":[]}}
+                        { "ID": this.eventInfo[0].caseID, "startTime": {}, "endTime": {}, "or": { "content": [], "title": [] }, "and": { "subject": [], "caseType": [] } }
                     )
 
-                }).then((data)=>{
+                }).then((data) => {
                     console.log('案例信息', data)
                     let status = data.data.status;
                     if (status == 0) {
@@ -338,6 +357,56 @@
                     console.log(e);
                 });
         },
+        methods: {
+            color16() {//十六进制颜色随机
+                var r = Math.floor(Math.random() * 256);
+                var g = Math.floor(Math.random() * 256);
+                var b = Math.floor(Math.random() * 256);
+                var color = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+                return color;
+            },
+            createdSnackbar() {
+                console.log('显示提示')
+                this.$store.dispatch('snackbar/openSnackbar', {
+                    msg: '温馨提示：抱歉，暂无企业数据，后台将尽快更新，换个企业试试~ ',
+                    color: 'warning'
+                })
+            },
+            checkHaveCompany(item) {
+                let that = this;
+                if (item.length < 4) {
+                    return;
+                }
+                this.axios.post("/api/sykg/query/company_detail/alias", { "searchName": item, "size": 6 })
+                    .then((res) => {
+                        console.log(res)
+                        let status = res.data.status;
+                        // console.log(status);
+                        if (status == 0 && res.data.message.data.length > 0) {
+                            item = res.data.message.data[0].name;
+                            console.log(item)
+                            return this.axios.post("/api/sykg/query/company_detail", { "params": { "name": item }, "label": "Company" })
+                        }else{
+                            that.createdSnackbar()
+                        }
+                    })
+                    .then((data) => {
+                        if(!data) return;
+                        console.log("Here what post returns", data);
+                        let status = data.data.status;
+                        // console.log(status);
+                        if (status == 0 && data.data.message.nodes[0] && data.data.message.nodes[0].organizationCode) {
+                            console.log(data.data.message.nodes[0]);
+                            that.$router.push({ path: '/fkgHome/home', query: { name: item } })
+                        } else {
+                            that.createdSnackbar()
+                        }
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
+            }
+        }
     };
 </script>
 <style scoped>

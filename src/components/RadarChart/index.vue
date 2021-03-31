@@ -170,9 +170,9 @@
               dashArray: 3
             }
           },
-          tooltip: {
-            enabled: false
-          }
+          // tooltip: {
+          //   enabled: false
+          // }
         },
         yaxis: {
           labels: {
@@ -204,17 +204,17 @@
             }
           }
         },
-        tooltip: {
-          style: {
-            fontSize: "12px",
-            fontFamily: this.layoutConfig("font-family")
-          },
-          y: {
-            formatter: function (val) {
-              return "$" + val + " thousands";
-            }
-          }
-        },
+        // tooltip: {
+        //   style: {
+        //     fontSize: "12px",
+        //     fontFamily: this.layoutConfig("font-family")
+        //   },
+        //   y: {
+        //     formatter: function (val) {
+        //       return "$" + val + " thousands";
+        //     }
+        //   }
+        // },
         colors: [
           this.layoutConfig("colors.theme.base.success"),
           this.layoutConfig("colors.theme.base.warning")

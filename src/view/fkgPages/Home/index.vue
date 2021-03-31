@@ -8,7 +8,7 @@
           <!--begin: Pic-->
           <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3">
             <div class="symbol symbol-50 symbol-lg-120">
-              <img :src="currentUserPhoto" alt="image" />
+              <img :src="companyInfo.img" alt="image" />
             </div>
 
             <div class="symbol symbol-50 symbol-lg-120 symbol-primary d-none">
@@ -121,14 +121,14 @@
     },
     computed: {
       ...mapGetters(["currentUserPhoto", "currentUser"]),
-      commanyName:function(){
-        return this.$route && this.$route.query && this.$route.query.name ? this.$route.query.name : this.currentUser.companyInfo.companyName;
+      companyName:function(){
+        return this.$route && this.$route.query && this.$route.query.name ? this.$route.query.name : (this.$route.query.info && (this.$route.query.info.punishedOrgan||this.$route.query.info.name) ? this.$route.query.info.name|| this.$route.query.info.punishedOrgan.name : this.currentUser.companyInfo.companyName);
       }
     },
     data() {
       return {
-        // commanyName: this.$route && this.$route.query && this.$route.query.name ? this.$route.query.name : '中国农业银行股份有限公司',
-        // commanyName:'中国农业银行股份有限公司',
+        // companyName: this.$route && this.$route.query && this.$route.query.name ? this.$route.query.name : '中国农业银行股份有限公司',
+        // companyName:'中国农业银行股份有限公司',
         companyInfo: {},
         tableHead: [
           {
@@ -152,7 +152,7 @@
           },
           {
             name: '处罚日期',
-            property: 'pubtime',
+            property: 'decisionTime',
             sortAble: true,
             time: true,
             currentSort: -1 //0代表升序
@@ -182,72 +182,27 @@
         relationPunishmentDataList: [],
         relationPunishmentNameList: [],
         riskData:[],
-        riskName:[],
+        riskName:[]
       };
     },
     watch: {
       $route: {
         handler() {
-          this.commanyName = this.$route.query.name ? this.$route.query.name: this.currentUser.companyInfo.commanyName;
+          console.log('router参数', this.$route)
+          this.companyName = this.$route.query.name ? this.$route.query.name: (this.$route.query.info && (this.$route.query.info.punishedOrgan||this.$route.query.info.name) ? this.$route.query.info.name|| this.$route.query.info.punishedOrgan.name : this.currentUser.companyInfo.companyName);
           this.getData();
         }
       }
     },
     mounted() {
+      console.log('企业名称' + this.companyName)
       this.$store.dispatch(SET_BREADCRUMB, [{ title: "主页" }]);
       this.getData();
-      // console.log('搜索' + this.commanyName);
-      // this.axios.post("/api/sykg/query/company_detail", { "params": { "name": this.commanyName }, "label": "Company" })
-      //   .then((data) => {
-      //     // console.log("Here what post returns", data);
-      //     let status = data.data.status;
-      //     // console.log(status);
-      //     if (status == 0 && data.data.message.nodes[0]) {
-      //       this.companyInfo = data.data.message.nodes[0];
-      //     }
-      //   })
-      //   .catch((e) => {
-      //     console.log(e);
-      //   });
-      // this.axios.post("/api/sykg/query/punish_infos/rencently", { "companyName": this.commanyName })
-      //   .then((data) => {
-      //     // console.log("Here what post returns", data);
-      //     let status = data.data.status;
-      //     // console.log(status);
-      //     if (status == 0) {
-      //       this.recentPunishment = data.data.message.data;
-      //       console.log(this.recentPunishment);
-      //     }
-      //   })
-      //   .catch((e) => {
-      //     console.log(e);
-      //   });
-
-      // this.axios.post("/api/sykg/query/punish_infos/stats", { "companyName": this.commanyName })
-      //   .then((data) => {
-      //     console.log("Here what post returns", data);
-      //     let status = data.data.status;
-      //     // console.log(status);
-      //     if (status == 0) {
-      //       let dataList = []
-      //       let nameList = []
-      //       for (let item of data.data.message.data) {
-      //         dataList.push(item[1])
-      //         nameList.push(item[0])
-      //       }
-      //       this.relationPunishmentDataList = dataList;
-      //       this.relationPunishmentNameList = nameList;
-      //       console.log(this.relationPunishmentDataList, this.relationPunishmentNameList)
-      //     }
-      //   })
-      //   .catch((e) => {
-      //     console.log(e);
-      //   });
     },
     methods: {
       getData(){
-          console.log('watch搜索' + this.commanyName);
-          this.axios.post("/api/sykg/query/company_detail", { "params": { "name": this.commanyName }, "label": "Company" })
+          console.log('watch搜索' + this.companyName);
+          this.axios.post("/api/sykg/query/company_detail", { "params": { "name": this.companyName }, "label": "Company" })
             .then((data) => {
               console.log("Here what post returns", data);
               let status = data.data.status;
@@ -259,7 +214,7 @@
             .catch((e) => {
               console.log(e);
             });
-          this.axios.post("/api/sykg/query/punish_infos/rencently", { "companyName": this.commanyName })
+          this.axios.post("/api/sykg/query/punish_infos/rencently", { "companyName": this.companyName })
             .then((data) => {
               // console.log("Here what post returns", data);
               let status = data.data.status;
@@ -273,7 +228,7 @@
               console.log(e);
             });
 
-          this.axios.post("/api/sykg/query/punish_infos/stats", { "companyName": this.commanyName })
+          this.axios.post("/api/sykg/query/punish_infos/stats", { "companyName": this.companyName })
             .then((data) => {
               console.log("Here what post returns", data);
               let status = data.data.status;
@@ -293,8 +248,9 @@
             .catch((e) => {
               console.log(e);
             });
-
-            this.axios.post("/api/sykg/query/punish_infos/statsbydate", { "companyName": this.commanyName,"searchTime":"2020-09-01" })
+            let searchTime = this.$moment().subtract('days', 180).format('YYYY-MM-DD');
+            console.log(searchTime)
+            this.axios.post("/api/sykg/query/punish_infos/statsbydate", { "companyName": this.companyName,"searchTime":"2020-09-01" })
             .then((data) => {
               console.log("Here what post returns", data);
               let status = data.data.status;
