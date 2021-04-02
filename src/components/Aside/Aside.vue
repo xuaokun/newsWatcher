@@ -23,7 +23,7 @@
           class="aside-menu scroll"
 
         >
-          <KTMenu v-on:gotoItem="ToItem" :menus="menuData"></KTMenu>
+          <KTMenu v-on:gotoItem="ToItem" v-on:gotoMainItem="ToMainItem" :menus="menuData"></KTMenu>
         </perfect-scrollbar>
       </div>
     </div>
@@ -81,9 +81,12 @@ export default {
   },
   methods: {
     ToItem(item){
-      // console.log('去' + item);
       this.$emit("gotoItem",item);
-    }
+    },
+    ToMainItem(item){
+      // console.log('去' + item);
+      this.$emit("gotoMainItem",item);
+    },
   },
 };
 </script>

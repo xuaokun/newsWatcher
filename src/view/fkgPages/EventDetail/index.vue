@@ -152,39 +152,7 @@
 
                     </div>
                     <div class="col-lg-4">
-                        <!-- 处罚详情信息开始 -->
-                        <div class="card card-custom first-row">
-                            <!--begin::Header-->
-                            <div class="card-header h-auto py-4">
-                                <div class="card-title">
-                                    <h3 class="card-label">
-                                        <span class="font-weight-bolder text-dark">相关对象</span>
-                                    </h3>
-                                </div>
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div class="card-body py-4">
-                                <div class="form-group row my-2" v-for="(item,index) in relationObjects" :key="index">
-                                    <!-- <label class="col-4 col-form-label">全称:</label> -->
-                                    <div class="col-8">
-                                        <!-- <router-link v-if="item.length > 3" router-link
-                                            :to="{path:'/fkgHome/home',query:{name:item}}"
-                                            class="form-control-plaintext font-weight-bolder">{{item}}</router-link> -->
-                                        <span class="form-control-plaintext font-weight-bolder"
-                                            @click="checkHaveCompany(item)">{{item}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end::Body-->
-                            <!--begin::Footer-->
-                            <!-- <div class="card-footer">
-                                <a href="#" class="btn btn-primary font-weight-bold mr-2">Manage company</a>
-                                <a href="#" class="btn btn-light-primary font-weight-bold">Learn more</a>
-                            </div> -->
-                            <!--end::Footer-->
-                        </div>
-                        <!-- 处罚详情信息结束 -->
+                        <RelationEntity :relationObjects="relationObjects"></RelationEntity>
                     </div>
                 </div>
 
@@ -202,7 +170,7 @@
                             <!--end::Header-->
                             <!-- <v-virtual-scroll height="100" item-height="20"> -->
                             <!--begin::Body-->
-                            <div class="card-body pt-4">
+                            <div class="card-body pt-4 overflow-y-auto overflow-x-hidden" style="max-height: 50vh;">
                                 <!--begin::Timeline-->
                                 <div class="timeline timeline-6 mt-3">
                                     <!--begin::Item-->
@@ -210,95 +178,7 @@
                                         :key="item.ID">
                                         <!--begin::Label-->
                                         <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
-                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
-                                        </div>
-                                        <!--end::Label-->
-                                        <!--begin::Badge-->
-                                        <div class="timeline-badge">
-                                            <i
-                                                :class="['fa', 'fa-genderless', importantDict[item.important], 'icon-xl']"></i>
-                                        </div>
-                                        <!--end::Badge-->
-                                        <!--begin::Text-->
-                                        <div class="font-weight-bolder font-size-lg timeline-content pl-3">
-                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
-                                            </router-link>
-                                        </div>
-                                        <!--end::Text-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="timeline-item align-items-start" v-for="item in eventInfo"
-                                        :key="item.ID">
-                                        <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
-                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
-                                        </div>
-                                        <!--end::Label-->
-                                        <!--begin::Badge-->
-                                        <div class="timeline-badge">
-                                            <i
-                                                :class="['fa', 'fa-genderless', importantDict[item.important], 'icon-xl']"></i>
-                                        </div>
-                                        <!--end::Badge-->
-                                        <!--begin::Text-->
-                                        <div class="font-weight-bolder font-size-lg timeline-content pl-3">
-                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
-                                            </router-link>
-                                        </div>
-                                        <!--end::Text-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="timeline-item align-items-start" v-for="item in eventInfo"
-                                        :key="item.ID">
-                                        <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
-                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
-                                        </div>
-                                        <!--end::Label-->
-                                        <!--begin::Badge-->
-                                        <div class="timeline-badge">
-                                            <i
-                                                :class="['fa', 'fa-genderless', importantDict[item.important], 'icon-xl']"></i>
-                                        </div>
-                                        <!--end::Badge-->
-                                        <!--begin::Text-->
-                                        <div class="font-weight-bolder font-size-lg timeline-content pl-3">
-                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
-                                            </router-link>
-                                        </div>
-                                        <!--end::Text-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="timeline-item align-items-start" v-for="item in eventInfo"
-                                        :key="item.ID">
-                                        <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
-                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
-                                        </div>
-                                        <!--end::Label-->
-                                        <!--begin::Badge-->
-                                        <div class="timeline-badge">
-                                            <i
-                                                :class="['fa', 'fa-genderless', importantDict[item.important], 'icon-xl']"></i>
-                                        </div>
-                                        <!--end::Badge-->
-                                        <!--begin::Text-->
-                                        <div class="font-weight-bolder font-size-lg timeline-content pl-3">
-                                            <router-link :to="'/fkgHome/oneEventDetail/' + item.ID">{{item.name}}
-                                            </router-link>
-                                        </div>
-                                        <!--end::Text-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="timeline-item align-items-start" v-for="item in eventInfo"
-                                        :key="item.ID">
-                                        <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
-                                            {{$moment(item.endTime).format("YYYY-MM-DD")}}
+                                            {{$moment(item.startTime).format("YYYY-MM-DD")}}
                                         </div>
                                         <!--end::Label-->
                                         <!--begin::Badge-->
@@ -349,6 +229,7 @@
     import { mapGetters } from "vuex";
     import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
     import SeeksRelationGraph from "@/components/RelationshipGraph";
+    import RelationEntity from "@/components/RelationEntity";
     // import PublishList from "@/components/PublishList";
     // import AsideMenu from "@/components/Aside/Aside";
     // import snackbar from "@/core/services/store/snackbar.module";
@@ -356,6 +237,7 @@
         name: "EventDetail",
         components: {
             SeeksRelationGraph,
+            RelationEntity,
             // AsideMenu,
             // PublishList,
         },
@@ -391,7 +273,7 @@
                 },
                 graphData: {},
                 caseTitle: '',
-                graphLinkNameDict: { 'eventObjectC': '关联事件(企业)', 'CONTAINS': '牵连事件', 'RELATED': '涉事相关人', 'PUNISHC': '相关处罚' }
+                graphLinkNameDict: { 'eventObjectC': '关联事件(企业)', 'CONTAINS': '牵连事件', 'RELATED': '涉事相关人', 'PUNISHC': '相关处罚','PUNISHP':'处罚相关人' }
             };
         },
         props: ['eventId'],
@@ -420,15 +302,20 @@
                     let status = data.data.status;
                     // console.log('状态', status)
                     if (status == 0) {
-                        console.log(data.data.message.data);
-                        this.eventInfo = data.data.message.data;
+                        // console.log(data.data.message.data);
+                        let dataList = data.data.message.data;
+                        this.eventInfo = dataList.sort((a, b)=>{
+                            return this.$moment(a.startTime).diff(b.startTime);
+                        });
+                        // console.log(this.eventInfo)
+                        
                     }
                 })
                 .catch((e) => {
                     console.log(e);
                 });
 
-            this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Case').has('udfID','${this.eventId}').out('caseObjectC').inE().not(hasLabel('RELATED'))` })
+            this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Case').has('udfID','${this.eventId}').union(out('caseObjectC').inE().not(hasLabel('RELATED')),out('CONTAINS').bothE(),out('caseObjectC').in('PUNISHC').outE('PUNISHP'))` })
                 .then((data) => {
                     console.log("图谱结果", data);
                     let status = data.data.status;
@@ -442,11 +329,11 @@
                             links: []
                         }
                         let colorDict = {
-                            "Company": "#ffc93c",
-                            "Punishment": "#2581ff",
-                            "Person": "#00b0f0",
-                            "Event": "#9ddfd3",
-                            "Case": "#31326f"
+                            "Company": "#00b0f0",
+                            "Punishment": "#b88adc",
+                            "Person": "#92d050",
+                            "Event": "#ffc93c",
+                            "Case": "#ff4646"
                         }
                         // let colorList = ['#31326f', '#2581ff', '#00b0f0', '#9ddfd3', '#ffc93c']
                         let color_map = {};

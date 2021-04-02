@@ -58,7 +58,7 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-12">
-                        <FormForPunishmentSearch v-on:gotoSearch="searchByCondition" />
+                        <FormForPunishmentSearch v-on:gotoSearch="searchByCondition" :initData="params"/>
                     </div>
                     <div class="col-lg-12 res-list">
                         <PublishList :pageLength="pageLength" v-on:getPageData="getPageData"
@@ -174,7 +174,7 @@
                     "20": "禁止从事银行业工作2年", "21": "取消2年高管任职资格，并罚款五万元", "22": "罚款，责令相关负责人纪律处分", "23": "罚没", "24": "禁止五年从事银行业工作", "25": "禁止从事银行业工作四年", "26": "责令改正并处罚款", "27": "罚款并责令停止接受业务三个月的行政处罚", "28": "禁止2年从事银行业工作", "29": "责令改正并罚款，相关责任人给予纪律处分", "30": "罚款，责令丰满惠民村镇银行对直接负责的董事、高级管理人员和其他直接责任人给予纪律处分。",
                     "31": "撤销李国强任职资格", "32": "撤销任职资格", "33": "取消银行业高级管理任职资格二年，罚款人民币十万元", "34": "取消银行业金融机构高级管理人员任职资格五年", "35": "禁止进入保险业终身"
                 },
-                params: { "decOrgName": [], "decisionTime": "", "pubTime": "", "or": { "content": "", "title": "" }, "and": { "punishedOrg": "", "punishType": [] } }
+                params: { "decOrgName": [], "decisionTime": "", "pubTime": "", "or": { "content": "", "title": "" }, "and": { "punishedOrg": [], "punishType": [] } },
             };
         },
         mounted() {
@@ -251,9 +251,22 @@
             checkHaveCompany(item, next) {
                 let that = this;
                 if (item.length < 4) {
+                    that.createdSnackbar();
                     next(false);
                 }
-                return this.axios.post("/api/sykg/query/company_detail", { "params": { "name": item }, "label": "Company" })
+                this.axios.post("/api/sykg/query/company_detail/alias", { "searchName": item, "size": 6 })
+                    .then((res) => {
+                        console.log(res)
+                        let status = res.data.status;
+                        // console.log(status);
+                        if (status == 0 && res.data.message.data.length > 0) {
+                            item = res.data.message.data[0].name;
+                            console.log(item)
+                            return this.axios.post("/api/sykg/query/company_detail", { "params": { "name": item }, "label": "Company" })
+                        }else{
+                            that.createdSnackbar()
+                        }
+                    })
                     .then((data) => {
                         console.log("Here what post returns", data);
                         let status = data.data.status;
@@ -270,6 +283,14 @@
                         console.log(e);
                         next(false);
                     });
+            }
+        },
+        created() {
+            //若路由参数中含有companyName字段，则将其作为处罚对象进行搜索
+            if(this.$route.query.companyName){
+                console.log(this.$route.query.companyName)
+                this.params.and.punishedOrg = [this.$route.query.companyName];
+                this.searchByCondition(this.params);
             }
         },
         beforeRouteLeave(to, from, next) {

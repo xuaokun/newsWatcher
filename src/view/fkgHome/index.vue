@@ -31,9 +31,12 @@
                 <!-- end:: Aside Left -->
                 <div class="content-wrapper flex-row-fluid">
                   <transition name="fade-in-up">
-                    <!-- <keep-alive> -->
-                      <router-view />
-                    <!-- </keep-alive> -->
+                    <div>
+                      <keep-alive>
+                        <router-view v-if="$route.meta.keepAlive"/>
+                      </keep-alive>
+                      <router-view v-if="!$route.meta.keepAlive"/>
+                    </div>
                   </transition>
                 </div>
               </div>

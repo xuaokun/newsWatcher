@@ -36,19 +36,19 @@
 
       };
     },
-    props:{
-      dataObj:{
+    props: {
+      dataObj: {
         type: Object,
-        default: ()=>{
-          return{
+        default: () => {
+          return {
             nameList: [],
-            numList:[]
+            numList: []
           }
         }
       },
-      title:{
+      title: {
         type: String,
-        default:''
+        default: ''
       }
     },
     methods: {
@@ -63,10 +63,25 @@
     computed: {
       ...mapGetters(["layoutConfig"]),
 
-      series: function() {return this.dataObj.numList ? this.dataObj.numList: [44, 55, 41, 17, 15]},
-      chartOptions:function() {
-          return {labels:  this.dataObj.nameList ?  this.dataObj.nameList: ['Apple', 'Mango', 'Orange', 'Watermelon']}
+      series: function () { return this.dataObj.numList ? this.dataObj.numList : [44, 55, 41, 17, 15] },
+      chartOptions: function () {
+        return {
+          labels: this.dataObj.nameList ? this.dataObj.nameList : ['Apple', 'Mango', 'Orange', 'Watermelon'],
+          colors: ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800', '#31326f', '#9ddfd3', '#dbf6e9', '#e4bad4', '#f6dfeb', '#edffec', '#caf7e3'],
+          legend: {
+            show: true,
+            // floating: true,
+            formatter: function (seriesName, opts) {
+              if(seriesName.length < 5){
+                return seriesName;
+              }
+              console.log(opts)
+              return seriesName.slice(0,5) + '...'
+            }
+          }
+
         }
+      }
     },
     mounted() {
     }

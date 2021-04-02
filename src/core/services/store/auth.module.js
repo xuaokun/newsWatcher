@@ -32,15 +32,16 @@ const getters = {
 
 const actions = {
   [LOGIN](context, credentials) {
-    return new Promise(resolve => {
+    return new Promise((resolve,reject) => {
       ApiService.post("/api2/login", credentials)
         .then(({ data }) => {
           console.log("Here what post returns", data);
           context.commit(SET_AUTH, data);
           resolve(data);
         })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+        .catch((e) => {
+          context.commit(SET_ERROR, e);
+          reject(e);
         });
     });
   },
@@ -55,8 +56,8 @@ const actions = {
           context.commit(SET_AUTH, data);
           resolve(data);
         })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+        .catch((e) => {
+          context.commit(SET_ERROR, e);
         });
     });
   },
@@ -67,8 +68,8 @@ const actions = {
         .then(({ data }) => {
           context.commit(SET_AUTH, data);
         })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+        .catch((e) => {
+          context.commit(SET_ERROR, e);
         });
     } else {
       context.commit(PURGE_AUTH);
@@ -87,6 +88,9 @@ const actions = {
 const mutations = {
   [SET_ERROR](state, error) {
     state.errors = error;
+    state.user = {};
+    state.isAuthenticated = false;
+    JwtService.destroyToken();
   },
   [SET_AUTH](state, user) {
     console.log(user)

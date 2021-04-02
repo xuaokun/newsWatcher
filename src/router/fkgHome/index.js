@@ -9,36 +9,85 @@ export default{
 		},
 		{
 			path: 'lawLibrary',
-			component: ()=> import('@/view/fkgPages/LawLibrary')
+			component: ()=> import('@/view/fkgPages/LawLibrary'),
+			beforeEnter: (to, from, next) => {
+				console.log(from);
+				to.meta.keepAlive = true;
+				next();
+			  }
 		},
 		{
 			path: 'lawSearch',
-			component: ()=> import('@/view/fkgPages/LawSearch')
+			component: ()=> import('@/view/fkgPages/LawSearch'),
+			beforeEnter: (to, from, next) => {
+				console.log(from);
+				to.meta.keepAlive = true;
+				next();
+			  }
 		},
 		{
 			path: 'punishmentLibrary',
-			component: ()=> import('@/view/fkgPages/PunishmentLibrary')
+			component: ()=> import('@/view/fkgPages/PunishmentLibrary'),
+			beforeEnter: (to, from, next) => {
+				console.log(from);
+				to.meta.keepAlive = true;
+				next();
+			  }
 		},
 		{
 			path: 'punishmentSearch',
-			component: ()=> import('@/view/fkgPages/PunishmentSearch')
+			component: ()=> import('@/view/fkgPages/PunishmentSearch'),
+			beforeEnter: (to, from, next) => {
+				if(from.path == '/fkgHome/home'){
+					to.meta.keepAlive = false;
+				}else{
+					to.meta.keepAlive = true;
+				}
+				next();
+			  }
 		},
 		{
 			path: 'eventsView',
-			component: ()=> import('@/view/fkgPages/EventsView')
+			component: ()=> import('@/view/fkgPages/EventsView'),
+			beforeEnter: (to, from, next) => {
+				console.log(from);
+				to.meta.keepAlive = true;
+				next();
+			  }
 		},
 		{
 			path: 'eventsSearch',
-			component: ()=> import('@/view/fkgPages/EventsSearch')
+			component: ()=> import('@/view/fkgPages/EventsSearch'),
+			beforeEnter: (to, from, next) => {
+				if(from.path == '/fkgHome/home'){
+					to.meta.keepAlive = false;
+				}else{
+					to.meta.keepAlive = true;
+				}
+				next();
+			  }
 		},
 		{
 			path: 'oneEventSearch',
-			component: ()=> import('@/view/fkgPages/OneEventSearch')
+			component: ()=> import('@/view/fkgPages/OneEventSearch'),
+			beforeEnter: (to, from, next) => {
+				if(from.path == '/fkgHome/home'){
+					to.meta.keepAlive = false;
+				}else{
+					to.meta.keepAlive = true;
+				}
+				next();
+			  }
 		},
 		
 		{
 			path: 'myAttention',
-			component: ()=> import('@/view/fkgPages/MyAttention')
+			component: ()=> import('@/view/fkgPages/MyAttention'),
+			beforeEnter: (to, from, next) => {
+				console.log(from);
+				to.meta.keepAlive = true;
+				next();
+			  }
 		},
 		{
 			path: 'lawDetail/:lawId',

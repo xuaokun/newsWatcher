@@ -11,7 +11,7 @@
 
     <div class="row">
       <div class="col-lg-12">
-        <PublishList></PublishList>
+        <PublishList tableTitle="热门案例" :tableHead="tableHead" :dataList="searchResultList"></PublishList>
       </div>
     </div>
   </div>
@@ -72,14 +72,56 @@
     data() {
       return {
         caseTypeData: [],
-        eventTypeData:[]
+        eventTypeData: [],
+        tableHead: [
+          {
+            name: '案例名称',
+            property: 'title',
+            router: '/fkgHome/eventDetail/',
+            params: true,
+            sortAble: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '案例索引',
+            property: 'ID',
+            sortAble: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '相关对象',
+            property: 'subject',
+            sortAble: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '风险类型',
+            property: 'caseType',
+            sortAble: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '发生日期',
+            property: 'startTime',
+            sortAble: true,
+            time: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '操作',
+            property: 'oper',
+            sortAble: false,
+            currentSort: -1//0代表升序
+          }
+        ],
+        searchResultList:[],//热门列表
       };
     },
     mounted() {
       this.$store.dispatch(SET_BREADCRUMB, [{ title: "事件展示" }]);
     },
     created() {
-      this.getPieData()
+      this.getPieData();
     },
     methods: {
       getPieData() {
@@ -93,12 +135,21 @@
             }
           })
 
-        this.axios.post('/api/sykg/query/common/mongostats',  {"IDs":[],"statsProperty":"eventType","dbName":"events"})
+        this.axios.post('/api/sykg/query/common/mongostats', { "IDs": [], "statsProperty": "eventType", "dbName": "events" })
           .then(function (result) {
             console.log(result)
             if (result && result.data.status == 0) {
               that.eventTypeData = result.data.message.data;
               console.log(that.eventTypeData);
+            }
+          })
+
+        this.axios.post('/api/sykg/query/case_infos/keywords', { "ID": "", "startTime": {}, "endTime": {}, "or": { "content": [], "title": [] }, "and": { "subject": [], "caseType": [] } })
+          .then((res) => {
+            console.log(res)
+            if (res.data.status == 0) {
+              that.searchResultList = res.data.message.data;
+              console.log(that.searchResultIdList)
             }
           })
       }

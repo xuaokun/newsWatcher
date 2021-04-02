@@ -11,7 +11,7 @@
 
     <div class="row">
       <div class="col-lg-12">
-        <PublishList tableTitle="最新法规"></PublishList>
+        <PublishList tableTitle="最新法规" :tableHead="tableHead" :dataList="recentLawList"></PublishList>
       </div>
     </div>
   </div>
@@ -55,8 +55,55 @@
           nameList: [
             "信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险"
           ],
-          numList:[133,231,34,56,66,129]
-        }
+          numList: [133, 231, 34, 56, 66, 129]
+        },
+        tableHead: [
+          {
+            name: '法规名称',
+            property: 'title',
+            router: '/fkgHome/lawDetail/',
+            sortAble: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '颁布时间',
+            property: 'release_date',
+            sortAble: true,
+            time: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '法律位阶',
+            property: 'file_type',
+            sortAble: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '法律文号',
+            property: 'ID',
+            sortAble: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '发文单位',
+            property: 'dispatch_units',
+            sortAble: true,
+            currentSort: -1//0代表升序
+          },
+          {
+            name: '重要性',
+            property: 'important',
+            sortAble: true,
+            currentSort: -1 //0代表升序
+          },
+          {
+            name: '操作',
+            property: 'oper',
+            sortAble: false,
+            currentSort: -1//0代表升序
+          }
+        ],
+        recentLawList:[]
       };
     },
     mounted() {
@@ -64,12 +111,23 @@
     },
     created() {
       let that = this;
+      //获取法律位阶统计数据
       this.axios.post('/api/sykg/query/law_infos/legalHierarchyStats', { "IDs": [] })
         .then(function (result) {
           console.log(result)
           if (result && result.data.status == 0) {
             that.lawTypeData = result.data.message.data;
             console.log(that.lawTypeData);
+          }
+        })
+
+      //获取最新10条法规信息列表数据
+      this.axios.post('/api/sykg/query/law_infos/rencently', { size: '' })
+        .then(function (result) {
+          // console.log(result)
+          if (result && result.data.status == 0) {
+            that.recentLawList = result.data.message.data;
+            console.log(that.recentLawList);
           }
         })
     },

@@ -58,7 +58,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-12">
-                        <FormForEventsSearch v-on:gotoSearch="searchByCondition" />
+                        <FormForEventsSearch v-on:gotoSearch="searchByCondition" :initData="params"/>
                     </div>
                     <div class="col-lg-12 res-list">
                         <PublishList :dataList="searchResultList" :tableHead="tableHead"></PublishList>
@@ -111,7 +111,7 @@
                     },
                     {
                         name: '风险类型',
-                        property: 'risk_type',
+                        property: 'caseType',
                         sortAble: true,
                         currentSort: -1//0代表升序
                     },
@@ -133,7 +133,7 @@
                 "全部","信用风险", "保险风险", "市场风险", "流动性风险", "操作风险", "国别风险", "利率风险", "战略风险", "信息科技风险", "其他风险"
                 ],
                 currentRiskType:'',
-                params:{"ID":"","startTime":{},"endTime":{},"or":{"content":[],"title":[]},"and":{"subject":[]}},
+                params:{"ID":"","startTime":{},"endTime":{},"or":{"content":[],"title":[]},"and":{"subject":[],"caseType":[]}},
             }
         },
         mounted() {
@@ -176,6 +176,14 @@
                 }
                 this.currentRiskType = item;
                 this.params.and.caseType = [item];
+                this.searchByCondition(this.params);
+            }
+        },
+        created() {
+            //若路由参数中含有companyName字段，则将其作为相关对象进行搜索展示结果
+            if(this.$route.query.companyName){
+                console.log(this.$route.query.companyName)
+                this.params.and.subject = [this.$route.query.companyName];
                 this.searchByCondition(this.params);
             }
         },

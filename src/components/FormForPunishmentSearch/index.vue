@@ -31,7 +31,7 @@
                     </div>
                     <label class="col-1 col-form-label">处罚对象</label>
                     <div class="col-3">
-                        <input class="form-control" type="email" placeholder="公司名称/代码/人名" v-model="org_include" />
+                        <input class="form-control" type="text" placeholder="公司名称/代码/人名" v-model="org_include" />
                     </div>
                 </div>
 
@@ -116,7 +116,13 @@
                 decision_end: '',
                 title_include: '',
                 content_include: '',
-                org_include: '',
+                org_include: this.initData && this.initData.and && this.initData.and.punishedOrg && this.initData.and.punishedOrg[0] ? this.initData.and.punishedOrg[0] : '',
+            }
+        },
+        props:{
+            initData:{
+                type: Object,
+                default: ()=>{}
             }
         },
         methods: {

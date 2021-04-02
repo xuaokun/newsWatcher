@@ -17,7 +17,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-12">
-                        <FormForEventsSearch v-on:gotoSearch="searchByCondition" />
+                        <FormForEventsSearch v-on:gotoSearch="searchByCondition" :initData="params"/>
                     </div>
                     <div class="col-lg-12 res-list">
                         <PublishList :dataList="searchResultList" :tableHead="tableHead"></PublishList>
@@ -71,7 +71,7 @@
                     },
                     {
                         name: '风险类型',
-                        property: 'risk_type',
+                        property: 'eventType',
                         sortAble: true,
                         currentSort: -1//0代表升序
                     },
@@ -94,6 +94,7 @@
                 ],
                 currentRiskType: '',
                 graphData: {},
+                params:{"ID":"","startTime":{},"endTime":{},"or":{"content":[],"title":[]},"and":{"subject":[]}},
             };
         },
         mounted() {
@@ -136,6 +137,14 @@
                 }
                 this.currentRiskType = item;
                 this.params.and.eventType = [item];
+                this.searchByCondition(this.params);
+            }
+        },
+        created() {
+             //若路由参数中含有companyName字段，则将其作为相关对象进行搜索展示结果
+             if(this.$route.query.companyName){
+                console.log(this.$route.query.companyName)
+                this.params.and.subject = [this.$route.query.companyName];
                 this.searchByCondition(this.params);
             }
         },

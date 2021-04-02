@@ -20,6 +20,8 @@
                     defaultJunctionPoint: 'border',
                     defaultNodeBorderWidth: 0,
                     defaultNodeFontColor: "#fff",
+                    disableZoom: true,//默认禁止鼠标滑轮缩放
+                    defaultExpandHolderPosition: "top",//节点展开关闭按钮
                     layouts: [
                         {
                             'label': '自动布局',

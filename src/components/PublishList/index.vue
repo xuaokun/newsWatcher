@@ -27,7 +27,7 @@
               </th> -->
               <!-- <th class="pl-0" style="min-width: 120px">法规名称</th>
               <th style="min-width: 110px">Country</th> -->
-              <th style="" @click="sortDataListByContent(item)" v-for="item in tableHead.slice(0,-1)" :key="item.name">
+              <th  style="min-width: 80px;" @click="sortDataListByContent(item)" v-for="item in tableHead.slice(0,-1)" :key="item.name">
                 <span class="text-primary">{{item.name}}</span>
                 <span class="svg-icon svg-icon-sm svg-icon-primary">
                   <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Down-2.svg-->
@@ -39,8 +39,8 @@
                 </span>
               </th>
               <!-- <th style="min-width: 120px">Status</th> -->
-              <th class="pr-0 text-right" style="min-width: 50px" v-if='tableHead[tableHead.length - 1]'>
-                {{tableHead[tableHead.length - 1].name}}</th>
+              <!-- <th class="pr-0 text-right" style="min-width: 50px" v-if='tableHead[tableHead.length - 1]'>
+                {{tableHead[tableHead.length - 1].name}}</th> -->
             </tr>
           </thead>
           <tbody>
@@ -65,7 +65,7 @@
                       class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ value }}</span></router-link>
                   <span v-if="!checkWhetherShowRouter(key) && key != '_id'" class="text-dark-75 font-weight-bolder d-block font-size-lg">{{value}}</span>
                 </td> -->
-                <td v-for="(oneHead) in tableHead.slice(0,-1)" :key="oneHead.name">
+                <td style="min-width: 80px;" v-for="(oneHead) in tableHead.slice(0,-1)" :key="oneHead.name">
                   <router-link v-if="oneHead.router"
                     :to="{path:oneHead.router.concat(item._id), query:{info:dataList[i]}}"><span
                       class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item[oneHead.property] ?
@@ -96,13 +96,11 @@
                   <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.important ? item.important:
                     '-' }}</span>
                 </td> -->
-                <td class="pr-0 text-right">
+                <!-- <td class="pr-0 text-right">
                   <span class="svg-icon svg-icon-md svg-icon-primary">
-                    <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                     <inline-svg src="media/svg/icons/General/Settings-1.svg"></inline-svg>
-                    <!--end::Svg Icon-->
                   </span>
-                </td>
+                </td> -->
               </tr>
             </template>
           </tbody>

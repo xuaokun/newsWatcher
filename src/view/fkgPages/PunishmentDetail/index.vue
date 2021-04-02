@@ -426,10 +426,24 @@
             checkHaveCompany(item, next) {
                 let that = this;
                 if (item.length < 4) {
+                    that.createdSnackbar();
                     next(false);
                 }
-                this.axios.post("/api/sykg/query/company_detail", { "params": { "name": item }, "label": "Company" })
+                this.axios.post("/api/sykg/query/company_detail/alias", { "searchName": item, "size": 6 })
+                    .then((res) => {
+                        console.log(res)
+                        let status = res.data.status;
+                        // console.log(status);
+                        if (status == 0 && res.data.message.data.length > 0) {
+                            item = res.data.message.data[0].name;
+                            console.log(item)
+                            return this.axios.post("/api/sykg/query/company_detail", { "params": { "name": item }, "label": "Company" })
+                        }else{
+                            that.createdSnackbar()
+                        }
+                    })
                     .then((data) => {
+                        if(!data) return;
                         console.log("Here what post returns", data);
                         let status = data.data.status;
                         // console.log(status);

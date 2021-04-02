@@ -137,6 +137,7 @@
                                                         <p class="font-weight-bolder"
                                                             v-if="index-1 == -1 || lawInfo[index-1].index_f != item.index_f">
                                                             {{item.index_f}}</p>
+                                                        <p v-else>{{item.index_s}}</p>
                                                         <!-- <span class="font-weight-bold text-muted cursor-pointer"
                                                             data-toggle="dropdown">to me
                                                             <i
@@ -193,7 +194,7 @@
                                         <div class="card-spacer-x pt-2 pb-5 toggle-off-item">
                                             <!--begin::Text-->
                                             <div class="mb-1">
-                                                <p v-if="item.index_s" :id="item.index_s">
+                                                <p v-if="(index-1 == -1 || lawInfo[index-1].index_f != item.index_f) && item.index_s" :id="item.index_s">
                                                     {{item.index_s}}</p>
                                                 <p v-if="item.content">{{item.content}}</p>
                                             </div>

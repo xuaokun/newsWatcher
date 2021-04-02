@@ -53,12 +53,16 @@
         </v-row>  
         <div class="row">
             <div class="col-lg-3">
-                <AsideMenu v-if="menuData" :menuData="menuData"/>
+                <AsideMenu v-if="menuData" :menuData="menuData" v-on:gotoMainItem="changeForm"/>
             </div>
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-12">
-                        <FormForMyAttentionSearch />
+                        <FormForMyAttentionSearch v-if="activeForm==0"/>
+                        <FormForLawSearch v-if="activeForm==1"/>
+                        <FormForPunishmentSearch v-if="activeForm==2"/>,
+                        <FormForEventsSearch v-if="activeForm==3"/>,
+                        <FormForEventsSearch v-if="activeForm==4"/>,
                     </div>
                     <div class="col-lg-12 res-list">
                         <PublishList></PublishList>
@@ -75,12 +79,18 @@
     import PublishList from "@/components/PublishList";
     import AsideMenu from "@/components/Aside/Aside";
     import FormForMyAttentionSearch from "@/components/FormForMyAttentionSearch";
+    import FormForLawSearch from "@/components/FormForSearch";
+    import FormForPunishmentSearch from "@/components/FormForPunishmentSearch";
+    import FormForEventsSearch from "@/components/FormForEventsSearch";
     export default {
         name: "PunishmentSearch",
         components: {
             PublishList,
             AsideMenu,
-            FormForMyAttentionSearch
+            FormForMyAttentionSearch,
+            FormForLawSearch,
+            FormForPunishmentSearch,
+            FormForEventsSearch,
         },
         computed: {
             ...mapGetters(["currentUserPhoto"])
@@ -95,20 +105,30 @@
                         "企业信息":[],
                     },
                     {
-                        "法律法规":["法律文件", "法律条文"],
+                        "法律法规":[],
                     },
                     {
                         "行政处罚":[],
                     },
                     {
                         "违规案例":[]
-                    }         
-                ]
+                    },
+                    {
+                        "违规事件":[]
+                    }              
+                ],
+                activeForm:0,
             };
         },
         mounted() {
             this.$store.dispatch(SET_BREADCRUMB, [{ title: "我的收藏" }]);
-        }
+        },
+        methods: {
+            changeForm(index){
+                console.log('主页面获取index',index);
+                this.activeForm = index;
+            }
+        },
     };
 </script>
 <style scoped>

@@ -8,7 +8,7 @@
             <i class="flaticon2-search-1"></i>
           </span>
         </div>
-        <input v-on:keyup="onSearch" type="text" class="form-control quick-search-input" placeholder="Search..." />
+        <input v-on:keyup.13="onSearch" type="text" class="form-control quick-search-input" placeholder="搜索企业关键词" />
         <div class="input-group-append">
           <span class="input-group-text">
             <i class="quick-search-close" v-on:click="reset" v-bind:style="{ display: hasResult() ? 'flex' : '' }"></i>
@@ -122,43 +122,43 @@
     },
     methods: {
       onSearch(event) {
-        if (event.target.value.length > 2) {
-          let keyWord = event.target.value;
-          console.log(keyWord);
-          this.loading = true;
-          // simulate getting search result
-          // setTimeout(() => {
-          //   this.data = this.result;
-          //   this.loading = false;
-          // }, 2000);
-          this.axios.post("/api/sykg/query/company_detail/search", { "companyName": keyWord })
-            .then((data) => {
-              // console.log("Here what post returns", data);
-              let status = data.data.status;
-              // console.log(status);
-              if (status == 0) {
-                if(data.data.message.size == 0){
-                  this.loading = false;
-                  return;
-                }
-                this.companyInfo = data.data.message.data;
-                console.log(this.companyInfo)
-                let list = []
-                for (let item of this.companyInfo) {
-                  list.push({
-                    text: item,
-                    type: 1
-                  })
-                }
-                this.data = list;
+
+        let keyWord = event.target.value;
+        console.log(keyWord);
+        this.loading = true;
+        // simulate getting search result
+        // setTimeout(() => {
+        //   this.data = this.result;
+        //   this.loading = false;
+        // }, 2000);
+        this.axios.post("/api/sykg/query/company_detail/search", { "companyName": keyWord })
+          .then((data) => {
+            // console.log("Here what post returns", data);
+            let status = data.data.status;
+            // console.log(status);
+            if (status == 0) {
+              if (data.data.message.size == 0) {
                 this.loading = false;
+                return;
               }
-            })
-            .catch((e) => {
-              console.log(e);
+              this.companyInfo = data.data.message.data;
+              console.log(this.companyInfo)
+              let list = []
+              for (let item of this.companyInfo) {
+                list.push({
+                  text: item,
+                  type: 1
+                })
+              }
+              this.data = list;
               this.loading = false;
-            });
-        }
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+            this.loading = false;
+          });
+
       },
       /**
        * Check if the data has result

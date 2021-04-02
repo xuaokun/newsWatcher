@@ -30,14 +30,14 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-xl-3 col-lg-3 col-form-label text-right">用户邮箱</label>
+          <label class="col-xl-3 col-lg-3 col-form-label text-right">用户头像</label>
           <div class="col-lg-9 col-xl-6">
             <div class="image-input image-input-outline" id="kt_profile_avatar">
               <div class="image-input-wrapper" :style="{ backgroundImage: `url(${photo})` }"></div>
               <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                 data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
                 <i class="fa fa-pen icon-sm text-muted"></i>
-                <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" @change="onFileChange($event)" />
+                <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" @change="handleToUpload($event)" />
                 <input type="hidden" name="profile_avatar_remove" />
               </label>
               <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -76,7 +76,7 @@
           <label class="col-xl-3 col-lg-3 col-form-label text-right">企业社会信用代码</label>
           <div class="col-lg-9 col-xl-6">
             <input ref="company_name" class="form-control form-control-lg form-control-solid" type="text"
-              v-bind:value="currentUser.creditCode" />
+              v-bind:value="currentUser.creditCode" disabled />
             <!-- <span class="form-text text-muted"
               >If you want your invoices addressed to a company. Leave blank to
               use your full name.</span
@@ -189,15 +189,27 @@
           userName: name,
           creditCode: creditCode,
           phoneNumber: phone,
-          email: email
+          email: email,
+          // userHead: photo,
         }).then(() => {
           // console.log(res);
           this.currentUser.userName = name;
           this.currentUser.creditCode = creditCode;
           this.currentUser.phoneNumber = phone;
           this.currentUser.email = email;
+          // this.currentUser.userHead = photo;
           this.$store.dispatch(UPDATE_PERSONAL_INFO, this.currentUser);
-          this.$router.push('/fkgHome');
+          // this.$router.push('/fkgHome');
+          this.$store.dispatch('snackbar/openSnackbar', {
+              msg: '用户信息已经更新~ ',
+              color: 'success'
+            })
+        })
+        .catch(()=>{
+          this.$store.dispatch('snackbar/openSnackbar', {
+              msg: '用户信息更新出错~ ',
+              color: 'warning'
+            })
         })
 
         submitButton.classList.remove(
@@ -230,7 +242,50 @@
         } else {
           alert("Sorry, FileReader API not supported");
         }
+      },
+      handleToUpload(ev) {
+        var file = ev.target.files[0]
+        // console.log(file)
+        if (typeof FileReader === "function") {
+          const reader = new FileReader();
+
+          reader.onload = event => {
+            this.current_photo = event.target.result;
+            // console.log(this.current_photo)
+          };
+
+          reader.readAsDataURL(file);
+        } else {
+          alert("Sorry, FileReader API not supported");
+        }
+        var param = new FormData()
+        param.append('_id', this.currentUser._id);
+        param.append('avatar', file, file.name);
+        console.log(param);
+        var config = {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+        var that = this
+        this.axios.post('/api2/uploadUserHead', param, config).then((res) => {
+          var status = res.data.status
+          if (status === 0) {
+            that.currentUser.userHead = res.data.data.userHead + '?' + Math.random();
+            this.$store.dispatch(UPDATE_PERSONAL_INFO, this.currentUser);
+            this.$store.dispatch('snackbar/openSnackbar', {
+              msg: '用户头像已经更新~ ',
+              color: 'success'
+            })
+          } else {
+            this.$store.dispatch('snackbar/openSnackbar', {
+              msg: '用户头像更换出错~ ',
+              color: 'warning'
+            })
+          }
+        })
       }
+
     },
     computed: {
       ...mapGetters(["currentUser"]),

@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <router-view></router-view>
+  <v-app>
+      <router-view></router-view>
     <Snackbar />
-  </div>
+  </v-app>
 </template>
 
 <style lang="scss">

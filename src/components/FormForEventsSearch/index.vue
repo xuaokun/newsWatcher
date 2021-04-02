@@ -113,19 +113,26 @@
         name: 'FormForEventsSearch',
         data() {
             return {
-                title_include: '',
-                content_include:'',
-                org_include:'',
+                title: '',
+                content:'',
+                relation_object:(this.initData && this.initData.and && this.initData.and.subject && this.initData.and.subject[0]) ? this.initData.and.subject[0] : '',
                 // public_start:'',
                 // public_end:'',
                 public_start: this.$moment().subtract('days', 180).format('YYYY-MM-DDThh:mm'),
                 public_end: this.$moment().format('YYYY-MM-DDThh:mm'),
             }
         },
+        props:{
+            initData:{
+                type: Object,
+                default: ()=>{}
+            }
+        },
         methods: {
             submitSearch() {
                 let title_include = this.title ? this.title.split(' ') : [];
                 let content_include = this.content ? this.content.split(' ') : [];
+                console.log(this.relation_object)
                 let org_include = this.relation_object ? this.relation_object.split(' ') : [];
                 let public_start = this.from_time ? this.from_time.replace('T', ' ') + ':00' : null;
                 let public_end = this.to_time ? this.to_time.replace('T', ' ') + ':00' : null;

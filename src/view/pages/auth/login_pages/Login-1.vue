@@ -6,17 +6,17 @@
         'login-forgot-on': this.state == 'forgot'
       }" id="kt_login">
       <!--begin::Aside-->
-      <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #F2C98A;">
+      <div class="login-aside d-flex flex-column flex-row-auto"
+        :style="{ backgroundImage: `url(${backgroundImage})`,backgroundSize:'100% 100%' }">
         <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
           <a href="#" class="text-center mb-10">
-            <img src="media/logos/logo-letter-1.png" class="max-h-70px" alt="" />
+            <img src="logo.png" class="max-h-70px" alt="" />
           </a>
-          <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg" style="color: #986923;">
-            Discover Amazing Metronic <br />with great build tools
+          <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg" style="color:#fff;">
+            星图<br />金融声誉风险知识图谱
           </h3>
         </div>
-        <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center"
-          :style="{ backgroundImage: `url(${backgroundImage})` }"></div>
+        <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center"></div>
       </div>
       <!--begin::Aside-->
       <!--begin::Content-->
@@ -209,7 +209,7 @@
 
       backgroundImage() {
         return (
-          process.env.BASE_URL + "media/svg/illustrations/login-visual-1.svg"
+          process.env.BASE_URL + "fullLogin1.jpg"
         );
       }
     },
@@ -349,7 +349,13 @@
           .dispatch(LOGIN, { email, password })
           // go to which page after successfully login
           .then(() => this.$router.push('/fkgHome/home'))
-          .catch(() => { });
+          .catch((e) => {
+            console.log(e)
+            this.$store.dispatch('snackbar/openSnackbar', {
+              msg: '用户名或者密码错误，请您重新输入~',
+              color: 'warning'
+            })
+          });
 
         submitButton.classList.remove(
           "spinner",
@@ -386,36 +392,36 @@
 
         //请求api获得对应企业信息
         this.axios.get('/api3/report/infos?creditCode=' + creditCode)
-        .then((res)=>{
-          console.log('获取企业信息：' + res);
-          let companyInfo = {}
-          if(res.data.msg == '请求成功'){
-            // this.tipInfo = '企业信息正确'
-            companyInfo = res.data.data;
-          }else{
-            throw new Error('企业信息有误或查询不到')
-          }
-          return  this.$store
-          .dispatch(REGISTER, {
-            userName: userName,
-            creditCode: creditCode,
-            phoneNumber: phoneNumber,
-            email: email,
-            password: password,
-            companyInfo
+          .then((res) => {
+            console.log('获取企业信息：' + res);
+            let companyInfo = {}
+            if (res.data.msg == '请求成功') {
+              // this.tipInfo = '企业信息正确'
+              companyInfo = res.data.data;
+            } else {
+              throw new Error('企业信息有误或查询不到')
+            }
+            return this.$store
+              .dispatch(REGISTER, {
+                userName: userName,
+                creditCode: creditCode,
+                phoneNumber: phoneNumber,
+                email: email,
+                password: password,
+                companyInfo
+              })
           })
-        })
           .then((data) => {
             console.log(data)
-            if(data.status == -1){
+            if (data.status == -1) {
               throw new Error('邮箱或者手机号已经注册')
             }
-            if(data.status == -2){
+            if (data.status == -2) {
               throw new Error('注册出错了')
             }
             this.$router.push('/fkgHome/home')
           })
-          .catch((e)=>{
+          .catch((e) => {
             this.tipInfo = e;
           })
         submitButton.classList.remove(
@@ -447,3 +453,9 @@
     }
   };
 </script>
+
+<style scoped>
+  .v-application .pt-15 {
+    padding-top: 20% !important;
+  }
+</style>
