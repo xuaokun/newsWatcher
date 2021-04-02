@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   publicPath:
-    process.env.NODE_ENV === "production" ? "/metronic/vue/demo7/" : "/",
+    process.env.NODE_ENV === "production" ? "/" : "/",
   configureWebpack: {
     resolve: {
       alias: {
@@ -39,7 +39,7 @@ module.exports = {
   devServer:{
     proxy:{
       '/api2':{
-        target:'http://192.168.0.148:3000/',
+        target:'http://192.168.0.103:3000/',
         changeOrigin: true,
         pathRewrite:{
           '^/api2':'/api/users'
@@ -53,7 +53,7 @@ module.exports = {
         }
       },
       '/api':{
-        target:'http://192.168.0.208:8083/',
+        target:'http://123.56.104.22:8083/',
         changeOrigin: true,
         pathRewrite:{
           '^/api':''

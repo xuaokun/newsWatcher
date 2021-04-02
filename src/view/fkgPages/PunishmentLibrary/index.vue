@@ -131,10 +131,10 @@
         let that = this;
         this.axios.post('/api/sykg/query/common/mongostats', { "IDs": [], "statsProperty": "punishedOrgan.type", "dbName": "punish_infos" })
           .then(function (result) {
-            console.log(result)
+            // console.log(result)
             if (result && result.data.status == 0) {
               that.punishTypeData = result.data.message.data;
-              console.log(that.punishTypeData);
+              // console.log(that.punishTypeData);
             }
           })
         
@@ -145,11 +145,8 @@
               // console.log(status);
               if (status == 0) {
                 that.recentPunishment = data.data.message.data.slice(0,10);
-                console.log(that.recentPunishment);
+                // console.log(that.recentPunishment);
               }
-            })
-            .catch((e) => {
-              console.log(e);
             });
       }
     },

@@ -273,7 +273,7 @@
                 },
                 graphData: {},
                 caseTitle: '',
-                graphLinkNameDict: { 'eventObjectC': '关联事件(企业)', 'CONTAINS': '牵连事件', 'RELATED': '涉事相关人', 'PUNISHC': '相关处罚','PUNISHP':'处罚相关人' }
+                graphLinkNameDict: { 'eventObjectC': '关联事件(企业)', 'CONTAINS': '牵连事件', 'RELATED': '涉事相关人', 'PUNISHC': '相关处罚', 'PUNISHP': '处罚相关人', 'ISOF': '相关处罚' }
             };
         },
         props: ['eventId'],
@@ -304,18 +304,18 @@
                     if (status == 0) {
                         // console.log(data.data.message.data);
                         let dataList = data.data.message.data;
-                        this.eventInfo = dataList.sort((a, b)=>{
+                        this.eventInfo = dataList.sort((a, b) => {
                             return this.$moment(a.startTime).diff(b.startTime);
                         });
                         // console.log(this.eventInfo)
-                        
+
                     }
                 })
                 .catch((e) => {
                     console.log(e);
                 });
 
-            this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Case').has('udfID','${this.eventId}').union(out('caseObjectC').inE().not(hasLabel('RELATED')),out('CONTAINS').bothE(),out('caseObjectC').in('PUNISHC').outE('PUNISHP'))` })
+            this.axios.post('/api/sykg/query/gremlin', { "query": `V().hasLabel('Case').has('udfID','${this.eventId}').union(outE('caseObjectC').inV().bothE().not(hasLabel('BRANCH','INVEST')),out('CONTAINS').bothE())` })
                 .then((data) => {
                     console.log("图谱结果", data);
                     let status = data.data.status;
@@ -368,12 +368,22 @@
                             data.nodes.push(oneNode)
                         }
                         for (let item of message.links) {
-                            data.links.push({
-                                from: item.source,
-                                to: item.target,
-                                text: this.graphLinkNameDict[item.relation],
-                                // color: '#43a2f1'
-                            })
+                            if (item.relation == 'eventObjectC'
+                                || item.relation == 'PUNISHC') {
+                                data.links.push({
+                                    from: item.target,
+                                    to: item.source,
+                                    text: this.graphLinkNameDict[item.relation],
+                                    // color: '#43a2f1'
+                                })
+                            } else {
+                                data.links.push({
+                                    from: item.source,
+                                    to: item.target,
+                                    text: this.graphLinkNameDict[item.relation],
+                                    // color: '#43a2f1'
+                                })
+                            }
                         }
                         console.log(data);
                         this.graphData = data;

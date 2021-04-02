@@ -330,10 +330,10 @@
                     this.relationLaw = this.detailInfo.lawInfos ? this.detailInfo.lawInfos : [];
                     console.log('相关法律', this.relationLaw)
                     let list = [];
-                    let name = this.detailInfo.punishedCompany ? this.detailInfo.punishedCompany.name : '-';
-                    let objType = this.detailInfo.punishedCompany ? this.detailInfo.punishedCompany.type : '-';
+                    let name = this.detailInfo.punishedOrgan ? this.detailInfo.punishedOrgan.name : '-';
+                    let objType = '-';
                     let reason = this.detailInfo.decisionResion;
-                    let punishmentType = '-';
+                    let punishmentType = this.detailInfo.punishedOrgan ? this.detailInfo.punishedOrgan.type : '-';
                     let decisonName = this.detailInfo.decisionOrganName.name;
                     list.push({
                         name,

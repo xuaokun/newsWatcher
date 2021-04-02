@@ -60,9 +60,9 @@
                     <div class="col-lg-12">
                         <FormForMyAttentionSearch v-if="activeForm==0"/>
                         <FormForLawSearch v-if="activeForm==1"/>
-                        <FormForPunishmentSearch v-if="activeForm==2"/>,
-                        <FormForEventsSearch v-if="activeForm==3"/>,
-                        <FormForEventsSearch v-if="activeForm==4"/>,
+                        <FormForPunishmentSearch v-if="activeForm==2"/>
+                        <FormForEventsSearch v-if="activeForm==3"/>
+                        <FormForEventsSearch v-if="activeForm==4"/>
                     </div>
                     <div class="col-lg-12 res-list">
                         <PublishList></PublishList>
@@ -98,7 +98,7 @@
         data() {
             return {
                 riskType:[
-                "信用风险","保险风险","市场风险","流动性风险","操作风险","国别风险","利率风险","战略风险","信息科技风险","其他风险","全部"
+                "全部","信用风险","保险风险","市场风险","流动性风险","操作风险","国别风险","利率风险","战略风险","信息科技风险","其他风险",
                 ],
                 menuData:[
                     {

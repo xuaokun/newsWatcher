@@ -72,7 +72,7 @@ router.beforeEach((to, from, next) => {
   }, 100);
 });
 
-// console.log = function() {}
+console.log = function() {}
 
 new Vue({
   router,
