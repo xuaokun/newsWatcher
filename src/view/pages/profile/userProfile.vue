@@ -28,7 +28,7 @@
               {{currentUser.isAdmin ? '管理员': '企业用户'}}
             </div>
             <span
-              class="label label-light-warning label-inline font-weight-bold label-lg"
+              :class="['label',currentUser.isFreeze ? 'label-light-warning' : 'label-light-success','label-inline','font-weight-bold','label-lg']"
               >{{currentUser.isFreeze ? '账号冻结':'账号正常'}}</span
             >
           </div>
