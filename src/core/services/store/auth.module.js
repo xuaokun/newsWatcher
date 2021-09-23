@@ -17,8 +17,8 @@ export const SET_ERROR = "setError";
 const state = {
   errors: null,
   user: {},
-  isAuthenticated: !!JwtService.getToken()//开发暂时关闭哦
-  // isAuthenticated: true
+  // isAuthenticated: !!JwtService.getToken() //开发暂时关闭哦
+  isAuthenticated: true
 };
 
 const getters = {
@@ -32,14 +32,14 @@ const getters = {
 
 const actions = {
   [LOGIN](context, credentials) {
-    return new Promise((resolve,reject) => {
-      ApiService.post("/api2/login", credentials)
+    return new Promise((resolve, reject) => {
+      ApiService.post("/login", credentials) ///api2/login
         .then(({ data }) => {
           console.log("Here what post returns", data);
           context.commit(SET_AUTH, data);
           resolve(data);
         })
-        .catch((e) => {
+        .catch(e => {
           context.commit(SET_ERROR, e);
           reject(e);
         });
@@ -56,7 +56,7 @@ const actions = {
           context.commit(SET_AUTH, data);
           resolve(data);
         })
-        .catch((e) => {
+        .catch(e => {
           context.commit(SET_ERROR, e);
         });
     });
@@ -68,7 +68,7 @@ const actions = {
         .then(({ data }) => {
           context.commit(SET_AUTH, data);
         })
-        .catch((e) => {
+        .catch(e => {
           context.commit(SET_ERROR, e);
         });
     } else {
@@ -93,7 +93,7 @@ const mutations = {
     JwtService.destroyToken();
   },
   [SET_AUTH](state, user) {
-    console.log(user)
+    console.log(user);
     state.isAuthenticated = true;
     state.user = user;
     state.errors = {};

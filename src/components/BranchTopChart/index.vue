@@ -12,7 +12,11 @@
     <!--begin::Body-->
     <div class="card-body d-flex flex-column">
       <div class="flex-grow-1">
-        <apexchart :options="chartOptions" :series="series" type="bar"></apexchart>
+        <apexchart
+          :options="chartOptions"
+          :series="series"
+          type="bar"
+        ></apexchart>
       </div>
       <!-- <div class="pt-5">
         <p class="text-center font-weight-normal font-size-lg pb-7">
@@ -28,190 +32,200 @@
 </template>
 
 <script>
-  // import Dropdown3 from "@/view/content/dropdown/Dropdown3.vue";
-  import { mapGetters } from "vuex";
+// import Dropdown3 from "@/view/content/dropdown/Dropdown3.vue";
+import { mapGetters } from "vuex";
 
-  export default {
-    name: "BranchTopChart",
-    data() {
-      return {
-        //   series: [{
-        //     data: this.dataList
-        //   }],
-        //   chartOptions: {
-        //     chart: {
-        //       type: 'bar',
-        //       height: 380
-        //     },
-        //     plotOptions: {
-        //       bar: {
-        //         barHeight: '100%',
-        //         distributed: true,
-        //         horizontal: true,
-        //         dataLabels: {
-        //           position: 'bottom'
-        //         },
-        //       }
-        //     },
-        //     colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
-        //       '#f48024', '#69d2e7'
-        //     ],
-        //     dataLabels: {
-        //       enabled: true,
-        //       textAnchor: 'start',
-        //       style: {
-        //         colors: ['#fff']
-        //       },
-        //       formatter: function (val, opt) {
-        //         return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
-        //       },
-        //       offsetX: 0,
-        //       dropShadow: {
-        //         enabled: true
-        //       }
-        //     },
-        //     stroke: {
-        //       width: 1,
-        //       colors: ['#fff']
-        //     },
-        //     xaxis: {
-        //       categories: this.nameList,
-        //     },
-        //     yaxis: {
-        //       labels: {
-        //         show: false
-        //       }
-        //     },
-        //     title: {
-        //       text: '',
-        //       align: 'center',
-        //       floating: true
-        //     },
-        //     subtitle: {
-        //       text: '',
-        //       align: 'center',
-        //     },
-        //     tooltip: {
-        //       theme: 'dark',
-        //       x: {
-        //         show: false
-        //       },
-        //       y: {
-        //         title: {
-        //           formatter: function () {
-        //             return ''
-        //           }
-        //         }
-        //       }
-        //     }
-        //   },
-      };
+export default {
+  name: "BranchTopChart",
+  data() {
+    return {
+      //   series: [{
+      //     data: this.dataList
+      //   }],
+      //   chartOptions: {
+      //     chart: {
+      //       type: 'bar',
+      //       height: 380
+      //     },
+      //     plotOptions: {
+      //       bar: {
+      //         barHeight: '100%',
+      //         distributed: true,
+      //         horizontal: true,
+      //         dataLabels: {
+      //           position: 'bottom'
+      //         },
+      //       }
+      //     },
+      //     colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
+      //       '#f48024', '#69d2e7'
+      //     ],
+      //     dataLabels: {
+      //       enabled: true,
+      //       textAnchor: 'start',
+      //       style: {
+      //         colors: ['#fff']
+      //       },
+      //       formatter: function (val, opt) {
+      //         return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
+      //       },
+      //       offsetX: 0,
+      //       dropShadow: {
+      //         enabled: true
+      //       }
+      //     },
+      //     stroke: {
+      //       width: 1,
+      //       colors: ['#fff']
+      //     },
+      //     xaxis: {
+      //       categories: this.nameList,
+      //     },
+      //     yaxis: {
+      //       labels: {
+      //         show: false
+      //       }
+      //     },
+      //     title: {
+      //       text: '',
+      //       align: 'center',
+      //       floating: true
+      //     },
+      //     subtitle: {
+      //       text: '',
+      //       align: 'center',
+      //     },
+      //     tooltip: {
+      //       theme: 'dark',
+      //       x: {
+      //         show: false
+      //       },
+      //       y: {
+      //         title: {
+      //           formatter: function () {
+      //             return ''
+      //           }
+      //         }
+      //       }
+      //     }
+      //   },
+    };
+  },
+  components: {
+    // Dropdown3
+  },
+  props: {
+    dataList: {
+      type: Array,
+      default: () => [1, 2, 3]
     },
-    components: {
-      // Dropdown3
-    },
-    props: {
-      dataList: {
-        type: Array,
-        default: () => [1, 2, 3]
-      },
-      nameList: {
-        type: Array,
-        default: () => ['a', 'b', 'c']
-      },
-    },
-    computed: {
-      ...mapGetters(["layoutConfig"]),
-      series: function () {
-        return [{
+    nameList: {
+      type: Array,
+      default: () => ["a", "b", "c"]
+    }
+  },
+  computed: {
+    ...mapGetters(["layoutConfig"]),
+    series: function() {
+      return [
+        {
           data: this.dataList
-        }]
-      },
-      chartOptions: function () {
-        return {
-          chart: {
-            type: 'bar',
-            height: 380,
-            toolbar: {
-              show: false,
+        }
+      ];
+    },
+    chartOptions: function() {
+      return {
+        chart: {
+          type: "bar",
+          height: 380,
+          toolbar: {
+            show: false
+          }
+        },
+        plotOptions: {
+          bar: {
+            barHeight: "100%",
+            distributed: true,
+            horizontal: true,
+            dataLabels: {
+              position: "bottom"
             }
+          }
+        },
+        colors: [
+          "#33b2df",
+          "#546E7A",
+          "#d4526e",
+          "#13d8aa",
+          "#A5978B",
+          "#2b908f",
+          "#f9a3a4",
+          "#90ee7e",
+          "#f48024",
+          "#69d2e7"
+        ],
+        dataLabels: {
+          enabled: true,
+          textAnchor: "start",
+          style: {
+            colors: ["#fff"]
           },
-          plotOptions: {
-            bar: {
-              barHeight: '100%',
-              distributed: true,
-              horizontal: true,
-              dataLabels: {
-                position: 'bottom'
-              },
-            }
+          formatter: function(val, opt) {
+            return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
           },
-          colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
-            '#f48024', '#69d2e7'
-          ],
-          dataLabels: {
-            enabled: true,
-            textAnchor: 'start',
-            style: {
-              colors: ['#fff']
-            },
-            formatter: function (val, opt) {
-              return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
-            },
-            offsetX: 0,
-            dropShadow: {
-              enabled: true
-            }
+          offsetX: 0,
+          dropShadow: {
+            enabled: true
+          }
+        },
+        stroke: {
+          width: 1,
+          colors: ["#fff"]
+        },
+        xaxis: {
+          categories: this.nameList
+        },
+        yaxis: {
+          labels: {
+            show: false
+          }
+        },
+        title: {
+          text: "",
+          align: "center",
+          floating: true
+        },
+        subtitle: {
+          text: "",
+          align: "center"
+        },
+        tooltip: {
+          theme: "dark",
+          x: {
+            show: false
           },
-          stroke: {
-            width: 1,
-            colors: ['#fff']
-          },
-          xaxis: {
-            categories: this.nameList,
-          },
-          yaxis: {
-            labels: {
-              show: false
-            }
-          },
-          title: {
-            text: '',
-            align: 'center',
-            floating: true
-          },
-          subtitle: {
-            text: '',
-            align: 'center',
-          },
-          tooltip: {
-            theme: 'dark',
-            x: {
-              show: false
-            },
-            y: {
-              title: {
-                formatter: function () {
-                  return ''
-                }
+          y: {
+            title: {
+              formatter: function() {
+                return "";
               }
             }
-          },
-          legend: {
-            show: false,
           }
-        };
-      }
-
-    },
-    mounted() {
-      // reference; kt_stats_widget_7_chart
+        },
+        legend: {
+          show: false
+        }
+      };
     }
-  };
+  },
+  mounted() {
+    // reference; kt_stats_widget_7_chart
+  }
+};
 </script>
 
 <style scoped>
-  .card {
-    height: 100%;
-  }
+.card {
+  height: 100%;
+}
 </style>

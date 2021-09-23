@@ -19,11 +19,12 @@
         v-bind:class="asideMenuClass"
       >
         <!-- example static menu here -->
-        <perfect-scrollbar
-          class="aside-menu scroll"
-
-        >
-          <KTMenu v-on:gotoItem="ToItem" v-on:gotoMainItem="ToMainItem" :menus="menuData"></KTMenu>
+        <perfect-scrollbar class="aside-menu scroll">
+          <KTMenu
+            v-on:gotoItem="ToItem"
+            v-on:gotoMainItem="ToMainItem"
+            :menus="menuData"
+          ></KTMenu>
         </perfect-scrollbar>
       </div>
     </div>
@@ -45,10 +46,10 @@ export default {
       outsideTm: 0
     };
   },
-  props:{
-    menuData:{
+  props: {
+    menuData: {
       type: Array,
-      default: function(){
+      default: function() {
         return [];
       }
     }
@@ -80,19 +81,19 @@ export default {
     }
   },
   methods: {
-    ToItem(item){
-      this.$emit("gotoItem",item);
+    ToItem(item) {
+      this.$emit("gotoItem", item);
     },
-    ToMainItem(item){
+    ToMainItem(item) {
       // console.log('去' + item);
-      this.$emit("gotoMainItem",item);
-    },
-  },
+      this.$emit("gotoMainItem", item);
+    }
+  }
 };
 </script>
 
 <style>
-  .aside{
-    width: 100%;
-  }
+.aside {
+  width: 100%;
+}
 </style>

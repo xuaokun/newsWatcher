@@ -63,7 +63,7 @@ export default {
 };
 </script>
 <style scoped>
-  /* element.style {
+/* element.style {
     position: fixed;
     bottom: 0;
     width: 100%;

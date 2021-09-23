@@ -1,3 +1,11 @@
+/*
+ * @Description:
+ * @Author: akxu
+ * @Date: 2021-07-30 19:37:55
+ * @LastEditTime: 2021-09-20 22:41:35
+ * @LastEditors: AKXU-NB1
+ * @LastEditContent:
+ */
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
@@ -9,8 +17,9 @@ import JwtService from "@/core/services/jwt.service";
 const ApiService = {
   init() {
     Vue.use(VueAxios, axios);
-    Vue.axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-    // Vue.axios.defaults.baseURL = "http://localhost";
+    Vue.axios.defaults.headers.post["Content-Type"] =
+      "application/json;charset=utf-8";
+    Vue.axios.defaults.baseURL = "http://localhost";
   },
 
   /**

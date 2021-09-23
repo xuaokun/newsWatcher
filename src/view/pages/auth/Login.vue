@@ -183,7 +183,7 @@ export default {
         this.$store
           .dispatch(LOGIN, { email, password })
           // go to which page after successfully login
-          .then(() => this.$router.push('/fkgHome/home'));
+          .then(() => this.$router.push("/fkgHome/home"));
 
         submitButton.classList.remove(
           "spinner",

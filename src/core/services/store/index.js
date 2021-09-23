@@ -16,6 +16,6 @@ export default new Vuex.Store({
     config,
     breadcrumbs,
     profile,
-    snackbar,
+    snackbar
   }
 });

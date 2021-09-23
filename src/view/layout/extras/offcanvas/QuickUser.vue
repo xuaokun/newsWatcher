@@ -61,9 +61,13 @@
               href="#"
               class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"
             >
-              {{currentUser.userName ? currentUser.userName: currentUser.email}}
+              {{
+                currentUser.userName ? currentUser.userName : currentUser.email
+              }}
             </a>
-            <div class="text-muted mt-1">{{currentUser.isAdmin ? '管理员': '企业用户'}}</div>
+            <div class="text-muted mt-1">
+              {{ currentUser.isAdmin ? "管理员" : "企业用户" }}
+            </div>
             <div class="navi mt-2">
               <a href="#" class="navi-item">
                 <span class="navi-link p-0 pb-2">
@@ -77,7 +81,7 @@
                     </span>
                   </span>
                   <span class="navi-text text-muted text-hover-primary">
-                    {{currentUser.email}}
+                    {{ currentUser.email }}
                   </span>
                 </span>
               </a>

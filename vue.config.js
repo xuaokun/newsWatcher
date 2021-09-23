@@ -1,8 +1,15 @@
+/*
+ * @Description:
+ * @Author: AKXU-NB1
+ * @Date: 2021-07-30 19:37:55
+ * @LastEditTime: 2021-07-30 20:25:38
+ * @LastEditors:
+ * @LastEditContent:
+ */
 const path = require("path");
 
 module.exports = {
-  publicPath:
-    process.env.NODE_ENV === "production" ? "/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/" : "/",
   configureWebpack: {
     resolve: {
       alias: {
@@ -35,30 +42,30 @@ module.exports = {
     }
   },
   transpileDependencies: ["vuetify"],
-  
-  devServer:{
-    proxy:{
-      '/api2':{
-        target:'http://192.168.0.103:3000/',
+
+  devServer: {
+    proxy: {
+      "/api2": {
+        target: "http://127.0.0.1:3000/",
         changeOrigin: true,
-        pathRewrite:{
-          '^/api2':'/api/users'
+        pathRewrite: {
+          "^/api2": "/api/users"
         }
       },
-      '/api3':{
-        target:'http://jinpeng.wiseweb.com.cn/',
+      "/api3": {
+        target: "http://jinpeng.wiseweb.com.cn/",
         changeOrigin: true,
-        pathRewrite:{
-          '^/api3':''
+        pathRewrite: {
+          "^/api3": ""
         }
       },
-      '/api':{
-        target:'http://123.56.104.22:8083/',
+      "/api": {
+        target: "http://123.56.104.22:8083/",
         changeOrigin: true,
-        pathRewrite:{
-          '^/api':''
+        pathRewrite: {
+          "^/api": ""
         }
-      },
+      }
     }
   }
 };

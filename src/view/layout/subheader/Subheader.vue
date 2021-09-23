@@ -38,7 +38,7 @@
           </template>
         </ul>
       </div>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center" v-if="false">
         <a href="#" class="btn btn-light font-weight-bold btn-sm">
           Actions
         </a>

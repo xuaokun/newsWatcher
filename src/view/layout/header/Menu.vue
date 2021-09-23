@@ -19,10 +19,7 @@
       </li>
     </router-link>
 
-    <router-link
-      to="/1"
-      v-slot="{ href, navigate, isActive, isExactActive }"
-    >
+    <router-link to="/1" v-slot="{ href, navigate, isActive, isExactActive }">
       <li
         aria-haspopup="true"
         data-menu-toggle="hover"
@@ -38,62 +35,53 @@
       </li>
     </router-link>
 
-    <router-link
-    to="/2"
-    v-slot="{ href, navigate, isActive, isExactActive }"
-  >
-    <li
-      aria-haspopup="true"
-      data-menu-toggle="hover"
-      class="menu-item"
-      :class="[
-        isActive && 'menu-item-active',
-        isExactActive && 'menu-item-active'
-      ]"
-    >
-      <a :href="href" class="menu-link" @click="navigate">
-        <span class="menu-text"> 我的案例 </span>
-      </a>
-    </li>
-  </router-link>
+    <router-link to="/2" v-slot="{ href, navigate, isActive, isExactActive }">
+      <li
+        aria-haspopup="true"
+        data-menu-toggle="hover"
+        class="menu-item"
+        :class="[
+          isActive && 'menu-item-active',
+          isExactActive && 'menu-item-active'
+        ]"
+      >
+        <a :href="href" class="menu-link" @click="navigate">
+          <span class="menu-text"> 我的案例 </span>
+        </a>
+      </li>
+    </router-link>
 
-  <router-link
-    to="/3"
-    v-slot="{ href, navigate, isActive, isExactActive }"
-  >
-    <li
-      aria-haspopup="true"
-      data-menu-toggle="hover"
-      class="menu-item"
-      :class="[
-        isActive && 'menu-item-active',
-        isExactActive && 'menu-item-active'
-      ]"
-    >
-      <a :href="href" class="menu-link" @click="navigate">
-        <span class="menu-text"> 分支机构 </span>
-      </a>
-    </li>
-  </router-link>
+    <router-link to="/3" v-slot="{ href, navigate, isActive, isExactActive }">
+      <li
+        aria-haspopup="true"
+        data-menu-toggle="hover"
+        class="menu-item"
+        :class="[
+          isActive && 'menu-item-active',
+          isExactActive && 'menu-item-active'
+        ]"
+      >
+        <a :href="href" class="menu-link" @click="navigate">
+          <span class="menu-text"> 分支机构 </span>
+        </a>
+      </li>
+    </router-link>
 
-  <router-link
-    to="/4"
-    v-slot="{ href, navigate, isActive, isExactActive }"
-  >
-    <li
-      aria-haspopup="true"
-      data-menu-toggle="hover"
-      class="menu-item"
-      :class="[
-        isActive && 'menu-item-active',
-        isExactActive && 'menu-item-active'
-      ]"
-    >
-      <a :href="href" class="menu-link" @click="navigate">
-        <span class="menu-text">我的收藏</span>
-      </a>
-    </li>
-  </router-link>
+    <router-link to="/4" v-slot="{ href, navigate, isActive, isExactActive }">
+      <li
+        aria-haspopup="true"
+        data-menu-toggle="hover"
+        class="menu-item"
+        :class="[
+          isActive && 'menu-item-active',
+          isExactActive && 'menu-item-active'
+        ]"
+      >
+        <a :href="href" class="menu-link" @click="navigate">
+          <span class="menu-text">我的收藏</span>
+        </a>
+      </li>
+    </router-link>
 
     <li
       aria-haspopup="true"

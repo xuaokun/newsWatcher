@@ -1,7 +1,16 @@
+/*
+ * @Description:
+ * @Author: akxu
+ * @Date: 2021-07-30 19:37:55
+ * @LastEditTime: 2021-09-18 16:58:10
+ * @LastEditors: AKXU-NB1
+ * @LastEditContent:
+ */
 import Vue from "vue";
 import Router from "vue-router";
-import fkgHomeRouter from "./fkgHome";
-import myInfoRouter from "./myInfo";
+import fkgHomeRouter from "./fkg-home";
+import myInfoRouter from "./my-info";
+import newsWatcher from "./news-watcher";
 
 Vue.use(Router);
 
@@ -46,9 +55,10 @@ export default new Router({
     },
     fkgHomeRouter,
     myInfoRouter,
+    newsWatcher,
     {
       path: "/*",
-      redirect: "/fkgHome",
+      redirect: "/fkgHome"
     },
     {
       path: "/",
@@ -75,6 +85,6 @@ export default new Router({
       path: "/404",
       name: "404",
       component: () => import("@/view/pages/error/Error-1.vue")
-    },
+    }
   ]
 });

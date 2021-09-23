@@ -1,33 +1,38 @@
+/*
+ * @Description:
+ * @Author: akxu
+ * @Date: 2021-07-30 19:37:55
+ * @LastEditTime: 2021-09-20 22:55:10
+ * @LastEditors: AKXU-NB1
+ * @LastEditContent:
+ */
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "@/core/services/store";
 import ApiService from "@/core/services/api.service";
-import Moment from 'moment'
-// import MockService from "@/core/mock/mock.service";
+import Moment from "moment";
+import MockService from "@/core/mock/mock.service";
 import { VERIFY_AUTH } from "@/core/services/store/auth.module";
 import { RESET_LAYOUT_CONFIG } from "@/core/services/store/config.module";
 
 // 定义全局时间戳过滤器
-Vue.filter('formatDate', function(value) {
-  console.log(value)
-  return Moment(value).format('YYYY年M月D日')
-})
+Vue.filter("formatDate", function(value) {
+  console.log(value);
+  return Moment(value).format("YYYY年M月D日");
+});
 
-Vue.filter('ellipsis', function(value) {
-  if (!value) return '';
+Vue.filter("ellipsis", function(value) {
+  if (!value) return "";
   if (value.length > 100) {
-      return value.slice(0,100) + '...'
+    return value.slice(0, 100) + "...";
   }
-  return value
-})
+  return value;
+});
 
 Vue.prototype.$moment = Moment;
 
 // Vue.prototype.$moment = moment;//赋值使用
-
-
-
 
 Vue.config.productionTip = false;
 
@@ -57,7 +62,7 @@ import "@/core/plugins/formvalidation";
 ApiService.init();
 
 // Remove this to disable mock API
-// MockService.init();
+MockService.init();
 
 router.beforeEach((to, from, next) => {
   // Ensure we checked auth before each page load.
@@ -72,7 +77,7 @@ router.beforeEach((to, from, next) => {
   }, 100);
 });
 
-console.log = function() {}
+// console.log = function() {};
 
 new Vue({
   router,

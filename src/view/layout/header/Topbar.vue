@@ -108,7 +108,7 @@ export default {
     KTDropdownNotification,
     // KTDropdownQuickAction,
     // KTDropdownMyCart,
-    KTQuickUser,
+    KTQuickUser
     // KTQuickPanel
   },
   methods: {

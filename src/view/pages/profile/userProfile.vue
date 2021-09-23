@@ -22,14 +22,24 @@
             </div>
 
             <h4 class="font-weight-bold my-2">
-              {{currentUser.userName ? currentUser.userName : currentUser.email }}
+              {{
+                currentUser.userName ? currentUser.userName : currentUser.email
+              }}
             </h4>
             <div class="text-muted mb-2">
-              {{currentUser.isAdmin ? '管理员': '企业用户'}}
+              {{ currentUser.isAdmin ? "管理员" : "企业用户" }}
             </div>
             <span
-              :class="['label',currentUser.isFreeze ? 'label-light-warning' : 'label-light-success','label-inline','font-weight-bold','label-lg']"
-              >{{currentUser.isFreeze ? '账号冻结':'账号正常'}}</span
+              :class="[
+                'label',
+                currentUser.isFreeze
+                  ? 'label-light-warning'
+                  : 'label-light-success',
+                'label-inline',
+                'font-weight-bold',
+                'label-lg'
+              ]"
+              >{{ currentUser.isFreeze ? "账号冻结" : "账号正常" }}</span
             >
           </div>
           <!--end::User-->
@@ -64,7 +74,7 @@
               >
                 个人信息
               </a>
-      
+
               <a
                 class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block"
                 @click="setActiveTab"
@@ -75,7 +85,6 @@
               >
                 修改密码
               </a>
-
             </div>
           </div>
           <!--end::Nav-->

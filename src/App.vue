@@ -1,6 +1,16 @@
+<!--
+ * @Description: 
+ * @Author: akxu
+ * @Date: 2021-07-30 19:37:54
+ * @LastEditTime: 2021-09-23 10:43:26
+ * @LastEditors: AKXU-NB1
+ * @LastEditContent: 
+-->
 <template>
   <v-app>
+    <transition name="fade-in-up">
       <router-view></router-view>
+    </transition>
     <Snackbar />
   </v-app>
 </template>
@@ -20,7 +30,6 @@
 // Main demo style scss
 @import "assets/sass/style.vue";
 
-
 // Check documentation for RTL css
 // Update HTML with RTL attribute at public/index.html
 /*@import "assets/css/style.vue.rtl";*/
@@ -28,10 +37,10 @@
 
 <script>
 import { OVERRIDE_LAYOUT_CONFIG } from "@/core/services/store/config.module";
-import Snackbar from '@/components/Snackbar'
+import Snackbar from "@/components/Snackbar";
 export default {
   name: "MetronicVue",
-  components:{
+  components: {
     Snackbar
   },
   mounted() {
@@ -45,5 +54,13 @@ export default {
 </script>
 
 <style>
+/* handle vuetify conflict */
+@import "~vuetify/dist/vuetify.css";
 
+.theme--light.v-application {
+  background: transparent !important;
+}
+.v-application code {
+  box-shadow: none !important;
+}
 </style>

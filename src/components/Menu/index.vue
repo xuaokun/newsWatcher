@@ -1,36 +1,38 @@
 <template lang="">
-    <ul class="menu-nav">
-        <router-link v-for="(item, index) in menus" :key="index.url"
-        :to="item.url"
-        v-slot="{ href, navigate, isActive, isExactActive }"
+  <ul class="menu-nav">
+    <router-link
+      v-for="(item, index) in menus"
+      :key="index.url"
+      :to="item.url"
+      v-slot="{ href, navigate, isActive, isExactActive }"
+    >
+      <li
+        aria-haspopup="true"
+        data-menu-toggle="hover"
+        class="menu-item"
+        :class="[
+          isActive && 'menu-item-active',
+          isExactActive && 'menu-item-active'
+        ]"
       >
-        <li
-          aria-haspopup="true"
-          data-menu-toggle="hover"
-          class="menu-item"
-          :class="[
-            isActive && 'menu-item-active',
-            isExactActive && 'menu-item-active'
-          ]"
-        >
-          <a :href="href" class="menu-link" @click="navigate">
-            <span class="menu-text"> {{item.menuName}} </span>
-          </a>
-        </li>
-      </router-link>
-    </ul>
+        <a :href="href" class="menu-link" @click="navigate">
+          <span class="menu-text"> {{ item.menuName }} </span>
+        </a>
+      </li>
+    </router-link>
+  </ul>
 </template>
 <script>
 export default {
   name: "KTMenu",
-  props:{
+  props: {
     menus: {
       type: Array,
       // 对象或数组默认值必须从一个工厂函数获取
-      default: function () {
-        return []
+      default: function() {
+        return [];
       }
-    },
+    }
   },
   methods: {
     hasActiveChildren(match) {
@@ -39,6 +41,4 @@ export default {
   }
 };
 </script>
-<style lang="">
-    
-</style>
+<style lang=""></style>
