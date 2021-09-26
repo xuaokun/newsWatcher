@@ -17,8 +17,8 @@ export const SET_ERROR = "setError";
 const state = {
   errors: null,
   user: {},
-  // isAuthenticated: !!JwtService.getToken() //开发暂时关闭哦
-  isAuthenticated: true
+  isAuthenticated: !!JwtService.getToken() //开发暂时关闭哦
+  // isAuthenticated: true
 };
 
 const getters = {
@@ -33,7 +33,7 @@ const getters = {
 const actions = {
   [LOGIN](context, credentials) {
     return new Promise((resolve, reject) => {
-      ApiService.post("/login", credentials) ///api2/login
+      ApiService.post("/api2/login", credentials) ///api2/login
         .then(({ data }) => {
           console.log("Here what post returns", data);
           context.commit(SET_AUTH, data);

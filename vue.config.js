@@ -2,8 +2,8 @@
  * @Description:
  * @Author: AKXU-NB1
  * @Date: 2021-07-30 19:37:55
- * @LastEditTime: 2021-07-30 20:25:38
- * @LastEditors:
+ * @LastEditTime: 2021-09-25 17:50:07
+ * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
 const path = require("path");
@@ -60,12 +60,19 @@ module.exports = {
         }
       },
       "/api": {
-        target: "http://123.56.104.22:8083/",
+        target: "http://127.0.0.1:3000/",
         changeOrigin: true,
         pathRewrite: {
           "^/api": ""
         }
       }
+      // "/api": {
+      //   target: "http://123.56.104.22:8083/",
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     "^/api": ""
+      //   }
+      // }
     }
   }
 };

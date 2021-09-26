@@ -161,7 +161,7 @@ export default {
     KTEmailSettings
   },
   mounted() {
-    this.$store.dispatch(SET_BREADCRUMB, [{ title: "Profile 2" }]);
+    this.$store.dispatch(SET_BREADCRUMB, [{ title: "个人中心" }]);
   },
   methods: {
     /**

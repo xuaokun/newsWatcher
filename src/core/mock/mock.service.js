@@ -2,7 +2,7 @@
  * @Description:
  * @Author: akxu
  * @Date: 2021-07-30 19:37:55
- * @LastEditTime: 2021-09-23 20:12:45
+ * @LastEditTime: 2021-09-25 21:56:51
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -149,14 +149,17 @@ const MockService = {
     //更新采集网站信息
     mock.onPost("/updateSiteInfo").reply(data => {
       const params = JSON.parse(data.data);
-      siteList.forEach(item => {
-        if (item.url === params.url) {
-          console.log(item);
-          for (let key in params) {
-            item[key] = params[key];
+      if (!params._id) {
+        siteList.push(params);
+      } else {
+        siteList.forEach(item => {
+          if (item.url === params.url) {
+            for (let key in params) {
+              item[key] = params[key];
+            }
           }
-        }
-      });
+        });
+      }
       console.log(siteList);
       return [
         200,

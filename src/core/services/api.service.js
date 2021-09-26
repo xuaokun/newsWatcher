@@ -2,7 +2,7 @@
  * @Description:
  * @Author: akxu
  * @Date: 2021-07-30 19:37:55
- * @LastEditTime: 2021-09-20 22:41:35
+ * @LastEditTime: 2021-09-25 18:05:32
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -19,7 +19,7 @@ const ApiService = {
     Vue.use(VueAxios, axios);
     Vue.axios.defaults.headers.post["Content-Type"] =
       "application/json;charset=utf-8";
-    Vue.axios.defaults.baseURL = "http://localhost";
+    // Vue.axios.defaults.baseURL = "http://localhost";
   },
 
   /**

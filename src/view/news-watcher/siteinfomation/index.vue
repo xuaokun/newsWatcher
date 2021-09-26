@@ -2,7 +2,7 @@
  * @Description: 数据采集管理列表
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2021-09-23 20:09:45
+ * @LastEditTime: 2021-09-26 16:50:52
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -10,7 +10,10 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <FormForSiteInfomationSearch @gotoSearch="submitSearch" />
+        <FormForSiteInfomationSearch
+          @gotoSearch="submitSearch"
+          @addSiteInfo="addSiteInfo"
+        />
       </v-col>
     </v-row>
     <v-row>
@@ -20,6 +23,7 @@
           :dataList="tableData"
           v-on:handleOperation="handleOperation"
           :pageLength="pageLength"
+          @getPageData="getPageData"
         />
       </v-col>
     </v-row>
@@ -105,13 +109,14 @@
 </template>
 
 <script>
-import FormForSiteInfomationSearch from "@/components/FormForSiteInfomationSearch";
-import PublishList from "@/components/PublishList";
+import FormForSiteInfomationSearch from "@/components/FormForSiteInfomationSearch/index.vue";
+import PublishList from "@/components/PublishList/index.vue";
 import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
 import {
   getSiteList,
   updateSiteInfo,
-  deleteSite
+  deleteSite,
+  addSiteInfo
 } from "@/logic/news-watcher/site-infomation";
 export default {
   components: {
@@ -158,7 +163,8 @@ export default {
       rules: {
         required: value => !!value || "不能为空哦"
       },
-      diagFormValidation: false
+      diagFormValidation: false,
+      currentParams: {}
     };
   },
   mounted() {
@@ -189,10 +195,25 @@ export default {
     async handleSaveEdit() {
       console.log(this.diagFormValidation);
       if (this.diagFormValidation) {
-        let resObj = await updateSiteInfo(this.editForm);
-        this.tableData = resObj.data;
-        this.pageLength = resObj.pageLength;
-        this.dialog = false;
+        //判断是新增还是更新网站信息
+        if (this.editForm._id) {
+          await updateSiteInfo({ newItem: this.editForm }); //let resObj =
+          this.tableData.forEach((item, index) => {
+            if (item._id === this.editForm._id) {
+              //vue不能检测两种数组变动：1.当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+              //2.当你修改数组的长度时，例如：vm.items.length = newLength
+              //更改数组元素的两种方法，触发视图更新
+              // this.tableData.splice(index, 1, this.editForm);
+              //this.$forceUpdate();
+              this.$set(this.tableData, index, this.editForm);
+              this.dialog = false;
+            }
+          });
+        } else {
+          await addSiteInfo(this.editForm);
+          this.dialog = false;
+          this.submitSearch();
+        }
       } else {
         this.$store.dispatch("snackbar/openSnackbar", {
           msg: "请填写完成后保存",
@@ -203,8 +224,11 @@ export default {
 
     //提交查询
     async submitSearch(params) {
+      if (params) {
+        this.currentParams = params;
+      }
       console.log(params);
-      let resObj = await getSiteList(params);
+      let resObj = await getSiteList({ params: params });
       this.tableData = resObj.data;
       this.pageLength = resObj.pageLength;
       console.log(resObj);
@@ -213,9 +237,20 @@ export default {
     //删除网站
     async deleteSite() {
       this.confirmDialog = false;
-      let resObj = await deleteSite(this.deleteSiteId);
-      this.tableData = resObj.data;
-      this.pageLength = resObj.pageLength;
+      await deleteSite(this.deleteSiteId);
+      this.submitSearch();
+    },
+
+    //添加网站
+    addSiteInfo() {
+      this.editForm = {};
+      this.dialog = true;
+    },
+
+    //跳转指定页数
+    getPageData(pageNumber) {
+      this.currentParams.pageNumber = pageNumber;
+      this.submitSearch(this.currentParams);
     }
   }
 };

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: akxu
  * @Date: 2021-09-20 17:53:04
- * @LastEditTime: 2021-09-23 15:26:27
+ * @LastEditTime: 2021-09-25 12:51:20
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -29,7 +29,7 @@
               v-model="siteName"
             />
           </div>
-          <div class="col-8">
+          <div class="col-4">
             <button
               type="reset"
               class="btn btn-success mr-2"
@@ -38,6 +38,11 @@
               检索
             </button>
             <button type="reset" class="btn btn-secondary">重置</button>
+          </div>
+          <div class="col-4" style="text-align:right">
+            <button class="btn btn-success ml-2" @click="addSiteInfo">
+              新增
+            </button>
           </div>
         </div>
       </div>
@@ -65,6 +70,9 @@ export default {
         params.siteName = this.siteName;
       }
       this.$emit("gotoSearch", params);
+    },
+    addSiteInfo() {
+      this.$emit("addSiteInfo");
     }
   }
 };

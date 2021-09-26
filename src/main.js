@@ -2,7 +2,7 @@
  * @Description:
  * @Author: akxu
  * @Date: 2021-07-30 19:37:55
- * @LastEditTime: 2021-09-20 22:55:10
+ * @LastEditTime: 2021-09-25 17:52:43
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -12,7 +12,7 @@ import router from "./router";
 import store from "@/core/services/store";
 import ApiService from "@/core/services/api.service";
 import Moment from "moment";
-import MockService from "@/core/mock/mock.service";
+// import MockService from "@/core/mock/mock.service";
 import { VERIFY_AUTH } from "@/core/services/store/auth.module";
 import { RESET_LAYOUT_CONFIG } from "@/core/services/store/config.module";
 
@@ -62,7 +62,7 @@ import "@/core/plugins/formvalidation";
 ApiService.init();
 
 // Remove this to disable mock API
-MockService.init();
+// MockService.init();
 
 router.beforeEach((to, from, next) => {
   // Ensure we checked auth before each page load.
