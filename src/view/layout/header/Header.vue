@@ -190,7 +190,7 @@
                   ref="kt_header_menu"
                   class="header-menu header-menu-mobile header-menu-layout-default"
                 >
-                  <KTMenu></KTMenu>
+                  <KTMenu :menus0="menus0"></KTMenu>
                 </div>
                 <!--end::Menu-->
               </div>
@@ -230,6 +230,15 @@
                 class="header-menu header-menu-mobile header-menu-layout-default"
               >
                 <KTMenu :menus="menus4"></KTMenu>
+              </div>
+            </b-tab>
+            <b-tab class="tab-pane p-5 justify-content-between">
+              <div
+                id="kt_header_menu"
+                ref="kt_header_menu"
+                class="header-menu header-menu-mobile header-menu-layout-default"
+              >
+                <KTMenu :menus="menus5"></KTMenu>
               </div>
             </b-tab>
           </b-tabs>
@@ -286,7 +295,17 @@ export default {
           url: "/fkgHome/eventsView"
         }
       ],
-      menus4: []
+      menus4: [],
+      menus5: [
+        {
+          menuName: "数据采集",
+          url: "/newswatcher/siteinfomation"
+        },
+        {
+          menuName: "舆情热点",
+          url: "/newswatcher/wordscloud"
+        }
+      ]
     };
   },
   components: {

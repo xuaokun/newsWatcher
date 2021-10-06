@@ -2,7 +2,7 @@
  * @Description:网站采集管理页面API逻辑
  * @Author: akxu
  * @Date: 2021-09-23 15:30:31
- * @LastEditTime: 2021-09-26 16:15:28
+ * @LastEditTime: 2021-10-05 22:10:15
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -16,6 +16,8 @@ function getSiteList(params) {
     .then(res => {
       if (res.data.status === 0) {
         return res.data.msg;
+      } else {
+        throw new Error(`处理参数异常${res.data.info}`);
       }
     })
     .catch(e => {

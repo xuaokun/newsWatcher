@@ -2,11 +2,12 @@
  * @Description:
  * @Author: akxu
  * @Date: 2021-07-30 19:37:55
- * @LastEditTime: 2021-09-25 17:52:43
+ * @LastEditTime: 2021-10-06 15:13:38
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
 import Vue from "vue";
+import * as echarts from "echarts";
 import App from "./App.vue";
 import router from "./router";
 import store from "@/core/services/store";
@@ -16,6 +17,7 @@ import Moment from "moment";
 import { VERIFY_AUTH } from "@/core/services/store/auth.module";
 import { RESET_LAYOUT_CONFIG } from "@/core/services/store/config.module";
 
+Vue.prototype.$echarts = echarts;
 // 定义全局时间戳过滤器
 Vue.filter("formatDate", function(value) {
   console.log(value);

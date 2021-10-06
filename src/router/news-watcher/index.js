@@ -2,7 +2,7 @@
  * @Description:舆情监控相关页面路由配置
  * @Author: akxu
  * @Date: 2021-09-18 16:30:40
- * @LastEditTime: 2021-09-20 22:52:46
+ * @LastEditTime: 2021-10-05 20:57:46
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -20,6 +20,11 @@ export default {
       path: "siteinfomation",
       name: "siteInfomation",
       component: () => import("@/view/news-watcher/siteinfomation")
+    },
+    {
+      path: "wordscloud",
+      name: "wordsCloud",
+      component: () => import("@/view/news-watcher/wordsCloud")
     },
     {
       path: "/newswatcher",

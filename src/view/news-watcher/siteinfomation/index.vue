@@ -2,7 +2,7 @@
  * @Description: 数据采集管理列表
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2021-09-26 16:50:52
+ * @LastEditTime: 2021-10-05 21:23:09
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -168,7 +168,10 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch(SET_BREADCRUMB, [{ title: "数据采集管理" }]);
+    this.$store.dispatch(SET_BREADCRUMB, [
+      { title: "舆情分析" },
+      { title: "数据采集管理" }
+    ]);
   },
   created() {
     //进入页面先进行一次查询，查询所有网站数据
