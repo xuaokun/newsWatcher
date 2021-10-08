@@ -64,7 +64,7 @@ const actions = {
   [VERIFY_AUTH](context) {
     if (JwtService.getToken()) {
       ApiService.setHeader();
-      ApiService.get("/api2/verify")
+      ApiService.get(`/api2/verify?${new Date().getTime()}`)
         .then(({ data }) => {
           context.commit(SET_AUTH, data);
         })

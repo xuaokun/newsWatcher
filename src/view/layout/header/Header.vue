@@ -304,6 +304,10 @@ export default {
         {
           menuName: "舆情热点",
           url: "/newswatcher/wordscloud"
+        },
+        {
+          menuName: "关键词追踪",
+          url: "/newswatcher/keywordstracing"
         }
       ]
     };
