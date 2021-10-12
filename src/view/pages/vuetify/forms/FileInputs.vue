@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Multiple'">
+        <k-t-code-preview v-bind:title="'Multiple'">
           <template v-slot:preview>
             <p>
               The <code>v-file-input</code> can contain multiple files at the
@@ -38,9 +38,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Custom icons'">
+        <k-t-code-preview v-bind:title="'Custom icons'">
           <template v-slot:preview>
             <p>
               The <code>v-file-input</code> has a default prepended icon that
@@ -55,9 +55,9 @@
           <template v-slot:html>
             {{ code6.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Counter'">
+        <k-t-code-preview v-bind:title="'Counter'">
           <template v-slot:preview>
             <p>
               When using the show-size property along with counter, the total
@@ -73,9 +73,9 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Complex selection slots'">
+        <k-t-code-preview v-bind:title="'Complex selection slots'">
           <template v-slot:preview>
             <p>
               The flexibility of the selection slot allows you accomodate
@@ -119,11 +119,11 @@
           <template v-slot:js>
             {{ code7.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'With chips'">
+        <k-t-code-preview v-bind:title="'With chips'">
           <template v-slot:preview>
             <p>
               A selected file can be displayed as a chip. When using the chips
@@ -146,9 +146,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Accept formats'">
+        <k-t-code-preview v-bind:title="'Accept formats'">
           <template v-slot:preview>
             <p>
               <code>v-file-input</code> component can accept only specific media
@@ -159,9 +159,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Size displaying'">
+        <k-t-code-preview v-bind:title="'Size displaying'">
           <template v-slot:preview>
             <p>
               The displayed size of the selected file(s) can be configured with
@@ -173,7 +173,7 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

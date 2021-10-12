@@ -6,7 +6,7 @@
     <div class="card-header border-0 py-5">
       <h3 class="card-title font-weight-bolder text-white">Sales Progress</h3>
       <div class="card-toolbar">
-        <Dropdown2><i class="ki ki-bold-more-hor text-white"></i></Dropdown2>
+        <dropdown2><i class="ki ki-bold-more-hor text-white"></i></dropdown2>
       </div>
     </div>
     <!--end::Header-->

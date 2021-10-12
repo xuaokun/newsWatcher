@@ -58,7 +58,7 @@
     <div class="col-lg-12"></div>
     <div class="row">
       <div class="col-lg-3">
-        <AsideMenu
+        <aside-menu
           :menuData="menuDataList"
           v-on:gotoItem="searchByMenuSelect"
         />
@@ -66,16 +66,16 @@
       <div class="col-lg-9">
         <div class="row">
           <div class="col-lg-12">
-            <FormForSearch v-on:gotoSearch="searchByCondition" />
+            <form-for-search v-on:gotoSearch="searchByCondition" />
           </div>
           <div class="col-lg-12 res-list">
-            <PublishList
+            <publish-list
               :dataList="resultLawInfoList"
               :pageLength="pageLength"
               tableTitle="查询结果"
               v-on:getPageData="getPageData"
               :tableHead="tableHead"
-            ></PublishList>
+            ></publish-list>
           </div>
         </div>
       </div>

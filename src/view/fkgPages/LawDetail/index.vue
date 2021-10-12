@@ -47,7 +47,7 @@
         </v-row> -->
     <div class="row">
       <div class="col-lg-2">
-        <AsideMenu
+        <aside-menu
           v-on:gotoItem="ToItem"
           v-if="articleMenu"
           :menuData="articleMenu"

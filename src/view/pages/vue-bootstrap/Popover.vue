@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Popover'">
+        <k-t-code-preview v-bind:title="'Popover'">
           <template v-slot:preview>
             <div class="text-center my-3">
               <b-button
@@ -52,9 +52,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             <code>&lt;b-popover&gt;</code> Component basic usage
           </template>
@@ -116,11 +116,11 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Variants and custom class'">
+        <k-t-code-preview v-bind:title="'Variants and custom class'">
           <template v-slot:preview>
             <p>
               BootstrapVue's popovers support contextual color variants via our
@@ -141,9 +141,11 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Programmatically show and hide popover'">
+        <k-t-code-preview
+          v-bind:title="'Programmatically show and hide popover'"
+        >
           <template v-slot:preview>
             <p>
               You can manually control the visibility of a popover via the
@@ -179,9 +181,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Programmatic control'">
+        <k-t-code-preview v-bind:title="'Programmatic control'">
           <template v-slot:preview>
             <p>
               Programmatic control can also be affected by submitting
@@ -215,7 +217,7 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

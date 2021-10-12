@@ -27,9 +27,9 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Basic Features'">
+        <k-t-code-preview v-bind:title="'Basic Features'">
           <template v-slot:preview>
-            <KTTreeSelect1></KTTreeSelect1>
+            <k-t-tree-select1></k-t-tree-select1>
           </template>
           <template v-slot:html>
             {{ code1.html }}
@@ -37,11 +37,11 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'More Features'">
+        <k-t-code-preview v-bind:title="'More Features'">
           <template v-slot:preview>
-            <KTTreeSelect2></KTTreeSelect2>
+            <k-t-tree-select2></k-t-tree-select2>
           </template>
           <template v-slot:html>
             {{ code2.html }}
@@ -49,11 +49,11 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Delayed Loading'">
+        <k-t-code-preview v-bind:title="'Delayed Loading'">
           <template v-slot:preview>
-            <KTTreeSelect3></KTTreeSelect3>
+            <k-t-tree-select3></k-t-tree-select3>
           </template>
           <template v-slot:html>
             {{ code3.html }}
@@ -61,11 +61,11 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Async Searching'">
+        <k-t-code-preview v-bind:title="'Async Searching'">
           <template v-slot:preview>
-            <KTTreeSelect4></KTTreeSelect4>
+            <k-t-tree-select4></k-t-tree-select4>
           </template>
           <template v-slot:html>
             {{ code4.html }}
@@ -73,11 +73,11 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Flat Mode & Sort Values'">
+        <k-t-code-preview v-bind:title="'Flat Mode & Sort Values'">
           <template v-slot:preview>
-            <KTTreeSelect5></KTTreeSelect5>
+            <k-t-tree-select5></k-t-tree-select5>
           </template>
           <template v-slot:html>
             {{ code5.html }}
@@ -85,11 +85,11 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Prevent Value Combining'">
+        <k-t-code-preview v-bind:title="'Prevent Value Combining'">
           <template v-slot:preview>
-            <KTTreeSelect6></KTTreeSelect6>
+            <k-t-tree-select6></k-t-tree-select6>
           </template>
           <template v-slot:html>
             {{ code6.html }}
@@ -97,11 +97,11 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Disable Branch Nodes'">
+        <k-t-code-preview v-bind:title="'Disable Branch Nodes'">
           <template v-slot:preview>
-            <KTTreeSelect7></KTTreeSelect7>
+            <k-t-tree-select7></k-t-tree-select7>
           </template>
           <template v-slot:html>
             {{ code7.html }}
@@ -109,11 +109,11 @@
           <template v-slot:js>
             {{ code7.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Flatten Search Results'">
+        <k-t-code-preview v-bind:title="'Flatten Search Results'">
           <template v-slot:preview>
-            <KTTreeSelect8></KTTreeSelect8>
+            <k-t-tree-select8></k-t-tree-select8>
           </template>
           <template v-slot:html>
             {{ code8.html }}
@@ -121,11 +121,11 @@
           <template v-slot:js>
             {{ code8.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Disable Item Selection'">
+        <k-t-code-preview v-bind:title="'Disable Item Selection'">
           <template v-slot:preview>
-            <KTTreeSelect9></KTTreeSelect9>
+            <k-t-tree-select9></k-t-tree-select9>
           </template>
           <template v-slot:html>
             {{ code9.html }}
@@ -133,11 +133,11 @@
           <template v-slot:js>
             {{ code9.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Nested Search'">
+        <k-t-code-preview v-bind:title="'Nested Search'">
           <template v-slot:preview>
-            <KTTreeSelect10></KTTreeSelect10>
+            <k-t-tree-select10></k-t-tree-select10>
           </template>
           <template v-slot:html>
             {{ code10.html }}
@@ -145,11 +145,11 @@
           <template v-slot:js>
             {{ code10.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Customize Key Names'">
+        <k-t-code-preview v-bind:title="'Customize Key Names'">
           <template v-slot:preview>
-            <KTTreeSelect11></KTTreeSelect11>
+            <k-t-tree-select11></k-t-tree-select11>
           </template>
           <template v-slot:html>
             {{ code11.html }}
@@ -157,11 +157,11 @@
           <template v-slot:js>
             {{ code11.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Customize Option Label'">
+        <k-t-code-preview v-bind:title="'Customize Option Label'">
           <template v-slot:preview>
-            <KTTreeSelect12></KTTreeSelect12>
+            <k-t-tree-select12></k-t-tree-select12>
           </template>
           <template v-slot:html>
             {{ code12.html }}
@@ -169,11 +169,11 @@
           <template v-slot:js>
             {{ code12.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Customize Value Label'">
+        <k-t-code-preview v-bind:title="'Customize Value Label'">
           <template v-slot:preview>
-            <KTTreeSelect13></KTTreeSelect13>
+            <k-t-tree-select13></k-t-tree-select13>
           </template>
           <template v-slot:html>
             {{ code13.html }}
@@ -181,7 +181,7 @@
           <template v-slot:js>
             {{ code13.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

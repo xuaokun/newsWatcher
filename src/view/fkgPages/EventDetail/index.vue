@@ -172,7 +172,9 @@
             <!-- <PublishList/> -->
           </div>
           <div class="col-lg-4">
-            <RelationEntity :relationObjects="relationObjects"></RelationEntity>
+            <relation-entity
+              :relationObjects="relationObjects"
+            ></relation-entity>
           </div>
         </div>
 
@@ -251,7 +253,7 @@
                 </h3>
               </div>
               <!--end::Header-->
-              <SeeksRelationGraph :graphData="graphData" />
+              <seeks-relation-graph :graphData="graphData" />
             </div>
           </div>
         </div>

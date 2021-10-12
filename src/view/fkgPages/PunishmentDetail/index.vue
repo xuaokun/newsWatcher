@@ -207,7 +207,7 @@
             </div>
             <!--end::Card-->
 
-            <PublishList
+            <publish-list
               :tableHead="tableHead"
               :dataList="tableData"
               class="list-box"

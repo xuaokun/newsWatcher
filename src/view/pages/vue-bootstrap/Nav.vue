@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Navs'">
+        <k-t-code-preview v-bind:title="'Navs'">
           <template v-slot:preview>
             <div>
               <b-nav>
@@ -40,9 +40,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Tab style'">
+        <k-t-code-preview v-bind:title="'Tab style'">
           <template v-slot:preview>
             <p>
               Make the nav look like tabs by setting the <code>tabs</code> prop.
@@ -59,11 +59,11 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Pill style'">
+        <k-t-code-preview v-bind:title="'Pill style'">
           <template v-slot:preview>
             <p>Use the pill style by setting the <code>pills</code> prop.</p>
             <div>
@@ -78,9 +78,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Fill'">
+        <k-t-code-preview v-bind:title="'Fill'">
           <template v-slot:preview>
             <p>
               To proportionately fill all available space with your
@@ -100,11 +100,11 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Justified'">
+        <k-t-code-preview v-bind:title="'Justified'">
           <template v-slot:preview>
             <p>
               For equal-width elements, set the <code>justified</code> prop
@@ -124,7 +124,7 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

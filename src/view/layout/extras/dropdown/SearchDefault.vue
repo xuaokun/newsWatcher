@@ -32,7 +32,7 @@
       </div>
     </form>
 
-    <KTSearchResult v-bind:data="data"></KTSearchResult>
+    <k-t-search-result v-bind:data="data"></k-t-search-result>
   </div>
 </template>
 

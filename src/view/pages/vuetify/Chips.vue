@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Colored'">
+        <k-t-code-preview v-bind:title="'Colored'">
           <template v-slot:preview>
             <p>
               Any color from the Material Design palette can be used to change a
@@ -57,9 +57,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Outlined'">
+        <k-t-code-preview v-bind:title="'Outlined'">
           <template v-slot:preview>
             <p>
               Outlined chips inherit their border color from the current text
@@ -90,9 +90,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Custom lists'">
+        <k-t-code-preview v-bind:title="'Custom lists'">
           <template v-slot:preview>
             <v-card max-width="500">
               <v-toolbar flat color="transparent">
@@ -176,11 +176,11 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Icon'">
+        <k-t-code-preview v-bind:title="'Icon'">
           <template v-slot:preview>
             <p>
               Chips can use text or any icon available in the Material Icons
@@ -245,9 +245,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Label'">
+        <k-t-code-preview v-bind:title="'Label'">
           <template v-slot:preview>
             <div class="text-center">
               <v-chip class="ma-2" label>
@@ -273,9 +273,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Expandable'">
+        <k-t-code-preview v-bind:title="'Expandable'">
           <template v-slot:preview>
             <v-card max-width="400">
               <v-system-bar></v-system-bar>
@@ -348,7 +348,7 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

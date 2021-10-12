@@ -220,14 +220,14 @@
 
     <div class="row">
       <div class="col-lg-6">
-        <RiskTrend
+        <risk-trend
           title="近期违规统计"
           :dataList="riskData"
           :nameList="riskName"
         />
       </div>
       <div class="col-lg-6">
-        <RiskDistribution />
+        <risk-distribution />
       </div>
       <!-- <div class="col-lg-6">
         <RadarChart />
@@ -236,19 +236,20 @@
 
     <div class="row">
       <div class="col-lg-6">
-        <PublishList
+        <publish-list
           :showPagination="false"
           :tableHead="tableHead"
           tableTitle="近期处罚文件"
           :dataList="recentPunishment"
         >
-        </PublishList>
+        </publish-list>
       </div>
       <div class="col-lg-6">
-        <BranchTopChart
+        <branch-top-chart
+          title="关联企业处罚状况"
           :dataList="relationPunishmentDataList"
           :nameList="relationPunishmentNameList"
-        ></BranchTopChart>
+        ></branch-top-chart>
       </div>
     </div>
   </div>

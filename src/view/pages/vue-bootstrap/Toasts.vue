@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Toasts'">
+        <k-t-code-preview v-bind:title="'Toasts'">
           <template v-slot:preview>
             <p>
               Toasts are slightly translucent, too, so they blend over whatever
@@ -58,9 +58,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Toasts on demand'">
+        <k-t-code-preview v-bind:title="'Toasts on demand'">
           <template v-slot:preview>
             <p>
               Generate a dynamic toast from anywhere in your app via the
@@ -83,9 +83,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Variants'">
+        <k-t-code-preview v-bind:title="'Variants'">
           <template v-slot:preview>
             <p>
               BootstrapVue toasts provide custom CSS to define color variants.
@@ -155,9 +155,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Toaster target'">
+        <k-t-code-preview v-bind:title="'Toaster target'">
           <template v-slot:preview>
             <p>
               The below toasters place the toasts in a stacked (columnar
@@ -214,7 +214,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

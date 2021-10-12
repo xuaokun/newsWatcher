@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Collapse'">
+        <k-t-code-preview v-bind:title="'Collapse'">
           <template v-slot:preview>
             <div>
               <b-button v-b-toggle.collapse-1 variant="primary"
@@ -47,9 +47,9 @@
           <template v-slot:html>
             {{ html1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Trigger multiple collapse elements'">
+        <k-t-code-preview v-bind:title="'Trigger multiple collapse elements'">
           <template v-slot:preview>
             <p>
               You can even collapse multiple
@@ -75,9 +75,9 @@
           <template v-slot:html>
             {{ html4 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Accordion support'">
+        <k-t-code-preview v-bind:title="'Accordion support'">
           <template v-slot:preview>
             <div role="tablist">
               <b-card no-body class="mb-1">
@@ -140,11 +140,11 @@
           <template v-slot:html>
             {{ html3 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Usage'">
+        <k-t-code-preview v-bind:title="'Usage'">
           <template v-slot:preview>
             <p>
               Other elements can easily toggle
@@ -171,9 +171,9 @@
           <template v-slot:html>
             {{ html2 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Initial visibility'">
+        <k-t-code-preview v-bind:title="'Initial visibility'">
           <template v-slot:preview>
             <p>
               To make the <code>&lt;b-collapse&gt;</code> show initially, set
@@ -191,7 +191,7 @@
           <template v-slot:html>
             {{ html3 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Carousel'">
+        <k-t-code-preview v-bind:title="'Carousel'">
           <template v-slot:preview>
             <div>
               <b-carousel
@@ -102,7 +102,7 @@
           <template v-slot:js>
             {{ js1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

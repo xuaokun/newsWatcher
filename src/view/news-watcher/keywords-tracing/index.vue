@@ -2,50 +2,58 @@
  * @Description: 关键词追踪
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2021-10-08 15:44:10
+ * @LastEditTime: 2021-10-12 22:14:50
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
 <template>
   <div>
     <v-row>
-      <v-col cols="12">
-        <!-- <FormForWordCloudSearch @searchKeywords="submitSearch" /> -->
+      <v-col cols="6">
+        <keywords-top-chart
+          title="当前关键词排行"
+          :dataList="topChartValueList"
+          :nameList="topChartNameList"
+        />
       </v-col>
-    </v-row>
-    <v-row justify="center" align-content="center">
+      <v-col cols="6"><concerned-keywords title="我的关键词"/></v-col>
       <v-col cols="12">
-        <div class="card card-custom cloud-box">
-          <v-progress-linear
-            :active="isLoading"
-            indeterminate
-            height="6"
-            absolute
-            rounded
-          ></v-progress-linear>
-          <div class="card-body">
-            <div id="chart" ref="chart"></div>
-          </div>
-        </div>
+        <keywords-trend
+          title="舆情发展趋势"
+          :dataList="keywordTrendList"
+          :nameList="trendDates"
+          @searchTrend="searchTrendByDate"
+        />
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-// import FormForWordCloudSearch from "@/components/FormForWordCloudSearch/index.vue";
+import KeywordsTopChart from "@/components/BranchTopChart/index.vue";
+import concernedKeywords from "@/components/concernedKeywords/index.vue";
+import keywordsTrend from "@/components/LineChart/index.vue";
 import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
 import "echarts-wordcloud/dist/echarts-wordcloud";
 import "echarts-wordcloud/dist/echarts-wordcloud.min";
-import { getWordsCloudData } from "@/logic/news-watcher/word-cloud";
+import {
+  getConcernedData,
+  getConcernedKeywordTrend
+} from "@/logic/news-watcher/keywords-tracing";
+import { mapGetters } from "vuex";
 export default {
   components: {
-    // FormForWordCloudSearch
+    KeywordsTopChart,
+    keywordsTrend,
+    concernedKeywords
   },
   data() {
     return {
       worddata: [],
-      isLoading: true
+      isLoading: true,
+      topDataList: [],
+      keywordTrendList: [],
+      trendDates: []
     };
   },
   mounted() {
@@ -53,98 +61,53 @@ export default {
       { title: "舆情分析" },
       { title: "关键词追踪" }
     ]);
-    let now = new Date();
-    let today = this.$moment(now)
-      .startOf("day")
-      .toDate();
-    let lastDay = this.$moment(now)
-      .startOf("day")
-      .subtract(100, "days")
-      .toDate();
-    this.getWordsCloud(lastDay, today);
+
+    this.get24HourTopData();
+    this.getKeywordsTrend();
   },
-  methods: {
-    submitSearch(dates) {
-      this.isLoading = true;
-      getWordsCloudData(dates[0], dates[1]).then(re => {
-        this.worddata = re.data.map(item => {
-          return {
-            name: item[0],
-            value: item[1]
-          };
-        });
-        this.myChart.setOption({
-          series: [
-            {
-              data: this.worddata
-            }
-          ]
-        });
-        this.isLoading = false;
+  computed: {
+    ...mapGetters(["currentUser"]),
+    topChartNameList() {
+      return this.topDataList.map(item => {
+        return item.word;
       });
     },
-    getWordsCloud(start, end) {
-      getWordsCloudData(start, end).then(re => {
-        this.worddata = re.data.map(item => {
-          return {
-            name: item[0],
-            value: item[1]
-          };
-        });
-        // 基于准备好的dom，初始化echarts实例
-        this.myChart = this.$echarts.init(this.$refs.chart);
-        // 绘制图表
-        this.myChart.setOption({
-          title: {
-            //text: "热爱祖国",
-            x: "center"
-          },
-          backgroundColor: "#fff",
-          // tooltip: {
-          //   pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
-          // },
-          series: [
-            {
-              type: "wordCloud",
-              //用来调整词之间的距离
-              gridSize: 10,
-              //用来调整字的大小范围
-              // Text size range which the value in data will be mapped to.
-              // Default to have minimum 12px and maximum 60px size.
-              sizeRange: [14, 60],
-              // Text rotation range and step in degree. Text will be rotated randomly in range [-90,                                                                             90] by rotationStep 45
-              //用来调整词的旋转方向，，[0,0]--代表着没有角度，也就是词为水平方向，需要设置角度参考注释内容
-              // rotationRange: [-45, 0, 45, 90],
-              // rotationRange: [ 0,90],
-              rotationRange: [0, 0],
-              //随机生成字体颜色
-              textStyle: {
-                color: function() {
-                  return (
-                    "rgb(" +
-                    Math.round(Math.random() * 255) +
-                    ", " +
-                    Math.round(Math.random() * 255) +
-                    ", " +
-                    Math.round(Math.random() * 255) +
-                    ")"
-                  );
-                }
-              },
-              //位置相关设置
-              left: "center",
-              top: "center",
-              right: null,
-              bottom: null,
-              width: "200%",
-              height: "200%",
-              //数据
-              data: this.worddata
-            }
-          ]
-        });
-        this.isLoading = false;
+    topChartValueList() {
+      return this.topDataList.map(item => {
+        return item.count;
       });
+    }
+  },
+  methods: {
+    //获取用户自定义关键词最新舆情数据
+    get24HourTopData() {
+      getConcernedData(this.currentUser._id).then(re => {
+        this.topDataList = re.data;
+      });
+    },
+
+    //获取用户自定义关键词舆情发展趋势
+    getKeywordsTrend(startDate, endDate) {
+      getConcernedKeywordTrend(this.currentUser._id, startDate, endDate).then(
+        re => {
+          this.trendDates = re.data.allDates;
+          const trendData = re.data.keywordFrequency.map(item => {
+            return {
+              name: item.word,
+              data: item.data.map(iitem => iitem.count)
+            };
+          });
+          this.keywordTrendList = trendData;
+        }
+      );
+    },
+
+    //根据日期查询趋势
+    searchTrendByDate(dates) {
+      const dateList = dates.map(date => {
+        return this.$moment(date).toDate();
+      });
+      this.getKeywordsTrend(...dateList);
     }
   }
 };

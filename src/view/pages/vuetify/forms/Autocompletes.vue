@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Custom filter on autocomplete'">
+        <k-t-code-preview v-bind:title="'Custom filter on autocomplete'">
           <template v-slot:preview>
             <p>
               The <code>filter</code> prop can be used to filter each individual
@@ -93,9 +93,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Advanced slots'">
+        <k-t-code-preview v-bind:title="'Advanced slots'">
           <template v-slot:preview>
             <p>
               The <code>v-autocomplete</code> component is extremely flexible
@@ -184,11 +184,11 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Slots'">
+        <k-t-code-preview v-bind:title="'Slots'">
           <template v-slot:preview>
             <v-card color="blue-grey darken-1" dark :loading="isUpdating">
               <template v-slot:progress>
@@ -333,9 +333,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'State selector'">
+        <k-t-code-preview v-bind:title="'State selector'">
           <template v-slot:preview>
             <v-card>
               <v-card-title
@@ -383,7 +383,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

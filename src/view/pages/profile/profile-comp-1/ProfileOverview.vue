@@ -2,14 +2,14 @@
   <div>
     <div class="row">
       <div class="col-lg-6">
-        <KTWidget2></KTWidget2>
+        <k-t-widget2></k-t-widget2>
       </div>
       <div class="col-lg-6">
-        <KTWidget14></KTWidget14>
+        <k-t-widget14></k-t-widget14>
       </div>
     </div>
     <div class="card card-custom gutter-b">
-      <KTWidget3></KTWidget3>
+      <k-t-widget3></k-t-widget3>
     </div>
   </div>
 </template>

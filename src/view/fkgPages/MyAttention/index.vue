@@ -53,7 +53,7 @@
     </v-row>
     <div class="row">
       <div class="col-lg-3">
-        <AsideMenu
+        <aside-menu
           v-if="menuData"
           :menuData="menuData"
           v-on:gotoMainItem="changeForm"
@@ -62,14 +62,14 @@
       <div class="col-lg-9">
         <div class="row">
           <div class="col-lg-12">
-            <FormForMyAttentionSearch v-if="activeForm == 0" />
-            <FormForLawSearch v-if="activeForm == 1" />
-            <FormForPunishmentSearch v-if="activeForm == 2" />
-            <FormForEventsSearch v-if="activeForm == 3" />
-            <FormForEventsSearch v-if="activeForm == 4" />
+            <form-for-my-attention-search v-if="activeForm == 0" />
+            <form-for-law-search v-if="activeForm == 1" />
+            <form-for-punishment-search v-if="activeForm == 2" />
+            <form-for-events-search v-if="activeForm == 3" />
+            <form-for-events-search v-if="activeForm == 4" />
           </div>
           <div class="col-lg-12 res-list">
-            <PublishList></PublishList>
+            <publish-list></publish-list>
           </div>
         </div>
       </div>

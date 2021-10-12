@@ -2,20 +2,20 @@
   <div>
     <div class="row">
       <div class="col-lg-6">
-        <PieChart :dataObj="pieDataObj" title="法律位阶" />
+        <pie-chart :dataObj="pieDataObj" title="法律位阶" />
       </div>
       <div class="col-lg-6">
-        <PieChart :dataObj="warningPieData" title="预警风险" />
+        <pie-chart :dataObj="warningPieData" title="预警风险" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-12">
-        <PublishList
+        <publish-list
           tableTitle="最新法规"
           :tableHead="tableHead"
           :dataList="recentLawList"
-        ></PublishList>
+        ></publish-list>
       </div>
     </div>
   </div>

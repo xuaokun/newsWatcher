@@ -7,7 +7,7 @@
         Sales Stat
       </h3>
       <div class="card-toolbar">
-        <Dropdown1></Dropdown1>
+        <dropdown1></dropdown1>
       </div>
     </div>
     <!--end::Header-->

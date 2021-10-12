@@ -1,5 +1,5 @@
 <template>
-  <KTCard ref="preview" v-bind:title="title" v-bind:example="true">
+  <k-t-card ref="preview" v-bind:title="title" v-bind:example="true">
     <template v-slot:title v-if="hasTitleSlot">
       <h3 class="card-title">
         <slot name="title"></slot>
@@ -107,7 +107,7 @@
 
       <slot name="preview"></slot>
     </template>
-  </KTCard>
+  </k-t-card>
 </template>
 
 <script>

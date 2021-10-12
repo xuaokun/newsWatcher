@@ -5,7 +5,7 @@
       <h3 class="card-title font-weight-bolder text-dark">Market Leaders</h3>
       <div class="card-toolbar">
         <div class="dropdown dropdown-inline">
-          <Dropdown2></Dropdown2>
+          <dropdown2></dropdown2>
         </div>
       </div>
     </div>

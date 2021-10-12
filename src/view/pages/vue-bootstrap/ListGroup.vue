@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'List group'">
+        <k-t-code-preview v-bind:title="'List group'">
           <template v-slot:preview>
             <b-list-group>
               <b-list-group-item>Cras justo odio</b-list-group-item>
@@ -40,9 +40,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Active items'">
+        <k-t-code-preview v-bind:title="'Active items'">
           <template v-slot:preview>
             <p>
               Set the <code>active</code> prop on a
@@ -62,9 +62,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Disabled items'">
+        <k-t-code-preview v-bind:title="'Disabled items'">
           <template v-slot:preview>
             <p>
               Set the <code>disabled</code> prop on a
@@ -84,11 +84,11 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Actionable list group items'">
+        <k-t-code-preview v-bind:title="'Actionable list group items'">
           <template v-slot:preview>
             <p>
               Turn a <code>&lt;b-list-group-item&gt;</code> into an actionable
@@ -114,9 +114,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Contextual variants'">
+        <k-t-code-preview v-bind:title="'Contextual variants'">
           <template v-slot:preview>
             <p>
               Use contextual variants to style list items with a stateful
@@ -155,9 +155,9 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'With badges'">
+        <k-t-code-preview v-bind:title="'With badges'">
           <template v-slot:preview>
             <p>
               Add <code>badges</code> to any list group item to show unread
@@ -194,7 +194,7 @@
           <template v-slot:html>
             {{ code6.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
     <div class="card-header border-0">
       <h3 class="card-title font-weight-bolder text-dark">Trends</h3>
       <div class="card-toolbar">
-        <Dropdown5></Dropdown5>
+        <dropdown5></dropdown5>
       </div>
     </div>
     <!--end::Header-->

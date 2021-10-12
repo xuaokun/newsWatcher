@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Button group'">
+        <k-t-code-preview v-bind:title="'Button group'">
           <template v-slot:preview>
             <p>
               Default button group and button group using contextual variants.
@@ -48,9 +48,9 @@
           <template v-slot:html>
             {{ html1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Sizing'">
+        <k-t-code-preview v-bind:title="'Sizing'">
           <template v-slot:preview>
             <p>
               Set the size prop to <code>lg</code> or <code>sm</code> to render
@@ -82,11 +82,11 @@
           <template v-slot:html>
             {{ html2 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Vertical variation'">
+        <k-t-code-preview v-bind:title="'Vertical variation'">
           <template v-slot:preview>
             <p>
               Make a set of buttons appear vertically stacked rather than
@@ -104,9 +104,9 @@
           <template v-slot:html>
             {{ html3 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Dropdown menu support'">
+        <k-t-code-preview v-bind:title="'Dropdown menu support'">
           <template v-slot:preview>
             <p>
               Add <code>&lt;b-dropdown&gt;</code> menus directly inside your
@@ -134,7 +134,7 @@
           <template v-slot:html>
             {{ html4 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

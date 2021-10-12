@@ -7,7 +7,7 @@
       <div class="card card-custom card-stretch">
         <div class="card-body pt-4">
           <div class="d-flex justify-content-end">
-            <KTDropdown2></KTDropdown2>
+            <k-t-dropdown2></k-t-dropdown2>
           </div>
           <div class="d-flex align-items-center">
             <div
@@ -223,23 +223,23 @@
     <div class="flex-row-fluid ml-lg-8">
       <b-tabs class="hide-tabs" v-model="tabIndex">
         <b-tab active>
-          <KTProfileOverview></KTProfileOverview>
+          <k-t-profile-overview></k-t-profile-overview>
         </b-tab>
 
         <b-tab>
-          <KTPersonalInformation></KTPersonalInformation>
+          <k-t-personal-information></k-t-personal-information>
         </b-tab>
 
         <b-tab>
-          <KTAccountInformation></KTAccountInformation>
+          <k-t-account-information></k-t-account-information>
         </b-tab>
 
         <b-tab>
-          <KTChangePassword></KTChangePassword>
+          <k-t-change-password></k-t-change-password>
         </b-tab>
 
         <b-tab>
-          <KTEmailSettings></KTEmailSettings>
+          <k-t-email-settings></k-t-email-settings>
         </b-tab>
       </b-tabs>
     </div>

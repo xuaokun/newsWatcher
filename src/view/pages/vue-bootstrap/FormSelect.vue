@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Form Select'">
+        <k-t-code-preview v-bind:title="'Form Select'">
           <template v-slot:preview>
             <p>
               Generate your select options by passing an array or object to the
@@ -60,9 +60,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Options and optgroups'">
+        <k-t-code-preview v-bind:title="'Options and optgroups'">
           <template v-slot:preview>
             <div>
               <b-form-select v-model="code2.selected" class="mb-3">
@@ -90,10 +90,10 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Changing the option field names'">
+        <k-t-code-preview v-bind:title="'Changing the option field names'">
           <template v-slot:preview>
             <p>
               If you want to customize the field property names (for example
@@ -123,9 +123,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Value in single mode'">
+        <k-t-code-preview v-bind:title="'Value in single mode'">
           <template v-slot:preview>
             <p>
               In non <code>multiple</code> mode,
@@ -148,7 +148,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
   <div class="card card-custom">
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
-      <h3 class="card-title font-weight-bolder">关联企业处罚状况</h3>
+      <h3 class="card-title font-weight-bolder">{{ title }}</h3>
       <div class="card-toolbar">
         <!-- <Dropdown3></Dropdown3> -->
       </div>
@@ -18,13 +18,6 @@
           type="bar"
         ></apexchart>
       </div>
-      <!-- <div class="pt-5">
-        <p class="text-center font-weight-normal font-size-lg pb-7">
-          Notes: Current sprint requires stakeholders <br />to approve newly
-          amended policies
-        </p>
-        <a href="#" class="btn btn-success btn-shadow-hover font-weight-bolder w-100 py-3">Generate Report</a>
-      </div> -->
     </div>
     <!--end::Body-->
   </div>
@@ -115,6 +108,10 @@ export default {
     // Dropdown3
   },
   props: {
+    title: {
+      type: String,
+      default: "图表"
+    },
     dataList: {
       type: Array,
       default: () => [1, 2, 3]
@@ -129,7 +126,7 @@ export default {
     series: function() {
       return [
         {
-          data: this.dataList
+          data: this.dataList.slice(0, 10)
         }
       ];
     },

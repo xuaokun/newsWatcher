@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Textual and Value inputs'">
+        <k-t-code-preview v-bind:title="'Textual and Value inputs'">
           <template v-slot:preview>
             <div>
               <b-form-input
@@ -41,9 +41,9 @@
           <template v-slot:js>
             {{ js1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Input type'">
+        <k-t-code-preview v-bind:title="'Input type'">
           <template v-slot:preview>
             <p>
               <code>&lt;b-form-input&gt;</code> defaults to a text input, but
@@ -76,10 +76,10 @@
           <template v-slot:js>
             {{ js2 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Control sizing'">
+        <k-t-code-preview v-bind:title="'Control sizing'">
           <template v-slot:preview>
             <p>
               Set heights using the <code>size</code> prop to <code>sm</code> or
@@ -128,9 +128,9 @@
           <template v-slot:html>
             {{ html3 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Contextual states'">
+        <k-t-code-preview v-bind:title="'Contextual states'">
           <template v-slot:preview>
             <p>
               Bootstrap includes validation styles for <code>valid</code> and
@@ -180,9 +180,9 @@
           <template v-slot:html>
             {{ html4 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Contextual states Live Example'">
+        <k-t-code-preview v-bind:title="'Contextual states Live Example'">
           <template v-slot:preview>
             <div role="group">
               <label for="input-live">Name:</label>
@@ -210,7 +210,7 @@
           <template v-slot:js>
             {{ js5 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

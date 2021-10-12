@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Validation with submit & clear'">
+        <k-t-code-preview v-bind:title="'Validation with submit & clear'">
           <template v-slot:preview>
             <p>
               The <code>v-form</code> component has
@@ -95,7 +95,7 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Responsive images'">
+        <k-t-code-preview v-bind:title="'Responsive images'">
           <template v-slot:preview>
             <p>
               Images in BootstrapVue can be made responsive with the
@@ -47,9 +47,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Fluid grow'">
+        <k-t-code-preview v-bind:title="'Fluid grow'">
           <template v-slot:preview>
             <p>
               To make a fluid image that will grow to fill the width of its
@@ -75,9 +75,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Image thumbnails'">
+        <k-t-code-preview v-bind:title="'Image thumbnails'">
           <template v-slot:preview>
             <p>
               You can use prop <code>thumbnail</code> to give an image a rounded
@@ -115,9 +115,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Aligning images'">
+        <k-t-code-preview v-bind:title="'Aligning images'">
           <template v-slot:preview>
             <p>
               Align images with the boolean props <code>left</code> (floats
@@ -142,9 +142,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Lazy loaded images'">
+        <k-t-code-preview v-bind:title="'Lazy loaded images'">
           <template v-slot:preview>
             <p>
               Use our complementary <code>&lt;b-img-lazy&gt;</code> image
@@ -201,7 +201,7 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

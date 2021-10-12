@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Badges'">
+        <k-t-code-preview v-bind:title="'Badges'">
           <template v-slot:preview>
             <p>
               Badges scale to match the size of the immediate parent element by
@@ -57,9 +57,9 @@
           <template v-slot:html>
             {{ html1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Actionable badges'">
+        <k-t-code-preview v-bind:title="'Actionable badges'">
           <template v-slot:preview>
             <p>
               Quickly provide actionable badges with hover and focus states by
@@ -82,10 +82,10 @@
           <template v-slot:html>
             {{ html4 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Contextual variations'">
+        <k-t-code-preview v-bind:title="'Contextual variations'">
           <template v-slot:preview>
             <p>
               Add any of the following <code>variants</code> via the variant
@@ -108,9 +108,9 @@
           <template v-slot:html>
             {{ html2 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Pill badges'">
+        <k-t-code-preview v-bind:title="'Pill badges'">
           <template v-slot:preview>
             <p>
               Use the <code>pill</code> prop to make badges more rounded (with a
@@ -131,7 +131,7 @@
           <template v-slot:html>
             {{ html3 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

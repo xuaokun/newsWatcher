@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Spinners'">
+        <k-t-code-preview v-bind:title="'Spinners'">
           <template v-slot:preview>
             <p>
               Spinners can be placed just about anywhere, including inside
@@ -65,9 +65,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Flex'">
+        <k-t-code-preview v-bind:title="'Flex'">
           <template v-slot:preview>
             <p>Using flex utility classes</p>
             <div>
@@ -84,11 +84,11 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Text align'">
+        <k-t-code-preview v-bind:title="'Text align'">
           <template v-slot:preview>
             <p>Using text alignment utility classes</p>
             <div class="text-center">
@@ -98,9 +98,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Spinners in buttons'">
+        <k-t-code-preview v-bind:title="'Spinners in buttons'">
           <template v-slot:preview>
             <p>
               Use spinners within buttons to indicate an action is currently
@@ -121,11 +121,11 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Spinner color variants'">
+        <k-t-code-preview v-bind:title="'Spinner color variants'">
           <template v-slot:preview>
             <p>
               Spinners use <code>currentColor</code> for their color, meaning it
@@ -159,7 +159,7 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

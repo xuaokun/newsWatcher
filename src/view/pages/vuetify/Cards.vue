@@ -29,7 +29,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Outlined cards'">
+        <k-t-code-preview v-bind:title="'Outlined cards'">
           <template v-slot:preview>
             <v-card class="mx-auto" max-width="344" outlined>
               <v-list-item three-line>
@@ -60,9 +60,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Information card'">
+        <k-t-code-preview v-bind:title="'Information card'">
           <template v-slot:preview>
             <v-card class="mx-auto" max-width="344">
               <v-card-text>
@@ -86,9 +86,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Grids'">
+        <k-t-code-preview v-bind:title="'Grids'">
           <template v-slot:preview>
             <v-card class="mx-auto" max-width="500">
               <v-system-bar color="indigo darken-2" dark>
@@ -157,9 +157,9 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Twitter card'">
+        <k-t-code-preview v-bind:title="'Twitter card'">
           <template v-slot:preview>
             <p>
               The <code>v-card</code> component has multiple children components
@@ -208,11 +208,11 @@
           <template v-slot:html>
             {{ code7.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Intermediate'">
+        <k-t-code-preview v-bind:title="'Intermediate'">
           <template v-slot:preview>
             <v-card class="d-inline-block mx-auto">
               <v-container>
@@ -256,9 +256,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Media with text'">
+        <k-t-code-preview v-bind:title="'Media with text'">
           <template v-slot:preview>
             <v-card class="mx-auto" max-width="400">
               <v-img
@@ -291,9 +291,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Horizontal Cards'">
+        <k-t-code-preview v-bind:title="'Horizontal Cards'">
           <template v-slot:preview>
             <p>
               Using <code>v-flex</code>, you can create customized horizontal
@@ -373,7 +373,7 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

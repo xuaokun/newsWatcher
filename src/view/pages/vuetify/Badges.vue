@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Tabs'">
+        <k-t-code-preview v-bind:title="'Tabs'">
           <template v-slot:preview>
             <p>
               Badges help convey information to the user in a variety of ways.
@@ -57,9 +57,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Dynamic notifications'">
+        <k-t-code-preview v-bind:title="'Dynamic notifications'">
           <template v-slot:preview>
             <p>
               You can incorporate badges with dynamic content to make things
@@ -94,11 +94,11 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Show-on-hover'">
+        <k-t-code-preview v-bind:title="'Show-on-hover'">
           <template v-slot:preview>
             <p>
               You can do many things with visibility control, for example, show
@@ -126,9 +126,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Customization options'">
+        <k-t-code-preview v-bind:title="'Customization options'">
           <template v-slot:preview>
             <p>
               The <code>v-badge</code> component is flexible and can be used in
@@ -178,7 +178,7 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Tooltips'">
+        <k-t-code-preview v-bind:title="'Tooltips'">
           <template v-slot:preview>
             <div class="text-center my-3">
               <b-button
@@ -50,9 +50,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Disabled elements'">
+        <k-t-code-preview v-bind:title="'Disabled elements'">
           <template v-slot:preview>
             <p>
               Elements with the <code>disabled</code> attribute aren't
@@ -79,9 +79,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             <code>&lt;b-tooltip&gt;</code> component usage
           </template>
@@ -123,11 +123,13 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Programmatically show and hide tooltip'">
+        <k-t-code-preview
+          v-bind:title="'Programmatically show and hide tooltip'"
+        >
           <template v-slot:preview>
             <p>
               You can manually control the visibility of a tooltip via the
@@ -158,9 +160,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Programmatic control'">
+        <k-t-code-preview v-bind:title="'Programmatic control'">
           <template v-slot:preview>
             <p>
               Programmatic control can also be affected by submitting
@@ -190,9 +192,9 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             <code>v-b-tooltip</code> directive usage
           </template>
@@ -227,7 +229,7 @@
           <template v-slot:html>
             {{ code6.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

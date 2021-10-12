@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Link'">
+        <k-t-code-preview v-bind:title="'Link'">
           <template v-slot:preview>
             <p>
               <code>&lt;b-link&gt;</code> is the building block for most
@@ -39,10 +39,10 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Link disabled state'">
+        <k-t-code-preview v-bind:title="'Link disabled state'">
           <template v-slot:preview>
             <p>
               Disable link functionality by setting the
@@ -55,7 +55,7 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

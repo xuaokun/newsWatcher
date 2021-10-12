@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Dense mode'">
+        <k-t-code-preview v-bind:title="'Dense mode'">
           <template v-slot:preview>
             <p>
               Dense mode provides more compact layout with decreased heights of
@@ -39,9 +39,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Selectable'">
+        <k-t-code-preview v-bind:title="'Selectable'">
           <template v-slot:preview>
             <p>You can easily select treeview nodes and children.</p>
             <v-treeview selectable :items="code3.items"></v-treeview>
@@ -52,9 +52,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Searching a directory'">
+        <k-t-code-preview v-bind:title="'Searching a directory'">
           <template v-slot:preview>
             <v-card class="mx-auto" max-width="500">
               <v-sheet class="pa-4 primary lighten-2">
@@ -102,9 +102,9 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Custom selectable icons'">
+        <k-t-code-preview v-bind:title="'Custom selectable icons'">
           <template v-slot:preview>
             <p>
               Customize the on, off and indeterminate icons for your selectable
@@ -188,11 +188,11 @@
           <template v-slot:js>
             {{ code7.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Checkbox color'">
+        <k-t-code-preview v-bind:title="'Checkbox color'">
           <template v-slot:preview>
             <p>You can control the color of the selected node checkbox.</p>
             <v-treeview
@@ -207,9 +207,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Slots'">
+        <k-t-code-preview v-bind:title="'Slots'">
           <template v-slot:preview>
             <p>
               Using slots we are able to create an intuitive file explorer.
@@ -240,9 +240,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Async items'">
+        <k-t-code-preview v-bind:title="'Async items'">
           <template v-slot:preview>
             <v-card>
               <v-card-title class="indigo white--text headline">
@@ -339,7 +339,7 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

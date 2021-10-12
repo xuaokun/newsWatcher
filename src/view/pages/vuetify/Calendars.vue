@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Weekly'">
+        <k-t-code-preview v-bind:title="'Weekly'">
           <template v-slot:preview>
             <p>
               This is an example of an event calendar with all-day and timed
@@ -55,13 +55,13 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Daily'">
+        <k-t-code-preview v-bind:title="'Daily'">
           <template v-slot:preview>
             <p>
               This is an example of calendar with content in each interval slot
@@ -88,13 +88,13 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Slots'">
+        <k-t-code-preview v-bind:title="'Slots'">
           <template v-slot:preview>
             <p>
               Slots allow you to define the content for each day, time interval
@@ -134,13 +134,13 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Events'">
+        <k-t-code-preview v-bind:title="'Events'">
           <template v-slot:preview>
             <p>
               This is an example of a planner with additional event handlers and
@@ -250,7 +250,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

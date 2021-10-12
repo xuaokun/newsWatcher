@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Individual radios'">
+        <k-t-code-preview v-bind:title="'Individual radios'">
           <template v-slot:preview>
             <div>
               <b-form-group label="Individual radios">
@@ -59,9 +59,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Grouped radios'">
+        <k-t-code-preview v-bind:title="'Grouped radios'">
           <template v-slot:preview>
             <p>
               The individual radio inputs in
@@ -119,9 +119,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Inline or stacked radios'">
+        <k-t-code-preview v-bind:title="'Inline or stacked radios'">
           <template v-slot:preview>
             <p>
               By default <code>&lt;b-form-radio-group&gt;</code> generates
@@ -166,10 +166,10 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Control sizing'">
+        <k-t-code-preview v-bind:title="'Control sizing'">
           <template v-slot:preview>
             <p>
               Use the <code>size</code> prop to control the size of the radio.
@@ -185,9 +185,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Button style radios'">
+        <k-t-code-preview v-bind:title="'Button style radios'">
           <template v-slot:preview>
             <p>
               Render radios with the look of buttons by setting the prop
@@ -241,7 +241,7 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

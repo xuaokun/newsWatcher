@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Small dots'">
+        <k-t-code-preview v-bind:title="'Small dots'">
           <template v-slot:preview>
             <p>
               The <code>small</code> prop allows alternate styles to provide a
@@ -154,9 +154,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Icon dots'">
+        <k-t-code-preview v-bind:title="'Icon dots'">
           <template v-slot:preview>
             <p>
               Conditionally use icons within the <code>v-timeline-item</code>'s
@@ -193,9 +193,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Avatar dots'">
+        <k-t-code-preview v-bind:title="'Avatar dots'">
           <template v-slot:preview>
             <p>
               Insert avatars into dots with use of the <code>icon</code> slot
@@ -226,9 +226,9 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Advanced'">
+        <k-t-code-preview v-bind:title="'Advanced'">
           <template v-slot:preview>
             <p>
               Modular components allow you to create highly customized solutions
@@ -357,12 +357,12 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="row">
         <div class="col-md-6">
-          <KTCodePreview v-bind:title="'Colored dots'">
+          <k-t-code-preview v-bind:title="'Colored dots'">
             <template v-slot:preview>
               <p>
                 Colored dots create visual breakpoints that make your timelines
@@ -475,11 +475,11 @@
             <template v-slot:html>
               {{ code4.html }}
             </template>
-          </KTCodePreview>
+          </k-t-code-preview>
         </div>
 
         <div class="col-md-6">
-          <KTCodePreview v-bind:title="'Dense alert'">
+          <k-t-code-preview v-bind:title="'Dense alert'">
             <template v-slot:preview>
               <p>
                 <code>dense</code> timelines position all content to the right.
@@ -534,7 +534,7 @@
             <template v-slot:js>
               {{ code3.js }}
             </template>
-          </KTCodePreview>
+          </k-t-code-preview>
         </div>
       </div>
     </div>

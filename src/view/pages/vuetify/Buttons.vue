@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Flat'">
+        <k-t-code-preview v-bind:title="'Flat'">
           <template v-slot:preview>
             <p>
               Flat buttons have no box shadow and no background. Only on hover
@@ -82,9 +82,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Button Dropdown Variants'">
+        <k-t-code-preview v-bind:title="'Button Dropdown Variants'">
           <template v-slot:preview>
             <p>Button dropdowns are regular selects with additional styling.</p>
             <v-container id="dropdown-example">
@@ -132,9 +132,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Floating'">
+        <k-t-code-preview v-bind:title="'Floating'">
           <template v-slot:preview>
             <p>Floating buttons are rounded and usually contain an icon.</p>
             <div class="text-center">
@@ -166,9 +166,9 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Outlined'">
+        <k-t-code-preview v-bind:title="'Outlined'">
           <template v-slot:preview>
             <div class="text-center">
               <v-btn class="ma-2" outlined color="indigo"
@@ -185,9 +185,9 @@
           <template v-slot:html>
             {{ code7.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Tile'">
+        <k-t-code-preview v-bind:title="'Tile'">
           <template v-slot:preview>
             <div class="text-center">
               <v-btn class="ma-2" tile color="indigo" dark>Tile Button</v-btn>
@@ -202,9 +202,9 @@
           <template v-slot:html>
             {{ code9.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Rounded'">
+        <k-t-code-preview v-bind:title="'Rounded'">
           <template v-slot:preview>
             <div class="text-center">
               <v-btn rounded color="primary" dark>Rounded Button</v-btn>
@@ -213,11 +213,11 @@
           <template v-slot:html>
             {{ code8.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Raised'">
+        <k-t-code-preview v-bind:title="'Raised'">
           <template v-slot:preview>
             <p>
               Raised buttons have a box shadow that increases when clicked. This
@@ -271,9 +271,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Icon'">
+        <k-t-code-preview v-bind:title="'Icon'">
           <template v-slot:preview>
             <p>Icons can be used for the primary content of a button.</p>
             <v-card flat>
@@ -345,9 +345,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Sizing'">
+        <k-t-code-preview v-bind:title="'Sizing'">
           <template v-slot:preview>
             <p>
               Buttons can be given different sizing options to fit a multitude
@@ -413,9 +413,9 @@
           <template v-slot:html>
             {{ code6.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Loaders'">
+        <k-t-code-preview v-bind:title="'Loaders'">
           <template v-slot:preview>
             <p>
               Using the loading prop, you can notify a user that there is
@@ -491,7 +491,7 @@
           <template v-slot:js>
             {{ code10.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

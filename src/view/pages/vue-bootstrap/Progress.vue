@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Progress'">
+        <k-t-code-preview v-bind:title="'Progress'">
           <template v-slot:preview>
             <div>
               <b-progress
@@ -59,9 +59,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Labels'">
+        <k-t-code-preview v-bind:title="'Labels'">
           <template v-slot:preview>
             <p>
               Add labels to your progress bars by either enabling
@@ -120,9 +120,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Custom progress label'">
+        <k-t-code-preview v-bind:title="'Custom progress label'">
           <template v-slot:preview>
             <p>
               Need more control over the label? Provide your own label by using
@@ -166,9 +166,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Width and height'">
+        <k-t-code-preview v-bind:title="'Width and height'">
           <template v-slot:preview>
             <div>
               <h5>Default width</h5>
@@ -186,9 +186,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Solid background variants'">
+        <k-t-code-preview v-bind:title="'Solid background variants'">
           <template v-slot:preview>
             <div>
               <div
@@ -213,7 +213,7 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

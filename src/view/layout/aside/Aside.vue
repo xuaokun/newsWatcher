@@ -23,7 +23,7 @@
           class="aside-menu scroll"
           style="max-height: 90vh; position: relative;"
         >
-          <KTMenu></KTMenu>
+          <k-t-menu></k-t-menu>
         </perfect-scrollbar>
       </div>
     </div>
