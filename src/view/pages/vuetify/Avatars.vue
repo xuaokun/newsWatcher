@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Size'">
+        <k-t-code-preview v-bind:title="'Size'">
           <template v-slot:preview>
             <p>
               The <code>size</code> prop allows you to define the height and
@@ -53,9 +53,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Profile Card'">
+        <k-t-code-preview v-bind:title="'Profile Card'">
           <template v-slot:preview>
             <p>
               Using the <code>tile</code> prop, we can create a sleek hard-lined
@@ -88,11 +88,11 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Default slot'">
+        <k-t-code-preview v-bind:title="'Default slot'">
           <template v-slot:preview>
             <p>
               The <code>v-avatar</code> default slot will accept the
@@ -116,9 +116,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Advanced usage'">
+        <k-t-code-preview v-bind:title="'Advanced usage'">
           <template v-slot:preview>
             <p>
               Combining an avatar with other components allows you to build
@@ -196,7 +196,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

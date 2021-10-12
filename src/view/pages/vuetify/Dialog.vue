@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Without activator'">
+        <k-t-code-preview v-bind:title="'Without activator'">
           <template v-slot:preview>
             <v-row justify="center">
               <v-btn color="primary" dark @click.stop="code1.dialog = true">
@@ -75,9 +75,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Scrollable'">
+        <k-t-code-preview v-bind:title="'Scrollable'">
           <template v-slot:preview>
             <v-row justify="center">
               <v-dialog v-model="code3.dialog" width="600px">
@@ -256,9 +256,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Loader'">
+        <k-t-code-preview v-bind:title="'Loader'">
           <template v-slot:preview>
             <p>
               The <code>v-dialog</code> component makes it easy to create a
@@ -299,9 +299,9 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Nested dialogs'">
+        <k-t-code-preview v-bind:title="'Nested dialogs'">
           <template v-slot:preview>
             <p>Dialogs can be nested: you can open one dialog from another.</p>
             <div>
@@ -546,11 +546,11 @@
           <template v-slot:js>
             {{ code7.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Scrollable'">
+        <k-t-code-preview v-bind:title="'Scrollable'">
           <template v-slot:preview>
             <p>Example of a dialog with scrollable content.</p>
             <v-row justify="center">
@@ -611,9 +611,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Form'">
+        <k-t-code-preview v-bind:title="'Form'">
           <template v-slot:preview>
             <p>Just a simple example of a form in a dialog.</p>
             <v-row justify="center">
@@ -711,9 +711,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Fullscreen'">
+        <k-t-code-preview v-bind:title="'Fullscreen'">
           <template v-slot:preview>
             <p>
               Due to limited space, full-screen dialogs may be more appropriate
@@ -814,7 +814,7 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

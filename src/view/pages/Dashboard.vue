@@ -4,55 +4,55 @@
 
     <div class="row">
       <div class="col-xl-4">
-        <MixedWidget1></MixedWidget1>
+        <mixed-widget1></mixed-widget1>
       </div>
       <div class="col-xl-4">
-        <ListWidget3></ListWidget3>
+        <list-widget3></list-widget3>
       </div>
       <div class="col-xl-4">
-        <ListWidget2></ListWidget2>
+        <list-widget2></list-widget2>
       </div>
     </div>
 
     <div class="row">
       <div class="col-xl-4">
-        <ListWidget14></ListWidget14>
+        <list-widget14></list-widget14>
       </div>
       <div class="col-xl-4">
-        <ListWidget15></ListWidget15>
+        <list-widget15></list-widget15>
       </div>
       <div class="col-xl-4">
-        <ListWidget16></ListWidget16>
+        <list-widget16></list-widget16>
       </div>
     </div>
 
     <div class="row">
       <div class="col-xl-6">
-        <ListWidget10></ListWidget10>
+        <list-widget10></list-widget10>
       </div>
       <div class="col-xl-6">
-        <ListWidget4></ListWidget4>
+        <list-widget4></list-widget4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-xl-4">
-        <ListWidget11></ListWidget11>
+        <list-widget11></list-widget11>
       </div>
       <div class="col-xl-4">
-        <ListWidget12></ListWidget12>
+        <list-widget12></list-widget12>
       </div>
       <div class="col-xl-4">
-        <ListWidget13></ListWidget13>
+        <list-widget13></list-widget13>
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-4">
-        <ListWidget5></ListWidget5>
+        <list-widget5></list-widget5>
       </div>
       <div class="col-lg-8">
-        <AdvancedTableWidget2></AdvancedTableWidget2>
+        <advanced-table-widget2></advanced-table-widget2>
       </div>
     </div>
     <!--end::Dashboard-->

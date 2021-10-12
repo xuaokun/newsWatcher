@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Selectable rows '">
+        <k-t-code-preview v-bind:title="'Selectable rows '">
           <template v-slot:preview>
             <p>
               The <code>show-select</code> prop will render a checkbox in the
@@ -61,9 +61,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Grouped rows'">
+        <k-t-code-preview v-bind:title="'Grouped rows'">
           <template v-slot:preview>
             <p>
               Using the <code>group-by</code> and <code>group-desc</code> props
@@ -86,9 +86,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Sort on multiple columns'">
+        <k-t-code-preview v-bind:title="'Sort on multiple columns'">
           <template v-slot:preview>
             <p>
               Using the <code>multi-sort</code> prop will enable you to sort on
@@ -111,9 +111,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Search'">
+        <k-t-code-preview v-bind:title="'Search'">
           <template v-slot:preview>
             <p>
               The data table exposes a <code>search</code> prop that allows you
@@ -144,7 +144,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

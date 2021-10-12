@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Input Groups'">
+        <k-t-code-preview v-bind:title="'Input Groups'">
           <template v-slot:preview>
             <div>
               <!-- Using props -->
@@ -56,9 +56,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Using prepend and append props'">
+        <k-t-code-preview v-bind:title="'Using prepend and append props'">
           <template v-slot:preview>
             <p>
               Values will be internally wrapped by a
@@ -77,10 +77,10 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Using named slots'">
+        <k-t-code-preview v-bind:title="'Using named slots'">
           <template v-slot:preview>
             <p>
               if you want better control over addons, you can use
@@ -105,9 +105,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Using sub-components'">
+        <k-t-code-preview v-bind:title="'Using sub-components'">
           <template v-slot:preview>
             <p>
               Use the <code>&lt;b-input-group-prepend&gt;</code> or
@@ -134,9 +134,9 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview
+        <k-t-code-preview
           v-bind:title="'Custom radio, checkbox, and switch addons'"
         >
           <template v-slot:preview>
@@ -192,7 +192,7 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

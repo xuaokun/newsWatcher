@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Buttons'">
+        <k-t-code-preview v-bind:title="'Buttons'">
           <template v-slot:preview>
             <div>
               <b-button class="mr-3">Button</b-button>
@@ -38,9 +38,9 @@
           <template v-slot:html>
             {{ html1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Element type'">
+        <k-t-code-preview v-bind:title="'Element type'">
           <template v-slot:preview>
             <div>
               <b-button class="mr-3">I am a Button</b-button>
@@ -50,9 +50,9 @@
           <template v-slot:html>
             {{ html2 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Sizing'">
+        <k-t-code-preview v-bind:title="'Sizing'">
           <template v-slot:preview>
             <p>
               Fancy larger or smaller buttons? Specify <code>lg</code> or
@@ -73,10 +73,10 @@
           <template v-slot:html>
             {{ html3 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Pill style'">
+        <k-t-code-preview v-bind:title="'Pill style'">
           <template v-slot:preview>
             <p>
               Prefer buttons with a more rounded-pill style? Just set the prop
@@ -98,9 +98,9 @@
           <template v-slot:html>
             {{ html4 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Squared style'">
+        <k-t-code-preview v-bind:title="'Squared style'">
           <template v-slot:preview>
             <p>
               Prefer buttons with a more square corner style? Just set the prop
@@ -122,9 +122,9 @@
           <template v-slot:html>
             {{ html5 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Pressed state and toggling'">
+        <k-t-code-preview v-bind:title="'Pressed state and toggling'">
           <template v-slot:preview>
             <p>
               Buttons will appear pressed (with a darker background, darker
@@ -171,7 +171,7 @@
           <template v-slot:js>
             {{ js6 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

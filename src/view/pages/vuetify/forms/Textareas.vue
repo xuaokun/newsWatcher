@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Icons'">
+        <k-t-code-preview v-bind:title="'Icons'">
           <template v-slot:preview>
             <p>
               The <code>append-icon</code> and <code>prepend-icon</code> props
@@ -71,9 +71,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Browser autocomplete'">
+        <k-t-code-preview v-bind:title="'Browser autocomplete'">
           <template v-slot:preview>
             <p>
               The <code>autocomplete</code> prop gives you the option to enable
@@ -86,11 +86,11 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Auto grow'">
+        <k-t-code-preview v-bind:title="'Auto grow'">
           <template v-slot:preview>
             <p>
               When using the <code>auto-grow</code> prop, textarea's will
@@ -110,9 +110,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Clearable'">
+        <k-t-code-preview v-bind:title="'Clearable'">
           <template v-slot:preview>
             <p>
               You can clear the text from a <code>v-textarea</code> by using the
@@ -132,7 +132,7 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

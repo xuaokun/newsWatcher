@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="height:calc(60vh);">
-      <RelationGraph
+      <relation-graph
         ref="seeksRelationGraph"
         :options="graphOptions"
         :on-node-click="onNodeClick"

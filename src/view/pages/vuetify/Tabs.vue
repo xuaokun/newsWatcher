@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Vertical Tabs'">
+        <k-t-code-preview v-bind:title="'Vertical Tabs'">
           <template v-slot:preview>
             <p>
               Tabs can be toggled to stack its <code>v-tab</code> components
@@ -149,9 +149,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Right aligned tabs'">
+        <k-t-code-preview v-bind:title="'Right aligned tabs'">
           <template v-slot:preview>
             <p>The <strong>right</strong> prop aligns the tabs to the right.</p>
             <v-card>
@@ -188,9 +188,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'With menu'">
+        <k-t-code-preview v-bind:title="'With menu'">
           <template v-slot:preview>
             <p>
               You can use a menu to hold additional tabs, swapping them out on
@@ -266,11 +266,11 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Icons and text'">
+        <k-t-code-preview v-bind:title="'Icons and text'">
           <template v-slot:preview>
             <p>
               <code>v-tab</code>'s can contain icons as well as text. This
@@ -317,9 +317,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Content'">
+        <k-t-code-preview v-bind:title="'Content'">
           <template v-slot:preview>
             <p>
               It is common to put <code>v-tabs</code> inside the
@@ -367,9 +367,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'With search'">
+        <k-t-code-preview v-bind:title="'With search'">
           <template v-slot:preview>
             <p>
               When changing your <code>v-tab-item</code>, the content area will
@@ -465,7 +465,7 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

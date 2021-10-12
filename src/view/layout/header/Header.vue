@@ -94,7 +94,7 @@
             </li>
           </ul>
         </div>
-        <KTTopbar></KTTopbar>
+        <k-t-topbar></k-t-topbar>
       </div>
     </div>
     <div class="header-bottom">
@@ -190,7 +190,7 @@
                   ref="kt_header_menu"
                   class="header-menu header-menu-mobile header-menu-layout-default"
                 >
-                  <KTMenu :menus0="menus0"></KTMenu>
+                  <k-t-menu :menus0="menus0"></k-t-menu>
                 </div>
                 <!--end::Menu-->
               </div>
@@ -202,7 +202,7 @@
                 ref="kt_header_menu"
                 class="header-menu header-menu-mobile header-menu-layout-default"
               >
-                <KTMenu :menus="menus1"></KTMenu>
+                <k-t-menu :menus="menus1"></k-t-menu>
               </div>
             </b-tab>
             <b-tab class="tab-pane p-5 justify-content-between">
@@ -211,7 +211,7 @@
                 ref="kt_header_menu"
                 class="header-menu header-menu-mobile header-menu-layout-default"
               >
-                <KTMenu :menus="menus2"></KTMenu>
+                <k-t-menu :menus="menus2"></k-t-menu>
               </div>
             </b-tab>
             <b-tab class="tab-pane p-5 justify-content-between">
@@ -220,7 +220,7 @@
                 ref="kt_header_menu"
                 class="header-menu header-menu-mobile header-menu-layout-default"
               >
-                <KTMenu :menus="menus3"></KTMenu>
+                <k-t-menu :menus="menus3"></k-t-menu>
               </div>
             </b-tab>
             <b-tab class="tab-pane p-5 justify-content-between">
@@ -229,7 +229,7 @@
                 ref="kt_header_menu"
                 class="header-menu header-menu-mobile header-menu-layout-default"
               >
-                <KTMenu :menus="menus4"></KTMenu>
+                <k-t-menu :menus="menus4"></k-t-menu>
               </div>
             </b-tab>
             <b-tab class="tab-pane p-5 justify-content-between">
@@ -238,7 +238,7 @@
                 ref="kt_header_menu"
                 class="header-menu header-menu-mobile header-menu-layout-default"
               >
-                <KTMenu :menus="menus5"></KTMenu>
+                <k-t-menu :menus="menus5"></k-t-menu>
               </div>
             </b-tab>
           </b-tabs>
@@ -304,6 +304,10 @@ export default {
         {
           menuName: "舆情热点",
           url: "/newswatcher/wordscloud"
+        },
+        {
+          menuName: "关键词追踪",
+          url: "/newswatcher/keywordstracing"
         }
       ]
     };

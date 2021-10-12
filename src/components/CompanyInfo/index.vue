@@ -251,10 +251,10 @@
     <!--begin::Row-->
     <div class="row">
       <div class="col-lg-8">
-        <Widget2></Widget2>
+        <widget2></widget2>
       </div>
       <div class="col-lg-4">
-        <Widget13></Widget13>
+        <widget13></widget13>
       </div>
     </div>
     <!--end::Row-->
@@ -262,10 +262,10 @@
     <!--begin::Row-->
     <div class="row">
       <div class="col-lg-6">
-        <Widget3></Widget3>
+        <widget3></widget3>
       </div>
       <div class="col-lg-6">
-        <Widget15></Widget15>
+        <widget15></widget15>
       </div>
     </div>
     <!--end::Row-->

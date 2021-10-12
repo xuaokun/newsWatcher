@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Navbar'">
+        <k-t-code-preview v-bind:title="'Navbar'">
           <template v-slot:preview>
             <div>
               <b-navbar toggleable="lg" type="dark" variant="info">
@@ -77,9 +77,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             <code>&lt;b-nav-text&gt;</code>
           </template>
@@ -106,9 +106,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             <code>&lt;b-nav-item-dropdown&gt;</code>
           </template>
@@ -146,9 +146,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             <code>&lt;b-nav-form&gt;</code>
           </template>
@@ -177,7 +177,7 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

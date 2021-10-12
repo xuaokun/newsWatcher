@@ -2,7 +2,7 @@
  * @Description:
  * @Author: akxu
  * @Date: 2021-07-30 19:37:55
- * @LastEditTime: 2021-10-06 15:13:38
+ * @LastEditTime: 2021-10-06 21:58:31
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -68,7 +68,11 @@ ApiService.init();
 
 router.beforeEach((to, from, next) => {
   // Ensure we checked auth before each page load.
-  Promise.all([store.dispatch(VERIFY_AUTH)]).then(next);
+  Promise.all([store.dispatch(VERIFY_AUTH)])
+    .then(next)
+    .catch(() => {
+      next({ path: "/login" });
+    });
 
   // reset config to initial state
   store.dispatch(RESET_LAYOUT_CONFIG);

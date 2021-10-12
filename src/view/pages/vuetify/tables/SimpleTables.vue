@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Fixed height and fixed header'">
+        <k-t-code-preview v-bind:title="'Fixed height and fixed header'">
           <template v-slot:preview>
             <p>
               Use the <code>fixed-header</code> prop together with the
@@ -58,11 +58,11 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Dense'">
+        <k-t-code-preview v-bind:title="'Dense'">
           <template v-slot:preview>
             <v-simple-table dense>
               <template v-slot:default>
@@ -87,7 +87,7 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

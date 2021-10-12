@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Form File Input'">
+        <k-t-code-preview v-bind:title="'Form File Input'">
           <template v-slot:preview>
             <div>
               <!-- Styled -->
@@ -51,9 +51,9 @@
           <template v-slot:js>
             {{ js1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'File name formatting via scoped slot'">
+        <k-t-code-preview v-bind:title="'File name formatting via scoped slot'">
           <template v-slot:preview>
             <p>
               Alternatively, you can use the scoped slot
@@ -72,10 +72,10 @@
           <template v-slot:html>
             {{ html3 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Control sizing'">
+        <k-t-code-preview v-bind:title="'Control sizing'">
           <template v-slot:preview>
             <p>
               Use the <code>size</code> prop to control the visual size of the
@@ -115,7 +115,7 @@
           <template v-slot:html>
             {{ html2 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

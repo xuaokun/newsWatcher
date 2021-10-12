@@ -53,7 +53,7 @@
     </v-row>
     <div class="row">
       <div class="col-lg-3">
-        <AsideMenu
+        <aside-menu
           v-if="menuData"
           :menuData="menuData"
           v-on:gotoItem="searchByMenuSelect"
@@ -62,19 +62,19 @@
       <div class="col-lg-9">
         <div class="row">
           <div class="col-lg-12">
-            <FormForPunishmentSearch
+            <form-for-punishment-search
               v-on:gotoSearch="searchByCondition"
               :initData="params"
             />
           </div>
           <div class="col-lg-12 res-list">
-            <PublishList
+            <publish-list
               :pageLength="pageLength"
               v-on:getPageData="getPageData"
               :dataList="resultLawInfoList"
               :tableHead="tableHead"
               tableTitle="处罚列表"
-            ></PublishList>
+            ></publish-list>
           </div>
         </div>
       </div>

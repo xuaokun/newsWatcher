@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Basic usage'">
+        <k-t-code-preview v-bind:title="'Basic usage'">
           <template v-slot:preview>
             <div>
               <b-table striped hover :items="code1.items"></b-table>
@@ -40,9 +40,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Using variants for table cells'">
+        <k-t-code-preview v-bind:title="'Using variants for table cells'">
           <template v-slot:preview>
             <p>
               Record data may also have additional special reserved name keys
@@ -61,9 +61,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Fields as a simple array'">
+        <k-t-code-preview v-bind:title="'Fields as a simple array'">
           <template v-slot:preview>
             <p>
               Fields can be a simple array, for defining the order of the
@@ -84,9 +84,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Fields as an array of objects'">
+        <k-t-code-preview v-bind:title="'Fields as an array of objects'">
           <template v-slot:preview>
             <p>
               Fields can be a an array of objects, providing additional control
@@ -108,9 +108,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Table style options'">
+        <k-t-code-preview v-bind:title="'Table style options'">
           <template v-slot:preview>
             <p>
               Table style options <code>fixed</code>, <code>stacked</code>,
@@ -198,7 +198,7 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

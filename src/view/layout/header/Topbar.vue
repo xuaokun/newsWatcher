@@ -21,7 +21,7 @@
         </div>
       </template>
       <b-dropdown-text tag="div" class="min-w-md-350px">
-        <KTSearchDefault></KTSearchDefault>
+        <k-t-search-default></k-t-search-default>
       </b-dropdown-text>
     </b-dropdown>
     <!--end: Search -->
@@ -47,14 +47,14 @@
       </template>
       <b-dropdown-text tag="div" class="min-w-md-350px">
         <form>
-          <KTDropdownNotification></KTDropdownNotification>
+          <k-t-dropdown-notification></k-t-dropdown-notification>
         </form>
       </b-dropdown-text>
     </b-dropdown>
     <!--end: Notifications -->
 
     <!--begin: User Bar -->
-    <KTQuickUser></KTQuickUser>
+    <k-t-quick-user></k-t-quick-user>
     <!--end: User Bar -->
   </div>
   <!-- end:: Header Topbar -->

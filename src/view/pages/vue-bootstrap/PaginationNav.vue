@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Pagination Navigation'">
+        <k-t-code-preview v-bind:title="'Pagination Navigation'">
           <template v-slot:preview>
             <p>
               <code>b-pagination-nav</code> will try and auto-detect which page
@@ -48,9 +48,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Page number generation'">
+        <k-t-code-preview v-bind:title="'Page number generation'">
           <template v-slot:preview>
             <p>
               By default, <code>&lt;b-pagination-nav&gt;</code> renders page
@@ -74,9 +74,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Providing an array of pages'">
+        <k-t-code-preview v-bind:title="'Providing an array of pages'">
           <template v-slot:preview>
             <p>
               Rather than using <code>number-of-pages</code> to auto generate
@@ -103,9 +103,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Button content'">
+        <k-t-code-preview v-bind:title="'Button content'">
           <template v-slot:preview>
             <p>
               <code>&lt;b-pagination-nav&gt;</code> supports several props/slots
@@ -164,7 +164,7 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

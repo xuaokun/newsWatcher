@@ -20,11 +20,11 @@
       >
         <!-- example static menu here -->
         <perfect-scrollbar class="aside-menu scroll">
-          <KTMenu
+          <k-t-menu
             v-on:gotoItem="ToItem"
             v-on:gotoMainItem="ToMainItem"
             :menus="menuData"
-          ></KTMenu>
+          ></k-t-menu>
         </perfect-scrollbar>
       </div>
     </div>

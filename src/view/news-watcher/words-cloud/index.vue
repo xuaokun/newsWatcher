@@ -10,7 +10,7 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <FormForWordCloudSearch @searchKeywords="submitSearch" />
+        <form-for-word-cloud-search @searchKeywords="submitSearch" />
       </v-col>
     </v-row>
     <v-row justify="center" align-content="center">

@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Modal'">
+        <k-t-code-preview v-bind:title="'Modal'">
           <template v-slot:preview>
             <div>
               <b-button v-b-modal.modal-1>Launch demo modal</b-button>
@@ -40,9 +40,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             Using <code>v-b-modal</code> directive
           </template>
@@ -63,11 +63,11 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             Using <code>this.$bvModal.show()</code> and
             <code>this.$bvModal.hide()</code> instance methods
@@ -121,9 +121,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview>
+        <k-t-code-preview>
           <template v-slot:title>
             Using <code>show()</code>, <code>hide()</code>, and
             <code>toggle()</code> component methods
@@ -175,7 +175,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

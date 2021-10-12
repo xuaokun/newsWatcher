@@ -2,24 +2,24 @@
   <div>
     <div class="row">
       <div class="col-lg-6">
-        <pieChart
+        <pie-chart
           v-show="punishTypePieData.nameList"
           title="处罚类型"
           :dataObj="punishTypePieData"
         />
       </div>
       <div class="col-lg-6">
-        <pieChart title="预警风险" :dataObj="warningPieData" />
+        <pie-chart title="预警风险" :dataObj="warningPieData" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-12">
-        <PublishList
+        <publish-list
           tableTitle="最新处罚文件"
           :tableHead="tableHead"
           :dataList="recentPunishment"
-        ></PublishList>
+        ></publish-list>
       </div>
     </div>
   </div>

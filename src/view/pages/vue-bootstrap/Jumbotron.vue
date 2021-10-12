@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Usage with props'">
+        <k-t-code-preview v-bind:title="'Usage with props'">
           <template v-slot:preview>
             <p>
               You can set the heading and lead text via the
@@ -47,9 +47,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Usage with slots'">
+        <k-t-code-preview v-bind:title="'Usage with slots'">
           <template v-slot:preview>
             <div>
               <b-jumbotron>
@@ -80,9 +80,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Variants'">
+        <k-t-code-preview v-bind:title="'Variants'">
           <template v-slot:preview>
             <p>
               Control the overall background variant with the
@@ -120,7 +120,7 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

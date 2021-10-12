@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Basic usage'">
+        <k-t-code-preview v-bind:title="'Basic usage'">
           <template v-slot:preview>
             <div>
               <b-tabs content-class="mt-3">
@@ -41,9 +41,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Pills variant'">
+        <k-t-code-preview v-bind:title="'Pills variant'">
           <template v-slot:preview>
             <p>
               Tabs use the <code>tabs</code> styling by default. Just add
@@ -66,9 +66,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Fill'">
+        <k-t-code-preview v-bind:title="'Fill'">
           <template v-slot:preview>
             <p>
               To proportionately fill all available space with your tab
@@ -92,11 +92,11 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Justified'">
+        <k-t-code-preview v-bind:title="'Justified'">
           <template v-slot:preview>
             <p>
               For equal-width controls, use the <code>justified</code> prop
@@ -120,9 +120,9 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Vertical tabs'">
+        <k-t-code-preview v-bind:title="'Vertical tabs'">
           <template v-slot:preview>
             <p>
               Have the tab controls placed on the lefthand side by setting the
@@ -148,9 +148,9 @@
           <template v-slot:html>
             {{ code6.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Add custom content to tab title'">
+        <k-t-code-preview v-bind:title="'Add custom content to tab title'">
           <template v-slot:preview>
             <p>
               If you want to add custom content to tab title, like HTML code,
@@ -179,11 +179,11 @@
           <template v-slot:html>
             {{ code7.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Cards integration'">
+        <k-t-code-preview v-bind:title="'Cards integration'">
           <template v-slot:preview>
             <p>
               Tabs support integrating with Bootstrap cards. Just add the card
@@ -242,7 +242,7 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Checkboxes - Boolean'">
+        <k-t-code-preview v-bind:title="'Checkboxes - Boolean'">
           <template v-slot:preview>
             <v-container fluid>
               <v-checkbox
@@ -45,9 +45,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Radios - Default'">
+        <k-t-code-preview v-bind:title="'Radios - Default'">
           <template v-slot:preview>
             <v-container fluid>
               <p>{{ code3.radios || "null" }}</p>
@@ -63,9 +63,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Radios - Colors'">
+        <k-t-code-preview v-bind:title="'Radios - Colors'">
           <template v-slot:preview>
             <p>
               Radios can be colored by using any of the builtin colors and
@@ -150,9 +150,9 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Switches - Colors'">
+        <k-t-code-preview v-bind:title="'Switches - Colors'">
           <template v-slot:preview>
             <p>
               Switches can be colored by using any of the builtin colors and
@@ -272,11 +272,11 @@
           <template v-slot:js>
             {{ code8.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Checkboxes - Array'">
+        <k-t-code-preview v-bind:title="'Checkboxes - Array'">
           <template v-slot:preview>
             <v-container fluid>
               <p>{{ code2.selected }}</p>
@@ -298,9 +298,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Switches - Boolean'">
+        <k-t-code-preview v-bind:title="'Switches - Boolean'">
           <template v-slot:preview>
             <v-container fluid>
               <v-switch
@@ -319,9 +319,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Switches - States'">
+        <k-t-code-preview v-bind:title="'Switches - States'">
           <template v-slot:preview>
             <v-container fluid>
               <v-row class="dark--text">
@@ -369,9 +369,9 @@
           <template v-slot:html>
             {{ code6.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Label slot'">
+        <k-t-code-preview v-bind:title="'Label slot'">
           <template v-slot:preview>
             <p>
               Selection controls' labels can be defined in
@@ -441,7 +441,7 @@
           <template v-slot:js>
             {{ code7.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

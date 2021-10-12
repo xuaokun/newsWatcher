@@ -63,16 +63,16 @@
       <div class="col-lg-12">
         <div class="row">
           <div class="col-lg-12">
-            <FormForEventsSearch
+            <form-for-events-search
               v-on:gotoSearch="searchByCondition"
               :initData="params"
             />
           </div>
           <div class="col-lg-12 res-list">
-            <PublishList
+            <publish-list
               :dataList="searchResultList"
               :tableHead="tableHead"
-            ></PublishList>
+            ></publish-list>
           </div>
         </div>
       </div>

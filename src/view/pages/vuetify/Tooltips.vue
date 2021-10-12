@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Alignment'">
+        <k-t-code-preview v-bind:title="'Alignment'">
           <template v-slot:preview>
             <p>
               A tooltip can be aligned to any of the four sides of the activator
@@ -73,11 +73,11 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Visibility'">
+        <k-t-code-preview v-bind:title="'Visibility'">
           <template v-slot:preview>
             <p>
               Tooltip visibility can be programmatically changed using
@@ -108,7 +108,7 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

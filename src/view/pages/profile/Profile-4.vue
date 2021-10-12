@@ -12,7 +12,7 @@
         <div class="card-body pt-4">
           <!--begin::Toolbar-->
           <div class="d-flex justify-content-end">
-            <Dropdown3></Dropdown3>
+            <dropdown3></dropdown3>
           </div>
           <!--end::Toolbar-->
 
@@ -91,7 +91,7 @@
         <!--end::Body-->
       </div>
       <!--end::Card-->
-      <Widget13></Widget13>
+      <widget13></widget13>
     </div>
     <!--end::Aside-->
 
@@ -100,14 +100,14 @@
       <!--begin::Row-->
       <div class="row">
         <div class="col-lg-6">
-          <Widget1></Widget1>
+          <widget1></widget1>
         </div>
         <div class="col-lg-6">
-          <Widget14></Widget14>
+          <widget14></widget14>
         </div>
       </div>
       <!--end::Row-->
-      <Widget2></Widget2>
+      <widget2></widget2>
     </div>
     <!--end::Content-->
   </div>

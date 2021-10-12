@@ -181,7 +181,9 @@
           </div>
           <div class="col-lg-4">
             <!-- 相关对象开始 -->
-            <RelationEntity :relationObjects="relationObjects"></RelationEntity>
+            <relation-entity
+              :relationObjects="relationObjects"
+            ></relation-entity>
             <!-- 相关对象结束 -->
           </div>
         </div>
@@ -197,7 +199,7 @@
                 </h3>
               </div>
               <!--end::Header-->
-              <SeeksRelationGraph :graphData="graphData" />
+              <seeks-relation-graph :graphData="graphData" />
             </div>
           </div>
         </div>

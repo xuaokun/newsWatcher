@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Disabled'">
+        <k-t-code-preview v-bind:title="'Disabled'">
           <template v-slot:preview>
             <p>You cannot use disabled <code>v-select</code>.</p>
             <v-row align="center">
@@ -44,9 +44,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Read-only'">
+        <k-t-code-preview v-bind:title="'Read-only'">
           <template v-slot:preview>
             <p>
               You cannot use read-only <code>v-select</code>, but it looks
@@ -68,9 +68,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Dense'">
+        <k-t-code-preview v-bind:title="'Dense'">
           <template v-slot:preview>
             <p>
               You can use <code>dense</code> prop to reduce the field height and
@@ -121,9 +121,9 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Change selection appearance'">
+        <k-t-code-preview v-bind:title="'Change selection appearance'">
           <template v-slot:preview>
             <p>
               The <code>selection</code> slot can be used to customize the way
@@ -155,11 +155,11 @@
           <template v-slot:js>
             {{ code7.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Icons'">
+        <k-t-code-preview v-bind:title="'Icons'">
           <template v-slot:preview>
             <p>Use a custom prepended or appended icon.</p>
             <v-container fluid>
@@ -201,9 +201,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Multiple'">
+        <k-t-code-preview v-bind:title="'Multiple'">
           <template v-slot:preview>
             <p>
               A multi-select can utilize <code>v-chip</code> as the display for
@@ -254,9 +254,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Prepend/Append item slots'">
+        <k-t-code-preview v-bind:title="'Prepend/Append item slots'">
           <template v-slot:preview>
             <p>
               The <code>v-select</code> components can be optionally expanded
@@ -328,7 +328,7 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

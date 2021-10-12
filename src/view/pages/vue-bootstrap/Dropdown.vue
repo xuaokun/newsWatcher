@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Dropdowns'">
+        <k-t-code-preview v-bind:title="'Dropdowns'">
           <template v-slot:preview>
             <div>
               <b-dropdown id="dropdown-1" text="Dropdown Button">
@@ -43,9 +43,9 @@
               {{ html1 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Button content'">
+        <k-t-code-preview v-bind:title="'Button content'">
           <template v-slot:preview>
             <p>
               You can customize the text of the dropdown button by using either
@@ -74,9 +74,9 @@
               {{ html2 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Menu alignment'">
+        <k-t-code-preview v-bind:title="'Menu alignment'">
           <template v-slot:preview>
             <div>
               <b-dropdown
@@ -108,9 +108,9 @@
               {{ html3 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Sizing'">
+        <k-t-code-preview v-bind:title="'Sizing'">
           <template v-slot:preview>
             <p>
               Dropdowns work with trigger buttons of all sizes, including
@@ -168,11 +168,11 @@
               {{ html7 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Dropup'">
+        <k-t-code-preview v-bind:title="'Dropup'">
           <template v-slot:preview>
             <p>
               Turn your dropdown menu into a drop-up menu by setting the
@@ -197,9 +197,9 @@
               {{ html4 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Drop right or left'">
+        <k-t-code-preview v-bind:title="'Drop right or left'">
           <template v-slot:preview>
             <p>
               Turn your dropdown menu into a drop-right menu by setting the
@@ -237,9 +237,9 @@
               {{ html5 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Split button support'">
+        <k-t-code-preview v-bind:title="'Split button support'">
           <template v-slot:preview>
             <div>
               <b-dropdown split text="Split Dropdown" class="m-2">
@@ -256,7 +256,7 @@
               {{ html6 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

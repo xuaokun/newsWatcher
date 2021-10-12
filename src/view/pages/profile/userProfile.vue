@@ -102,30 +102,30 @@
           <!--begin::Row-->
           <div class="row">
             <div class="col-lg-6">
-              <Widget14></Widget14>
+              <widget14></widget14>
             </div>
             <div class="col-lg-6">
-              <Widget1></Widget1>
+              <widget1></widget1>
             </div>
           </div>
           <!--end::Row-->
-          <Widget2></Widget2>
+          <widget2></widget2>
         </b-tab>
 
         <b-tab active>
-          <KTPersonalInformation></KTPersonalInformation>
+          <k-t-personal-information></k-t-personal-information>
         </b-tab>
 
         <b-tab>
-          <KTAccountInformation></KTAccountInformation>
+          <k-t-account-information></k-t-account-information>
         </b-tab>
 
         <b-tab>
-          <KTChangePassword></KTChangePassword>
+          <k-t-change-password></k-t-change-password>
         </b-tab>
 
         <b-tab>
-          <KTEmailSettings></KTEmailSettings>
+          <k-t-email-settings></k-t-email-settings>
         </b-tab>
       </b-tabs>
     </div>

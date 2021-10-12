@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Form textarea'">
+        <k-t-code-preview v-bind:title="'Form textarea'">
           <template v-slot:preview>
             <div>
               <b-form-textarea
@@ -46,9 +46,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Control sizing'">
+        <k-t-code-preview v-bind:title="'Control sizing'">
           <template v-slot:preview>
             <p>
               Set text height using the size prop to <code>sm</code> or
@@ -97,10 +97,10 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Displayed rows'">
+        <k-t-code-preview v-bind:title="'Displayed rows'">
           <template v-slot:preview>
             <p>
               To set the height of <code>&lt;b-form-textarea&gt;</code>, set the
@@ -121,9 +121,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Auto height'">
+        <k-t-code-preview v-bind:title="'Auto height'">
           <template v-slot:preview>
             <p>
               <code>&lt;b-form-textarea&gt;</code> can also automatically adjust
@@ -167,7 +167,7 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

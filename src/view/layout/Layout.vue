@@ -1,15 +1,15 @@
 <template>
   <div class="d-flex flex-column flex-root" v-if="isAuthenticated">
     <!-- begin:: Header Mobile -->
-    <KTHeaderMobile></KTHeaderMobile>
+    <k-t-header-mobile></k-t-header-mobile>
     <!-- end:: Header Mobile -->
 
-    <Loader v-if="loaderEnabled" v-bind:logo="loaderLogo"></Loader>
+    <loader v-if="loaderEnabled" v-bind:logo="loaderLogo"></loader>
 
     <div class="d-flex flex-row flex-column-fluid page">
       <div id="kt_wrapper" class="d-flex flex-column flex-row-fluid wrapper">
         <!-- begin:: Header -->
-        <KTHeader></KTHeader>
+        <k-t-header></k-t-header>
         <!-- end:: Header -->
 
         <!-- begin:: Content -->
@@ -18,7 +18,7 @@
           class="content  d-flex flex-column flex-column-fluid"
         >
           <!-- begin:: Content Head -->
-          <KTSubheader
+          <k-t-subheader
             v-if="subheaderDisplay && displaySubheaderOnDashboard"
             v-bind:breadcrumbs="breadcrumbs"
             v-bind:title="pageTitle"
@@ -35,7 +35,7 @@
             >
               <div class="d-lg-flex flex-row-fluid">
                 <!-- begin:: Aside Left -->
-                <KTAside v-if="asideEnabled"></KTAside>
+                <k-t-aside v-if="asideEnabled"></k-t-aside>
                 <!-- end:: Aside Left -->
                 <div class="content-wrapper flex-row-fluid">
                   <transition name="fade-in-up">
@@ -47,12 +47,12 @@
           </div>
         </div>
 
-        <KTFooter></KTFooter>
+        <k-t-footer></k-t-footer>
       </div>
     </div>
 
-    <KTStickyToolbar v-if="toolbarDisplay"></KTStickyToolbar>
-    <KTScrollTop></KTScrollTop>
+    <k-t-sticky-toolbar v-if="toolbarDisplay"></k-t-sticky-toolbar>
+    <k-t-scroll-top></k-t-scroll-top>
   </div>
 </template>
 

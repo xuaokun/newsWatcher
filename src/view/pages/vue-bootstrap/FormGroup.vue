@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Form group'">
+        <k-t-code-preview v-bind:title="'Form group'">
           <template v-slot:preview>
             <div>
               <b-form-group
@@ -54,9 +54,9 @@
           <template v-slot:js>
             {{ js1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Horizontal layout'">
+        <k-t-code-preview v-bind:title="'Horizontal layout'">
           <template v-slot:preview>
             <p>
               By default, the label appears above the input element(s), but you
@@ -79,10 +79,10 @@
           <template v-slot:html>
             {{ html2 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Label size'">
+        <k-t-code-preview v-bind:title="'Label size'">
           <template v-slot:preview>
             <p>
               You can control the label text size match the size of your form
@@ -125,9 +125,9 @@
           <template v-slot:html>
             {{ html3 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Nested form groups'">
+        <k-t-code-preview v-bind:title="'Nested form groups'">
           <template v-slot:preview>
             <p>
               Feel free to nest <code>&lt;b-form-group&gt;</code> components to
@@ -197,7 +197,7 @@
           <template v-slot:html>
             {{ html4 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

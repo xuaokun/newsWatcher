@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Pagination'">
+        <k-t-code-preview v-bind:title="'Pagination'">
           <template v-slot:preview>
             <p>
               <code>&lt;b-pagination&gt;</code> is a custom input component that
@@ -62,9 +62,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Button content'">
+        <k-t-code-preview v-bind:title="'Button content'">
           <template v-slot:preview>
             <div class="overflow-auto">
               <!-- Use text in props -->
@@ -127,9 +127,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Button size'">
+        <k-t-code-preview v-bind:title="'Button size'">
           <template v-slot:preview>
             <div class="overflow-auto">
               <div>
@@ -165,9 +165,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Alignment'">
+        <k-t-code-preview v-bind:title="'Alignment'">
           <template v-slot:preview>
             <div class="overflow-auto">
               <div>
@@ -212,7 +212,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

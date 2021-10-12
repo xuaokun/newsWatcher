@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'How it works'">
+        <k-t-code-preview v-bind:title="'How it works'">
           <template v-slot:preview>
             <p>
               Bootstrap's grid system uses a series of containers, rows, and
@@ -52,9 +52,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Equal-width columns'">
+        <k-t-code-preview v-bind:title="'Equal-width columns'">
           <template v-slot:preview>
             <p>
               For example, here are two grid layouts that apply to every device
@@ -78,9 +78,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Setting one column width'">
+        <k-t-code-preview v-bind:title="'Setting one column width'">
           <template v-slot:preview>
             <p>
               Auto-layout for flexbox grid columns also means you can set the
@@ -106,9 +106,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Variable width content'">
+        <k-t-code-preview v-bind:title="'Variable width content'">
           <template v-slot:preview>
             <p>
               Use <code>{breakpoint}="auto"</code> props to size columns based
@@ -131,10 +131,10 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'All breakpoints'">
+        <k-t-code-preview v-bind:title="'All breakpoints'">
           <template v-slot:preview>
             <p>
               For grids that are the same from the smallest of devices to the
@@ -161,9 +161,9 @@
           <template v-slot:html>
             {{ code5.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Stacked to horizontal'">
+        <k-t-code-preview v-bind:title="'Stacked to horizontal'">
           <template v-slot:preview>
             <p>
               Using a single set of <code>sm="*"</code> or
@@ -187,9 +187,9 @@
           <template v-slot:html>
             {{ code6.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Mix and match'">
+        <k-t-code-preview v-bind:title="'Mix and match'">
           <template v-slot:preview>
             <p>
               Don't want your columns to simply stack in some grid tiers? Use a
@@ -220,7 +220,7 @@
           <template v-slot:html>
             {{ code7.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

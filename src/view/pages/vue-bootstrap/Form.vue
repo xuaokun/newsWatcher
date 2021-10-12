@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Introduction to forms and controls'">
+        <k-t-code-preview v-bind:title="'Introduction to forms and controls'">
           <template v-slot:preview>
             <p>
               Be sure to use an appropriate <code>type</code> on all inputs
@@ -107,9 +107,9 @@
           <template v-slot:js>
             {{ js1 }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Inline form'">
+        <k-t-code-preview v-bind:title="'Inline form'">
           <template v-slot:preview>
             <p>
               Use the <code>inline</code> prop on <code>&lt;b-form&gt;</code> to
@@ -149,9 +149,9 @@
               {{ html2 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Custom form controls and selects'">
+        <k-t-code-preview v-bind:title="'Custom form controls and selects'">
           <template v-slot:preview>
             <div>
               <b-form inline>
@@ -182,7 +182,7 @@
               {{ html3 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

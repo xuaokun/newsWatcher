@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Alerts'">
+        <k-t-code-preview v-bind:title="'Alerts'">
           <template v-slot:preview>
             <p>
               Alerts are available for any length of text, as well as an
@@ -95,9 +95,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Fading alerts'">
+        <k-t-code-preview v-bind:title="'Fading alerts'">
           <template v-slot:preview>
             <p>
               Use the <code>fade</code> prop to enable animation. By default
@@ -166,10 +166,10 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Contextual variants'">
+        <k-t-code-preview v-bind:title="'Contextual variants'">
           <template v-slot:preview>
             <p>
               For proper styling of &lt;b-alert&gt;, use one of the four
@@ -192,7 +192,7 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

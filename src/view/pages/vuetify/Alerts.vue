@@ -30,7 +30,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Type'">
+        <k-t-code-preview v-bind:title="'Type'">
           <template v-slot:preview>
             <div>
               <v-alert type="success">
@@ -53,9 +53,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Colored Border'">
+        <k-t-code-preview v-bind:title="'Colored Border'">
           <template v-slot:preview>
             <div>
               <v-alert
@@ -98,13 +98,13 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Border'">
+        <k-t-code-preview v-bind:title="'Border'">
           <template v-slot:preview>
             <div>
               <v-alert border="top" color="red lighten-2" dark>
@@ -124,9 +124,9 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Dismissible'">
+        <k-t-code-preview v-bind:title="'Dismissible'">
           <template v-slot:preview>
             <div>
               <v-alert
@@ -163,7 +163,7 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

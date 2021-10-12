@@ -2,7 +2,7 @@
  * @Description: 数据采集管理列表
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2021-10-05 21:23:09
+ * @LastEditTime: 2021-10-11 17:40:06
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -10,7 +10,7 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <FormForSiteInfomationSearch
+        <form-for-site-infomation-search
           @gotoSearch="submitSearch"
           @addSiteInfo="addSiteInfo"
         />
@@ -18,7 +18,7 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <PublishList
+        <publish-list
           :tableHead="tableHead"
           :dataList="tableData"
           v-on:handleOperation="handleOperation"
@@ -55,14 +55,7 @@
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-select
-                    :items="[
-                      { text: '10分钟', value: 600 },
-                      { text: '30分钟', value: 1800 },
-                      { text: '1小时', value: 3600 },
-                      { text: '3小时', value: 3600 * 3 },
-                      { text: '6小时', value: 3600 * 6 },
-                      { text: '12小时', value: 3600 * 12 }
-                    ]"
+                    :items="frequencyDict"
                     label="采集频率*"
                     v-model="editForm.gatherFrequency"
                     :rules="[rules.required]"
@@ -139,7 +132,7 @@ export default {
           property: "gatherAPI"
         },
         {
-          name: "采集频率",
+          name: "采集频率(秒/次)",
           sortAble: true,
           property: "gatherFrequency"
         },
@@ -164,7 +157,15 @@ export default {
         required: value => !!value || "不能为空哦"
       },
       diagFormValidation: false,
-      currentParams: {}
+      currentParams: {},
+      frequencyDict: [
+        { text: "10分钟", value: 600 },
+        { text: "30分钟", value: 1800 },
+        { text: "1小时", value: 3600 },
+        { text: "3小时", value: 3600 * 3 },
+        { text: "6小时", value: 3600 * 6 },
+        { text: "12小时", value: 3600 * 12 }
+      ]
     };
   },
   mounted() {
@@ -232,7 +233,13 @@ export default {
       }
       console.log(params);
       let resObj = await getSiteList({ params: params });
-      this.tableData = resObj.data;
+      this.tableData = resObj.data.map(item => {
+        return {
+          ...item
+          // frequencyText: this.getFrequencyText(item.gatherFrequency)
+        };
+      });
+      console.log(this.tableData);
       this.pageLength = resObj.pageLength;
       console.log(resObj);
     },
@@ -255,6 +262,27 @@ export default {
       this.currentParams.pageNumber = pageNumber;
       this.submitSearch(this.currentParams);
     }
+
+    // //根据采集频率数值获取中文文本
+    // getFrequencyText(val) {
+    //   let str = "";
+    //   this.frequencyDict.forEach(item => {
+    //     if (item.value === val) {
+    //       str = item.text;
+    //     }
+    //   });
+    //   return str;
+    // },
+    // //根据中文文本获取采集频率数值
+    // getFrequencyValue(str) {
+    //   let val = -1;
+    //   this.frequencyDict.forEach(item => {
+    //     if (item.text === str) {
+    //       val = item.val;
+    //     }
+    //   });
+    //   return val;
+    // }
   }
 };
 </script>

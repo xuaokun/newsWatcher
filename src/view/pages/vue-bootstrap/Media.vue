@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Media'">
+        <k-t-code-preview v-bind:title="'Media'">
           <template v-slot:preview>
             <div>
               <b-card>
@@ -78,9 +78,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'No body (with sub-components)'">
+        <k-t-code-preview v-bind:title="'No body (with sub-components)'">
           <template v-slot:preview>
             <div>
               <b-card>
@@ -131,10 +131,10 @@
           <template v-slot:html>
             {{ code2.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Order'">
+        <k-t-code-preview v-bind:title="'Order'">
           <template v-slot:preview>
             <div>
               <b-media right-align vertical-align="center">
@@ -160,9 +160,9 @@
           <template v-slot:html>
             {{ code3.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Media list'">
+        <k-t-code-preview v-bind:title="'Media list'">
           <template v-slot:preview>
             <div>
               <ul class="list-unstyled">
@@ -230,7 +230,7 @@
           <template v-slot:html>
             {{ code4.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Single line'">
+        <k-t-code-preview v-bind:title="'Single line'">
           <template v-slot:preview>
             <p>
               Single line text fields do not float their label on focus or with
@@ -64,9 +64,9 @@
           <template v-slot:html>
             {{ code1.html }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Character counter'">
+        <k-t-code-preview v-bind:title="'Character counter'">
           <template v-slot:preview>
             <p>
               Use a <code>counter</code> prop to inform a user of the character
@@ -128,9 +128,9 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Password input'">
+        <k-t-code-preview v-bind:title="'Password input'">
           <template v-slot:preview>
             <p>
               A password input can be used with an appended icon and callback to
@@ -204,11 +204,11 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
 
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Clearable'">
+        <k-t-code-preview v-bind:title="'Clearable'">
           <template v-slot:preview>
             <p>
               When <code>clearable</code>, you can customize the clear icon with
@@ -261,9 +261,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Auto hiding details'">
+        <k-t-code-preview v-bind:title="'Auto hiding details'">
           <template v-slot:preview>
             <p>
               When <code>hide-details</code> is set to
@@ -285,9 +285,9 @@
           <template v-slot:js>
             {{ code4.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Custom colors'">
+        <k-t-code-preview v-bind:title="'Custom colors'">
           <template v-slot:preview>
             <p>
               You can optionally change a text field into any color in the
@@ -425,7 +425,7 @@
           <template v-slot:js>
             {{ code6.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

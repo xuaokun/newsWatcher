@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Single checkbox'">
+        <k-t-code-preview v-bind:title="'Single checkbox'">
           <template v-slot:preview>
             <div>
               <b-form-checkbox
@@ -52,9 +52,9 @@
           <template v-slot:js>
             {{ code1.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Multiple choice checkboxes'">
+        <k-t-code-preview v-bind:title="'Multiple choice checkboxes'">
           <template v-slot:preview>
             <div>
               <b-form-group label="Using options array:">
@@ -94,9 +94,9 @@
           <template v-slot:js>
             {{ code2.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Inline and stacked checkboxes'">
+        <k-t-code-preview v-bind:title="'Inline and stacked checkboxes'">
           <template v-slot:preview>
             <p>
               <code>&lt;b-form-checkbox-group&gt;</code> components render
@@ -156,10 +156,10 @@
           <template v-slot:js>
             {{ code3.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Control sizing'">
+        <k-t-code-preview v-bind:title="'Control sizing'">
           <template v-slot:preview>
             <p>
               Use the <code>size</code> prop to control the size of the
@@ -177,9 +177,9 @@
               {{ code4.html }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Grouped button style checkboxes'">
+        <k-t-code-preview v-bind:title="'Grouped button style checkboxes'">
           <template v-slot:preview>
             <div>
               <b-form-group label="Button-group style checkboxes">
@@ -222,7 +222,7 @@
           <template v-slot:js>
             {{ code5.js }}
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

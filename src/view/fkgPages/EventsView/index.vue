@@ -2,20 +2,20 @@
   <div>
     <div class="row">
       <div class="col-lg-6">
-        <PieChart title="案例概况" :dataObj="caseTypePieData" />
+        <pie-chart title="案例概况" :dataObj="caseTypePieData" />
       </div>
       <div class="col-lg-6">
-        <PieChart title="事件概况" :dataObj="eventTypePieData" />
+        <pie-chart title="事件概况" :dataObj="eventTypePieData" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-12">
-        <PublishList
+        <publish-list
           tableTitle="热门案例"
           :tableHead="tableHead"
           :dataList="searchResultList"
-        ></PublishList>
+        ></publish-list>
       </div>
     </div>
   </div>

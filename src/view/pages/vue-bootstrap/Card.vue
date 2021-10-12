@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Cards'">
+        <k-t-code-preview v-bind:title="'Cards'">
           <template v-slot:preview>
             <p>
               Cards are built with as little markup and styles as possible, but
@@ -58,9 +58,9 @@
               {{ html1 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Background variants'">
+        <k-t-code-preview v-bind:title="'Background variants'">
           <template v-slot:preview>
             <p>
               Cards include their own variant style for quickly changing the
@@ -183,9 +183,9 @@
               {{ html2 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Bordered variants'">
+        <k-t-code-preview v-bind:title="'Bordered variants'">
           <template v-slot:preview>
             <div>
               <div>
@@ -290,10 +290,10 @@
               {{ html3 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
       <div class="col-md-6">
-        <KTCodePreview v-bind:title="'Titles, text, and links'">
+        <k-t-code-preview v-bind:title="'Titles, text, and links'">
           <template v-slot:preview>
             <div>
               <b-card title="Card title" sub-title="Card subtitle">
@@ -317,9 +317,9 @@
               {{ html4 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Header and footer'">
+        <k-t-code-preview v-bind:title="'Header and footer'">
           <template v-slot:preview>
             <div>
               <b-card-group deck>
@@ -352,9 +352,9 @@
               {{ html5 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Horizontal card layout'">
+        <k-t-code-preview v-bind:title="'Horizontal card layout'">
           <template v-slot:preview>
             <p>
               Using a combination of grid components, utility classes and
@@ -388,9 +388,9 @@
               {{ html6 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
 
-        <KTCodePreview v-bind:title="'Overlay image'">
+        <k-t-code-preview v-bind:title="'Overlay image'">
           <template v-slot:preview>
             <p>
               Place the image in the background of the card by setting the
@@ -417,7 +417,7 @@
               {{ html7 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>

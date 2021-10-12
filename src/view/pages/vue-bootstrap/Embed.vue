@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <KTCodePreview v-bind:title="'Embed'">
+        <k-t-code-preview v-bind:title="'Embed'">
           <template v-slot:preview>
             <p>
               Rules are directly applied to <code>&lt;iframe&gt;</code>,
@@ -47,7 +47,7 @@
               {{ html1 }}
             </highlight-code>
           </template>
-        </KTCodePreview>
+        </k-t-code-preview>
       </div>
     </div>
   </div>
