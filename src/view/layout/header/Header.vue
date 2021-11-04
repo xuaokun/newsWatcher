@@ -308,6 +308,10 @@ export default {
         {
           menuName: "关键词追踪",
           url: "/newswatcher/keywordstracing"
+        },
+        {
+          menuName: "负面舆情",
+          url: "/newswatcher/negativetrend"
         }
       ]
     };

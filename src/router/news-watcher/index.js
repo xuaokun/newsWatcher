@@ -2,7 +2,7 @@
  * @Description:舆情监控相关页面路由配置
  * @Author: akxu
  * @Date: 2021-09-18 16:30:40
- * @LastEditTime: 2021-10-08 15:46:03
+ * @LastEditTime: 2021-11-04 13:31:26
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -30,6 +30,11 @@ export default {
       path: "keywordstracing",
       name: "keywordsTracing",
       component: () => import("@/view/news-watcher/keywords-tracing")
+    },
+    {
+      path: "negativetrend",
+      name: "negativeTrend",
+      component: () => import("@/view/news-watcher/negative-trend")
     },
     {
       path: "/newswatcher",
