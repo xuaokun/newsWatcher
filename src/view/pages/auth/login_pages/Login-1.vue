@@ -25,7 +25,7 @@
             class="font-weight-bolder text-center font-size-h4 font-size-h1-lg"
             style="color:#fff;"
           >
-            星图<br />金融声誉风险知识图谱
+            星图<br />企业舆情分析系统
           </h3>
         </div>
         <div
@@ -49,7 +49,7 @@
                 <h3
                   class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg"
                 >
-                  欢迎使用星图声誉知识图谱
+                  欢迎使用企业舆情分析系统
                 </h3>
                 <span class="text-muted font-weight-bold font-size-h4"
                   >新用户？
@@ -243,17 +243,17 @@
                 <h3
                   class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg"
                 >
-                  Forgotten Password ?
+                  忘记密码？
                 </h3>
                 <p class="text-muted font-weight-bold font-size-h4">
-                  Enter your email to reset your password
+                  输入您的邮箱以找回密码
                 </p>
               </div>
               <div class="form-group">
                 <input
                   class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
                   type="email"
-                  placeholder="Email"
+                  placeholder="邮箱"
                   name="email"
                   autocomplete="off"
                 />
@@ -264,7 +264,7 @@
                   id="kt_login_forgot_submit"
                   class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4"
                 >
-                  Submit
+                  提交
                 </button>
                 <button
                   type="button"
@@ -272,7 +272,7 @@
                   class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3"
                   @click="showForm('signin')"
                 >
-                  Cancel
+                  返回
                 </button>
               </div>
             </form>

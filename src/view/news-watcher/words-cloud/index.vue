@@ -2,7 +2,7 @@
  * @Description: 舆情热点
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2021-10-06 20:49:08
+ * @LastEditTime: 2021-11-11 23:28:09
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -14,7 +14,15 @@
       </v-col>
     </v-row>
     <v-row justify="center" align-content="center">
-      <v-col cols="12">
+      <v-col cols="6">
+        <publish-list
+          tableTitle="24小时热点"
+          :tableHead="tableHead"
+          :dataList="tableData"
+          :pageLength="pageLength"
+        />
+      </v-col>
+      <v-col cols="6">
         <div class="card card-custom cloud-box">
           <v-progress-linear
             :active="isLoading"
@@ -34,13 +42,18 @@
 
 <script>
 import FormForWordCloudSearch from "@/components/FormForWordCloudSearch/index.vue";
+import PublishList from "@/components/PublishList/index.vue";
 import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
 import "echarts-wordcloud/dist/echarts-wordcloud";
 import "echarts-wordcloud/dist/echarts-wordcloud.min";
-import { getWordsCloudData } from "@/logic/news-watcher/word-cloud";
+import {
+  getWordsCloudData,
+  get24hHotNews
+} from "@/logic/news-watcher/word-cloud";
 export default {
   components: {
-    FormForWordCloudSearch
+    FormForWordCloudSearch,
+    PublishList
   },
   data() {
     return {
@@ -98,7 +111,34 @@ export default {
           value: 700
         }
       ],
-      isLoading: true
+      isLoading: true,
+      tableHead: [
+        {
+          name: "排名",
+          property: "rankNumber"
+        },
+        {
+          name: "热点话题",
+          property: "title"
+        },
+        {
+          name: "操作",
+          property: "oper",
+          sortAble: false,
+          currentSort: -1 //0代表升序
+        }
+      ],
+      tableData: [
+        {
+          rankNumber: 1,
+          title: "小动作不断！美国海军两艘濒海战斗舰被曝近日频繁进出南海"
+        },
+        {
+          rankNumber: 2,
+          title: "最新！海地7.2级地震已造成至少724人死亡"
+        }
+      ],
+      pageLength: 1
     };
   },
   mounted() {
@@ -112,9 +152,12 @@ export default {
       .toDate();
     let lastDay = this.$moment(now)
       .startOf("day")
-      .subtract(100, "days")
+      .subtract(7, "days")
       .toDate();
     this.getWordsCloud(lastDay, today);
+    get24hHotNews(lastDay, today).then(re => {
+      this.tableData = re.data;
+    });
   },
   methods: {
     submitSearch(dates) {
@@ -189,8 +232,8 @@ export default {
               top: "center",
               right: null,
               bottom: null,
-              width: "200%",
-              height: "200%",
+              width: "100%",
+              height: "100%",
               //数据
               data: this.worddata
             }

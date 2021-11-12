@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: akxu
  * @Date: 2021-10-09 22:00:02
- * @LastEditTime: 2021-11-04 22:19:06
+ * @LastEditTime: 2021-11-09 11:56:43
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -87,7 +87,8 @@ export default {
         },
         stroke: {
           // width: [5, 7, 5],
-          curve: "straight"
+          // curve: "straight",
+          curve: "smooth"
           // dashArray: [0, 8, 5]
         },
         legend: {

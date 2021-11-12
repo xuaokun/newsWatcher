@@ -60,7 +60,7 @@
               <th
                 class="pr-0 text-right"
                 style="min-width: 50px"
-                v-if="tableHead[tableHead.length - 1]"
+                v-if="tableHead[tableHead.length - 1] && showOperate"
               >
                 <span>{{ tableHead[tableHead.length - 1].name }}</span>
               </th>
@@ -152,7 +152,7 @@
                   <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.important ? item.important:
                     '-' }}</span>
                 </td> -->
-                <td class="pr-0 text-right">
+                <td class="pr-0 text-right" v-if="showOperate">
                   <div
                     @click="handleEdit(item)"
                     href="#"
@@ -229,6 +229,10 @@ export default {
     showPagination: {
       type: Boolean,
       default: true
+    },
+    showOperate: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
