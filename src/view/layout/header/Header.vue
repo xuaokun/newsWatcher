@@ -239,6 +239,15 @@
                 class="header-menu header-menu-mobile header-menu-layout-default"
               >
                 <k-t-menu :menus="menus5"></k-t-menu>
+                <v-btn
+                  color="#7E8299"
+                  x-large
+                  text
+                  :loading="loading"
+                  :disabled="loading"
+                  @click="generateReport"
+                  >生成报告</v-btn
+                >
               </div>
             </b-tab>
           </b-tabs>
@@ -313,7 +322,8 @@ export default {
           menuName: "负面舆情",
           url: "/newswatcher/negativetrend"
         }
-      ]
+      ],
+      loading: false
     };
   },
   components: {
@@ -400,6 +410,14 @@ export default {
       // set current active tab
       target.classList.add("active");
       // console.log(target.classList)
+    },
+    //报告生成
+    generateReport() {
+      this.loading = true;
+      let that = this;
+      setTimeout(() => {
+        that.loading = false;
+      }, 1000);
     }
   }
 };
