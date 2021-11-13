@@ -2,7 +2,7 @@
  * @Description: 负面舆情走势
  * @Author: akxu
  * @Date: 2021-11-04 13:32:46
- * @LastEditTime: 2021-11-13 10:36:51
+ * @LastEditTime: 2021-11-13 11:47:37
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -23,6 +23,7 @@
           :tableHead="tableHead"
           :dataList="tableData"
           :pageLength="pageLength"
+          :showOperate="false"
         />
       </v-col>
     </v-row>

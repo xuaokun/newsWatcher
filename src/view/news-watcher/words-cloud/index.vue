@@ -2,7 +2,7 @@
  * @Description: 舆情热点
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2021-11-11 23:28:09
+ * @LastEditTime: 2021-11-13 11:47:59
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -20,6 +20,7 @@
           :tableHead="tableHead"
           :dataList="tableData"
           :pageLength="pageLength"
+          :showOperate="false"
         />
       </v-col>
       <v-col cols="6">

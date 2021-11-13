@@ -232,7 +232,7 @@ export default {
     },
     showOperate: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data() {
