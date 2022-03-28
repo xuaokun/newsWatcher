@@ -183,6 +183,6 @@ export default {
 
 <style>
 .container {
-  max-width: 90%;
+  max-width: 90% !important;
 }
 </style>

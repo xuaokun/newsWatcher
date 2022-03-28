@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: akxu
  * @Date: 2021-10-09 22:00:02
- * @LastEditTime: 2021-11-09 11:56:43
+ * @LastEditTime: 2022-03-28 23:14:25
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -20,9 +20,8 @@
     <!--begin::Body-->
     <div class="card-body d-flex flex-column">
       <div class="flex-grow-1">
-        <v-row>
+        <!-- <v-row>
           <v-col cols="12">
-            <!-- <date-search @searchKeywords="submitSearch" /> -->
             <form>
               <div class="card-body">
                 <div class="form-group row">
@@ -49,7 +48,7 @@
               </div>
             </form>
           </v-col>
-        </v-row>
+        </v-row> -->
         <apexchart
           ref="lineChart"
           type="line"

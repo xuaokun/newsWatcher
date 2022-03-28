@@ -2,12 +2,43 @@
  * @Description: 负面舆情走势
  * @Author: akxu
  * @Date: 2021-11-04 13:32:46
- * @LastEditTime: 2021-11-13 11:47:37
+ * @LastEditTime: 2022-03-28 23:13:02
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
 <template>
   <div>
+    <v-row>
+      <v-col cols="12">
+        <div class="card card-custom">
+          <form>
+            <div class="card-body">
+              <div class="form-group row">
+                <label class="col-1 col-form-label">公司名称</label>
+                <div class="col-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="请输入公司名称"
+                    v-model="companyName"
+                  />
+                </div>
+                <div class="col-4">
+                  <button
+                    type="reset"
+                    class="btn btn-success mr-2"
+                    @click="submitSearch"
+                  >
+                    检索
+                  </button>
+                  <button type="reset" class="btn btn-secondary">重置</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col cols="6">
         <negative-trend
@@ -23,8 +54,19 @@
           :tableHead="tableHead"
           :dataList="tableData"
           :pageLength="pageLength"
-          :showOperate="false"
-        />
+          :showOperate="true"
+        >
+          <template v-slot:operations="slotProps">
+            <div
+              @click="handleClickUrl(slotProps)"
+              class="btn btn-icon btn-light btn-hover-primary btn-sm"
+            >
+              <span class="svg-icon svg-icon-md svg-icon-primary">
+                <inline-svg src="media/svg/misc/015-telegram.svg" />
+              </span>
+            </div>
+          </template>
+        </publish-list>
       </v-col>
     </v-row>
   </div>
@@ -60,6 +102,11 @@ export default {
           maxLen: 30
         },
         {
+          name: "url",
+          property: "url",
+          maxLen: 30
+        },
+        {
           name: "操作",
           property: "oper",
           sortAble: false,
@@ -76,7 +123,8 @@ export default {
           title: "最新！海地7.2级地震已造成至少724人死亡"
         }
       ],
-      pageLength: 1
+      pageLength: 1,
+      companyName: ""
     };
   },
   methods: {
@@ -99,6 +147,13 @@ export default {
       getNegativeNews(params).then(re => {
         this.tableData = re.data;
       });
+    },
+    handleClickUrl(item) {
+      window.open(item.item.url);
+    },
+    //根据关键词查询
+    submitSearch() {
+      this.searchTrendByDate(this.companyName);
     }
   },
   mounted() {
@@ -127,4 +182,10 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+.form-group label {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+</style>

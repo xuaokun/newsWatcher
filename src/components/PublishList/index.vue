@@ -153,7 +153,7 @@
                     '-' }}</span>
                 </td> -->
                 <td class="pr-0 text-right" v-if="showOperate">
-                  <div
+                  <!-- <div
                     @click="handleEdit(item)"
                     href="#"
                     class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
@@ -172,7 +172,8 @@
                     <span class="svg-icon svg-icon-md svg-icon-primary">
                       <inline-svg src="media/svg/icons/General/Trash.svg" />
                     </span>
-                  </div>
+                  </div> -->
+                  <slot name="operations" v-bind:item="item"></slot>
                 </td>
               </tr>
             </template>

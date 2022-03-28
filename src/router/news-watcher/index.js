@@ -2,10 +2,12 @@
  * @Description:舆情监控相关页面路由配置
  * @Author: akxu
  * @Date: 2021-09-18 16:30:40
- * @LastEditTime: 2021-11-04 13:31:26
+ * @LastEditTime: 2021-11-16 12:19:15
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
+import store from "@/core/services/store";
+import authMoudule from "@/core/services/store/auth.module";
 export default {
   path: "/newswatcher",
   name: "newsWatcher",
@@ -19,7 +21,19 @@ export default {
     {
       path: "siteinfomation",
       name: "siteInfomation",
-      component: () => import("@/view/news-watcher/site-infomation")
+      component: () => import("@/view/news-watcher/site-infomation"),
+      beforeEnter: (to, from, next) => {
+        const isAuthorized = authMoudule.state.user.isAdmin;
+        if (!isAuthorized) {
+          store.dispatch("snackbar/openSnackbar", {
+            msg: "温馨提示：抱歉，您不是管理员，无法查看~ ",
+            color: "warning"
+          });
+          next(false);
+        } else {
+          next();
+        }
+      }
     },
     {
       path: "wordscloud",
@@ -38,7 +52,7 @@ export default {
     },
     {
       path: "/newswatcher",
-      redirect: "/newswatcher/siteinfomation"
+      redirect: "/newswatcher/wordscloud"
     }
   ]
 };

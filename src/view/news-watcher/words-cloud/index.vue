@@ -2,7 +2,7 @@
  * @Description: 舆情热点
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2021-11-13 11:47:59
+ * @LastEditTime: 2022-03-21 11:46:47
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -21,7 +21,18 @@
           :dataList="tableData"
           :pageLength="pageLength"
           :showOperate="false"
-        />
+        >
+          <template v-slot:operations="slotProps">
+            <div
+              @click="handleClickUrl(slotProps)"
+              class="btn btn-icon btn-light btn-hover-primary btn-sm"
+            >
+              <span class="svg-icon svg-icon-md svg-icon-primary">
+                <inline-svg src="media/svg/misc/015-telegram.svg" />
+              </span>
+            </div>
+          </template>
+        </publish-list>
       </v-col>
       <v-col cols="6">
         <div class="card card-custom cloud-box">
@@ -242,6 +253,9 @@ export default {
         });
         this.isLoading = false;
       });
+    },
+    handleClickUrl(item) {
+      console.log(item);
     }
   }
 };

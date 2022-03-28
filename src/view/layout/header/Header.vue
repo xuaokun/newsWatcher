@@ -307,10 +307,6 @@ export default {
       menus4: [],
       menus5: [
         {
-          menuName: "数据采集",
-          url: "/newswatcher/siteinfomation"
-        },
-        {
           menuName: "舆情热点",
           url: "/newswatcher/wordscloud"
         },
@@ -321,6 +317,10 @@ export default {
         {
           menuName: "负面舆情",
           url: "/newswatcher/negativetrend"
+        },
+        {
+          menuName: "数据采集",
+          url: "/newswatcher/siteinfomation"
         }
       ],
       loading: false
@@ -416,6 +416,7 @@ export default {
       this.loading = true;
       let that = this;
       setTimeout(() => {
+        window.open("http://127.0.0.1:3000/reports/舆情报告.docx", "_blank");
         that.loading = false;
       }, 1000);
     }
