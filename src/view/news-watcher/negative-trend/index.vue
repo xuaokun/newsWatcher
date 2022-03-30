@@ -2,7 +2,7 @@
  * @Description: 负面舆情走势
  * @Author: akxu
  * @Date: 2021-11-04 13:32:46
- * @LastEditTime: 2022-03-29 23:09:56
+ * @LastEditTime: 2022-03-30 12:45:58
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -105,7 +105,7 @@
               ></rect>
             </g>
           </svg>
-          <div class="news-num">88</div> </span
+          <div class="news-num">{{ totalAmount }}</div> </span
         ><a href="#" class="text-info font-weight-bold font-size-h6">
           今日相关舆情报道量
         </a>
@@ -150,7 +150,7 @@
               ></path>
             </g>
           </svg>
-          <div class="news-num">80%</div></span
+          <div class="news-num">{{ negRatio }}</div></span
         ><a href="#" class="text-warning font-weight-bold font-size-h6 mt-2">
           今日负面舆情报道占比
         </a>
@@ -197,7 +197,8 @@ import PublishList from "@/components/PublishList/index.vue";
 import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
 import {
   getNegativeTrend,
-  getNegativeNews
+  getNegativeNews,
+  getCompanyNewsStatistics
 } from "@/logic/news-watcher/negative-trend";
 export default {
   components: {
@@ -244,7 +245,9 @@ export default {
         }
       ],
       pageLength: 1,
-      companyName: ""
+      companyName: "",
+      totalAmount: 0,
+      negRatio: "--"
     };
   },
   methods: {
@@ -269,6 +272,8 @@ export default {
         this.tableData = re.data.slice(0, this.pageSize);
         this.pageLength = Math.ceil(this.totalTableData.length / this.pageSize);
       });
+
+      this.getNewsStatistics(params);
     },
     handleClickUrl(item) {
       window.open(item.item.url);
@@ -282,6 +287,13 @@ export default {
         (pageNum - 1) * this.pageSize,
         pageNum * this.pageSize
       );
+    },
+
+    getNewsStatistics(params) {
+      getCompanyNewsStatistics(params).then(re => {
+        this.totalAmount = re.data.total;
+        this.negRatio = `${(re.data.neg * 100).toFixed(2)}%`;
+      });
     }
   },
   mounted() {

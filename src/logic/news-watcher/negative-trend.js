@@ -2,7 +2,7 @@
  * @Description: 负面新闻趋势
  * @Author: akxu
  * @Date: 2021-11-04 17:40:16
- * @LastEditTime: 2021-11-12 17:43:22
+ * @LastEditTime: 2022-03-30 10:03:53
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -57,4 +57,28 @@ function getNegativeNews(companyName) {
     });
 }
 
-export { getNegativeTrend, getNegativeNews };
+//获取负面新闻预警
+function getCompanyNewsStatistics(companyName) {
+  return apiService
+    .query("/api/newsWatcher/getMyCompanyNewsStatistics", {
+      params: {
+        companyName
+      }
+    })
+    .then(res => {
+      if (res.data.status === 0) {
+        return res.data.msg;
+      } else {
+        throw new Error(`处理参数异常${res.data.info}`);
+      }
+    })
+    .catch(e => {
+      store.dispatch("snackbar/openSnackbar", {
+        msg: `查询出错：${e}`,
+        color: "error"
+      });
+      return {};
+    });
+}
+
+export { getNegativeTrend, getNegativeNews, getCompanyNewsStatistics };
