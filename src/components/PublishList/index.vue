@@ -7,11 +7,7 @@
         <span class="card-label font-weight-bolder text-dark">{{
           tableTitle ? tableTitle : "查询结果"
         }}</span>
-        <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span> -->
       </h3>
-      <!-- <div class="card-toolbar">
-        <a href="#" class="btn btn-primary font-weight-bolder font-size-sm">New Report</a>
-      </div> -->
     </div>
     <!--end::Header-->
     <!--begin::Body-->
@@ -24,18 +20,16 @@
         >
           <thead>
             <tr class="text-left">
-              <!-- <th class="pl-0" style="width: 30px">
-                <label class="checkbox checkbox-lg checkbox-single mr-2">
-                  <input type="checkbox" @input="setCheck($event.target.checked)" />
-                  <span></span>
-                </label>
-              </th> -->
-              <!-- <th class="pl-0" style="min-width: 120px">法规名称</th>
-              <th style="min-width: 110px">Country</th> -->
               <th
+                :class="
+                  item.property === tableHead[tableHead.length - 1].property &&
+                  !showOperate
+                    ? 'pr-0 text-right'
+                    : ''
+                "
                 style="min-width: 80px;"
                 @click="sortDataListByContent(item)"
-                v-for="item in tableHead.slice(0, -1)"
+                v-for="item in tableHead"
                 :key="item.name"
               >
                 <span :class="{ 'text-primary': item.sortAble }">{{
@@ -60,37 +54,26 @@
               <th
                 class="pr-0 text-right"
                 style="min-width: 50px"
-                v-if="tableHead[tableHead.length - 1] && showOperate"
+                v-if="showOperate"
               >
-                <span>{{ tableHead[tableHead.length - 1].name }}</span>
+                <span>操作</span>
               </th>
             </tr>
           </thead>
           <tbody>
             <template v-for="(item, i) in itemProperty">
               <tr v-bind:key="i">
-                <!-- <td class="pl-0 py-6">
-                  <label class="checkbox checkbox-lg checkbox-single">
-                    <input type="checkbox" :value="i" :checked="checked" />
-                    <span></span>
-                  </label>
-                </td> -->
-                <!--  <td class="pl-0">
-                  <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ item.order_id
-                    }}</a>
-                </td> -->
-                <!-- <td>
-                  <router-link :to="'/fkgHome/lawDetail/'.concat(item._id)"><span
-                      class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.title }}</span></router-link>
-                </td> -->
-                <!-- <td v-for="(value,key) in getFilterItem(item)" :key="key">
-                  <router-link v-if="checkWhetherShowRouter(key)" :to="{path:getItemRouter(key).concat(item._id), query:{info:dataList[i]}}"><span
-                      class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ value }}</span></router-link>
-                  <span v-if="!checkWhetherShowRouter(key) && key != '_id'" class="text-dark-75 font-weight-bolder d-block font-size-lg">{{value}}</span>
-                </td> -->
                 <td
                   style="min-width: 80px;"
-                  v-for="oneHead in tableHead.slice(0, -1)"
+                  :class="
+                    oneHead.property ===
+                      tableHead[tableHead.length - 1].property && !showOperate
+                      ? 'pr-0 text-right'
+                      : ''
+                  "
+                  v-for="oneHead in tableHead.filter(
+                    item => item.visiable !== false
+                  )"
                   :key="oneHead.name"
                 >
                   <router-link
@@ -134,45 +117,7 @@
                     }}</span
                   >
                 </td>
-                <!-- <td>
-                  <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.release_date | formatDate
-                    }}</span>
-                </td> -->
-                <!-- <td>
-                  <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.file_type }}</span>
-                </td>
-                <td>
-                  <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.ID ? item.ID: '-' }}</span>
-                </td>
-                <td>
-                  <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.dispatch_units ?
-                    item.dispatch_units: '-' }}</span>
-                </td>
-                <td>
-                  <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ item.important ? item.important:
-                    '-' }}</span>
-                </td> -->
                 <td class="pr-0 text-right" v-if="showOperate">
-                  <!-- <div
-                    @click="handleEdit(item)"
-                    href="#"
-                    class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-                  >
-                    <span class="svg-icon svg-icon-md svg-icon-primary">
-                      <inline-svg
-                        src="media/svg/icons/Communication/Write.svg"
-                      />
-                    </span>
-                  </div>
-                  <div
-                    @click="handleDelete(item)"
-                    href="#"
-                    class="btn btn-icon btn-light btn-hover-primary btn-sm"
-                  >
-                    <span class="svg-icon svg-icon-md svg-icon-primary">
-                      <inline-svg src="media/svg/icons/General/Trash.svg" />
-                    </span>
-                  </div> -->
                   <slot name="operations" v-bind:item="item"></slot>
                 </td>
               </tr>
@@ -233,7 +178,7 @@ export default {
     },
     showOperate: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   data() {
@@ -290,15 +235,11 @@ export default {
     };
   },
   computed: {
-    // tableData: function(){
-    //   // console.log(this.dataList)
-    //   return this.dataList;
-    // }
     itemProperty: function() {
       let list = [];
 
       for (let oneRow of this.dataList) {
-        let oneRowObj = {};
+        let oneRowObj = { ...oneRow };
         for (let item of this.tableHead) {
           if (item.property.indexOf(".") > -1) {
             oneRowObj[item.property] = oneRow[item.property.split(".")[0]]

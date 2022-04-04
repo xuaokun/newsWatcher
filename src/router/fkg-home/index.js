@@ -117,6 +117,11 @@ export default {
     {
       path: "/fkgHome",
       redirect: "/fkgHome/home"
+    },
+    {
+      path: "newsDetail/:newsId",
+      component: () => import("@/view/fkgPages/NewsDetail"),
+      props: true
     }
     // {
     // 	path: 'nowplaying',

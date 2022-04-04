@@ -2,7 +2,7 @@
  * @Description: 负面舆情走势
  * @Author: akxu
  * @Date: 2021-11-04 13:32:46
- * @LastEditTime: 2022-03-30 12:45:58
+ * @LastEditTime: 2022-04-04 15:53:32
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -110,7 +110,7 @@
           今日相关舆情报道量
         </a>
       </div>
-      <div class="col-3 bg-white px-6 py-8 rounded-xl mt-7">
+      <div class="col-3 bg-white px-6 py-8 rounded-xl mr-7 mt-7">
         <span class="svg-icon svg-icon-3x svg-icon-warning d-flex my-2"
           ><svg
             version="1.1"
@@ -156,6 +156,11 @@
         </a>
       </div>
     </div>
+    <!-- <v-row>
+      <v-col cols="6">
+        <pie-chart title="今日舆情报道分布" :dataObj="sitesStatistic" />
+      </v-col>
+    </v-row> -->
     <v-row>
       <v-col cols="6">
         <negative-trend
@@ -194,6 +199,7 @@
 <script>
 import NegativeTrend from "@/components/SearchNameLineChart/index.vue";
 import PublishList from "@/components/PublishList/index.vue";
+// import PieChart from "@/components/PieChart/index.vue";
 import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
 import {
   getNegativeTrend,
@@ -204,6 +210,7 @@ export default {
   components: {
     NegativeTrend,
     PublishList
+    // PieChart
   },
   data() {
     return {
@@ -220,18 +227,8 @@ export default {
         {
           name: "新闻标题",
           property: "title",
-          maxLen: 30
-        },
-        {
-          name: "url",
-          property: "url",
-          maxLen: 30
-        },
-        {
-          name: "操作",
-          property: "oper",
-          sortAble: false,
-          currentSort: -1 //0代表升序
+          maxLen: 30,
+          router: "/fkgHome/newsDetail/"
         }
       ],
       tableData: [
@@ -247,7 +244,8 @@ export default {
       pageLength: 1,
       companyName: "",
       totalAmount: 0,
-      negRatio: "--"
+      negRatio: "--",
+      sitesStatistic: {}
     };
   },
   methods: {
@@ -293,6 +291,7 @@ export default {
       getCompanyNewsStatistics(params).then(re => {
         this.totalAmount = re.data.total;
         this.negRatio = `${(re.data.neg * 100).toFixed(2)}%`;
+        this.sitesStatistic = re.data.sitesStatistic;
       });
     }
   },

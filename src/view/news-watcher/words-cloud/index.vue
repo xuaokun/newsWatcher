@@ -2,7 +2,7 @@
  * @Description: 舆情热点
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2022-03-21 11:46:47
+ * @LastEditTime: 2022-04-04 15:45:21
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -132,12 +132,6 @@ export default {
         {
           name: "热点话题",
           property: "title"
-        },
-        {
-          name: "操作",
-          property: "oper",
-          sortAble: false,
-          currentSort: -1 //0代表升序
         }
       ],
       tableData: [
