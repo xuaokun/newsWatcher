@@ -55,50 +55,26 @@
             <!--begin::Card-->
             <div class="card card-custom card-stretch" id="kt_todo_view">
               <!--begin::Header-->
-              <div
-                class="card-header align-items-center flex-wrap justify-content-between border-0 py-6 h-auto"
-              >
-                <!--begin::Left-->
-                <div class="d-flex align-items-center my-2">
-                  <div class="d-flex align-items-center">
-                    <!-- <div class="symbol symbol-35 mr-3">
-                                            <div class="symbol-label"
-                                                style="background-image: url('assets/media/users/100_12.jpg')"></div>
-                                        </div> -->
-                    <a
-                      href="#"
-                      class="text-dark-75 font-size-lg text-hover-primary font-weight-bolder"
-                      >报道正文</a
-                    >
-                  </div>
-                </div>
-                <!--end::Left-->
-                <!--begin::Right-->
-                <div
-                  class="d-flex align-items-center justify-content-end text-right my-2"
-                >
-                  <!-- <span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip"
-                                        title="Archive">
-                                        <span class="svg-icon svg-icon-md">
-                                        </span>
-                                    </span> -->
-                  <!-- <span class="btn btn-light-danger btn-sm text-uppercase font-weight-bolder mr-2"
-                                        data-toggle="tooltip" title="Change due date">复制</span> -->
-                  <span
-                    class="btn btn-light-success btn-sm text-uppercase font-weight-bolder"
-                    data-toggle="tooltip"
-                    title="Mark as complete"
-                    >收藏</span
+              <div class="card-header border-0 py-5">
+                <h3 class="card-title align-items-start flex-column">
+                  <span class="card-label font-weight-bolder text-dark"
+                    >报道正文</span
                   >
-                </div>
-                <!--end::Right-->
+                </h3>
               </div>
               <!--end::Header-->
               <!--begin::Body-->
               <div class="card-body p-0">
                 <!--begin::Header-->
                 <div
-                  class="d-flex align-items-center justify-content-between flex-wrap card-spacer-x py-3"
+                  class="
+                    d-flex
+                    align-items-center
+                    justify-content-between
+                    flex-wrap
+                    card-spacer-x
+                    py-3
+                  "
                 >
                   <!--begin::Title-->
                   <div class="d-flex flex-column mr-2 py-2">
@@ -107,7 +83,11 @@
                       :href="
                         detailInfo && detailInfo.url ? detailInfo.url : '#'
                       "
-                      class="text-dark text-hover-primary font-weight-bold font-size-h4 mr-3"
+                      class="
+                        text-dark text-hover-primary
+                        font-weight-bold font-size-h4
+                        mr-3
+                      "
                       >{{
                         detailInfo && detailInfo.title ? detailInfo.title : "-"
                       }}</a
@@ -136,10 +116,7 @@
                 <!--begin::Messages-->
                 <div class="mb-3">
                   <!--begin::Message-->
-                  <div
-                    class="cursor-pointer shadow-xs toggle-on"
-                    data-inbox="message"
-                  >
+                  <div class="cursor-pointer toggle-on" data-inbox="message">
                     <!--begin::Comment-->
                     <div class="card-spacer-x pt-2 pb-5 toggle-off-item">
                       <!--begin::Text-->
@@ -186,10 +163,20 @@
                           <router-link
                             v-if="law._source"
                             :to="'/fkgHome/lawDetail/' + law._source"
-                            class="d-flex align-items-center text-muted text-hover-primary py-1"
+                            class="
+                              d-flex
+                              align-items-center
+                              text-muted text-hover-primary
+                              py-1
+                            "
                           >
                             <span
-                              class="flaticon2-clip-symbol text-warning icon-1x mr-2"
+                              class="
+                                flaticon2-clip-symbol
+                                text-warning
+                                icon-1x
+                                mr-2
+                              "
                             ></span
                             >{{ law.name }}
                           </router-link>
@@ -214,95 +201,28 @@
               class="list-box"
             />
           </div>
-          <div class="col-lg-3">
-            <!-- 事件信息开始 -->
-            <div v-if="eventInfoList.length > 0" class="card card-custom">
+          <div class="col-lg-4">
+            <div class="card card-custom cloud-box">
+              <v-progress-linear
+                :active="isLoading"
+                indeterminate
+                height="6"
+                absolute
+                rounded
+              ></v-progress-linear>
               <!--begin::Header-->
-              <div class="card-header h-auto py-4">
-                <div class="card-title">
-                  <h3 class="card-label">
-                    相关事件
-                    <!-- <span class="d-block text-muted pt-2 font-size-sm">company Info
-                                        </span> -->
-                  </h3>
-                </div>
+              <div class="card-header border-0 py-5">
+                <h3 class="card-title align-items-start flex-column">
+                  <span class="card-label font-weight-bolder text-dark"
+                    >关键词TOP</span
+                  >
+                </h3>
               </div>
               <!--end::Header-->
-              <!--begin::Body-->
-              <div class="card-body py-4">
-                <div class="form-group row my-2">
-                  <!-- <label class="col-4 col-form-label">全称:</label> -->
-                  <div
-                    v-for="item in eventInfoList"
-                    :key="item.ID"
-                    class="col-8"
-                  >
-                    <router-link
-                      :to="{
-                        path: '/fkgHome/oneEventDetail/' + item.ID,
-                        query: { info: item }
-                      }"
-                      class="form-control-plaintext font-weight-bolder"
-                      >{{ item.name }}
-                    </router-link>
-                  </div>
-                </div>
+              <div class="card-body">
+                <div id="chart" ref="chart"></div>
               </div>
-              <!--end::Body-->
-              <!--begin::Footer-->
-              <!-- <div class="card-footer">
-                                <a href="#" class="btn btn-primary font-weight-bold mr-2">Manage company</a>
-                                <a href="#" class="btn btn-light-primary font-weight-bold">Learn more</a>
-                            </div> -->
-              <!--end::Footer-->
             </div>
-            <!-- 事件信息结束 -->
-
-            <!-- 相关案例信息开始 -->
-            <div
-              v-if="caseInfoList.length > 0"
-              class="card card-custom case-box"
-            >
-              <!--begin::Header-->
-              <div class="card-header h-auto py-4">
-                <div class="card-title">
-                  <h3 class="card-label">
-                    相关案例
-                    <!-- <span class="d-block text-muted pt-2 font-size-sm">company Info
-                                        </span> -->
-                  </h3>
-                </div>
-              </div>
-              <!--end::Header-->
-              <!--begin::Body-->
-              <div class="card-body py-4">
-                <div class="form-group row my-2">
-                  <!-- <label class="col-4 col-form-label">全称:</label> -->
-                  <div
-                    v-for="item in caseInfoList"
-                    :key="item.ID"
-                    class="col-8"
-                  >
-                    <router-link
-                      :to="{
-                        path: '/fkgHome/eventDetail/' + item.ID,
-                        query: { info: item }
-                      }"
-                      class="form-control-plaintext font-weight-bolder"
-                      >{{ item.title }}
-                    </router-link>
-                  </div>
-                </div>
-              </div>
-              <!--end::Body-->
-              <!--begin::Footer-->
-              <!-- <div class="card-footer">
-                                <a href="#" class="btn btn-primary font-weight-bold mr-2">Manage company</a>
-                                <a href="#" class="btn btn-light-primary font-weight-bold">Learn more</a>
-                            </div> -->
-              <!--end::Footer-->
-            </div>
-            <!-- 处罚详情信息结束 -->
           </div>
         </div>
       </div>
@@ -314,6 +234,8 @@
 import { mapGetters } from "vuex";
 import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
 import PublishList from "@/components/PublishList";
+import "echarts-wordcloud/dist/echarts-wordcloud";
+import "echarts-wordcloud/dist/echarts-wordcloud.min";
 // import PublishList from "@/components/PublishObjectList";
 // import AsideMenu from "@/components/Aside/Aside";
 
@@ -366,7 +288,8 @@ export default {
       eventInfoList: [],
       caseInfoList: [],
       detailInfo: null,
-      relationLaw: []
+      relationLaw: [],
+      isLoading: true
     };
   },
   props: ["punishmentId"],
@@ -380,6 +303,7 @@ export default {
   // },
   mounted() {
     this.$store.dispatch(SET_BREADCRUMB, [{ title: "报道详情" }]);
+    this.getWordsCloud(this.detailInfo.keywords);
   },
   created() {
     console.log(this.$route.query.info);
@@ -433,7 +357,6 @@ export default {
       this.tableData = entitySentimentList.map(item => {
         const mainSentiment = item.mainSentiment;
         let precision = "--";
-        console.log(item.negtiveCount, item.totalLength);
         if (mainSentiment === 0) {
           precision = `${((item.negtiveCount / item.totalLength) * 100).toFixed(
             2
@@ -444,7 +367,6 @@ export default {
             100
           ).toFixed(2)}%`;
         }
-        console.log(precision);
         return {
           entityName: item.entity,
           totalCount: item.totalLength,
@@ -456,6 +378,69 @@ export default {
           precision: precision
         };
       });
+    },
+
+    //渲染词云图
+    getWordsCloud(keywordsList) {
+      this.worddata = keywordsList.map(item => {
+        return {
+          name: item[0],
+          value: item[1]
+        };
+      });
+      // 基于准备好的dom，初始化echarts实例
+      this.myChart = this.$echarts.init(this.$refs.chart);
+      // 绘制图表
+      this.myChart.setOption({
+        title: {
+          //text: "热爱祖国",
+          x: "center"
+        },
+        backgroundColor: "#fff",
+        // tooltip: {
+        //   pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
+        // },
+        series: [
+          {
+            type: "wordCloud",
+            //用来调整词之间的距离
+            gridSize: 10,
+            //用来调整字的大小范围
+            // Text size range which the value in data will be mapped to.
+            // Default to have minimum 12px and maximum 60px size.
+            sizeRange: [14, 60],
+            // Text rotation range and step in degree. Text will be rotated randomly in range [-90,                                                                             90] by rotationStep 45
+            //用来调整词的旋转方向，，[0,0]--代表着没有角度，也就是词为水平方向，需要设置角度参考注释内容
+            // rotationRange: [-45, 0, 45, 90],
+            // rotationRange: [ 0,90],
+            rotationRange: [0, 0],
+            //随机生成字体颜色
+            textStyle: {
+              color: function() {
+                return (
+                  "rgb(" +
+                  Math.round(Math.random() * 255) +
+                  ", " +
+                  Math.round(Math.random() * 255) +
+                  ", " +
+                  Math.round(Math.random() * 255) +
+                  ")"
+                );
+              }
+            },
+            //位置相关设置
+            left: "center",
+            top: "center",
+            right: null,
+            bottom: null,
+            width: "100%",
+            height: "100%",
+            //数据
+            data: this.worddata
+          }
+        ]
+      });
+      this.isLoading = false;
     },
     //获取处罚详情
     async getDetailInfo() {
@@ -601,7 +586,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .row:nth-of-type(2),
 .history-timeline,
 .relative-events {
@@ -622,5 +607,14 @@ export default {
 
 .list-box {
   margin-top: 10px;
+}
+
+.cloud-box {
+  height: 300px;
+
+  #chart {
+    width: 100%;
+    height: 200px;
+  }
 }
 </style>
