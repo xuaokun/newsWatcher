@@ -2,7 +2,7 @@
  * @Description:舆情监控相关页面路由配置
  * @Author: akxu
  * @Date: 2021-09-18 16:30:40
- * @LastEditTime: 2021-11-16 12:19:15
+ * @LastEditTime: 2022-04-05 11:36:35
  * @LastEditors: AKXU-NB1
  * @LastEditContent:
  */
@@ -49,6 +49,11 @@ export default {
       path: "negativetrend",
       name: "negativeTrend",
       component: () => import("@/view/news-watcher/negative-trend")
+    },
+    {
+      path: "newsdetail/:newsId",
+      component: () => import("@/view/news-watcher/news-detail"),
+      props: true
     },
     {
       path: "/newswatcher",

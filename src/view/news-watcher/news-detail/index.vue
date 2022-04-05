@@ -292,7 +292,7 @@ export default {
       isLoading: true
     };
   },
-  props: ["punishmentId"],
+  props: ["newsId"],
   // watch: {
   //   $route: {
   //     handler() {
@@ -306,8 +306,11 @@ export default {
     this.getWordsCloud(this.detailInfo.keywords);
   },
   created() {
-    console.log(this.$route.query.info);
+    console.log(this.$route.query);
     //查看是否含有其他页面的传参;
+    if (!this.$route.query.info) {
+      const id = this.$route.query;
+    }
     this.detailInfo = this.$route.query.info;
     console.log(this.$route.query);
     this.getSentimentByDetail();

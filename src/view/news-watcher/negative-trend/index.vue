@@ -2,7 +2,7 @@
  * @Description: 负面舆情走势
  * @Author: akxu
  * @Date: 2021-11-04 13:32:46
- * @LastEditTime: 2022-04-04 15:53:32
+ * @LastEditTime: 2022-04-05 11:34:46
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -228,7 +228,7 @@ export default {
           name: "新闻标题",
           property: "title",
           maxLen: 30,
-          router: "/fkgHome/newsDetail/"
+          router: "/newswatcher/newsdetail/"
         }
       ],
       tableData: [
