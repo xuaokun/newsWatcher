@@ -1,54 +1,6 @@
 <template>
   <div>
-    <!-- <v-row>
-            <v-col cols="12">
-                <v-btn-toggle v-model="text" tile color="#3699FF" group>
-                    <v-btn value="left">
-                        Left
-                    </v-btn>
-
-                    <v-btn value="center">
-                        Center
-                    </v-btn>
-
-                    <v-btn value="right">
-                        Right
-                    </v-btn>
-
-                    <v-btn value="justify">
-                        Justify
-                    </v-btn>
-
-                    <v-btn value="justify1">
-                        Justify1
-                    </v-btn>
-
-                    <v-btn value="justify2">
-                        Justify2
-                    </v-btn>
-
-                    <v-btn value="justify3">
-                        Justify3
-                    </v-btn>
-
-                    <v-btn value="justify4">
-                        Justify4
-                    </v-btn>
-
-                    <v-btn value="justify5">
-                        Justify5
-                    </v-btn>
-
-                    <v-btn value="justify6">
-                        Justify6
-                    </v-btn>
-                </v-btn-toggle>
-            </v-col>
-        </v-row> -->
     <div class="row">
-      <!-- <div class="col-lg-3">
-                <AsideMenu />
-            </div> -->
       <div class="col-lg-12">
         <div class="row">
           <div class="col-lg-8">
@@ -92,23 +44,7 @@
                         detailInfo && detailInfo.title ? detailInfo.title : "-"
                       }}</a
                     >
-                    <!-- <div class="d-flex align-items-center py-1">
-                                            <a href="#"
-                                                class="d-flex align-items-center text-muted text-hover-primary mr-2">
-                                                <span class="fa fa-genderless text-danger icon-md mr-2"></span>现行有效</a>
-                                            <a href="#" class="d-flex align-items-center text-muted text-hover-primary">
-                                                <span
-                                                    class="fa fa-genderless text-success icon-md mr-2"></span>2017年颁布</a>
-                                        </div> -->
                   </div>
-                  <!--end::Title-->
-                  <!--begin::Toolbar-->
-                  <!-- <div class="d-flex py-2">
-                                        <span class="btn btn-default btn-sm btn-icon" data-dismiss="modal">
-                                            <i class="flaticon2-fax"></i>
-                                        </span>
-                                    </div> -->
-                  <!--end::Toolbar-->
                 </div>
                 <!--end::Header-->
 
@@ -128,31 +64,6 @@
                               : ''
                           "
                         ></p>
-                        <!-- <p>关于对海通证券股份有限公司及曾军、周威采取出具警示函监管措施的决定(2020-12-24)
-
-                                                    一、案情简介
-
-                                                    经查，中国证监会发现海通证券股份有限公司及曾军、周威在保荐四方光电股份有限公司（以下简称发行人）首次公开发行股票并上市过程中，在首次提交的保荐工作报告等材料中未披露发行人实际控制人熊友辉涉嫌行贿的事项。
-
-                                                    上述行为违反了《证券发行上市保荐业务管理办法》（证监会令第137号）第四条的规定。
-
-
-
-                                                    二、纪律处分及监管措施
-
-                                                    按照《证券发行上市保荐业务管理办法》第六十二条的规定，中国证监会决定对海通证券股份有限公司及曾军、周威采取出具警示函的监督管理措施。
-
-
-
-                                                    三、申辩情况
-
-                                                    无申辩
-
-
-
-                                                    相关附件：
-
-                                                    关于对海通证券股份有限公司及曾军、周威采取出具警示函监管措施的决定 </p> -->
                       </div>
                       <!--end::Text-->
                       <!--begin::Attachments-->
@@ -232,10 +143,11 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
-import PublishList from "@/components/PublishList";
 import "echarts-wordcloud/dist/echarts-wordcloud";
 import "echarts-wordcloud/dist/echarts-wordcloud.min";
+import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
+import PublishList from "@/components/PublishList";
+import { getRecordDetailById } from "@/logic/news-watcher/negative-trend";
 // import PublishList from "@/components/PublishObjectList";
 // import AsideMenu from "@/components/Aside/Aside";
 
@@ -303,55 +215,30 @@ export default {
   // },
   mounted() {
     this.$store.dispatch(SET_BREADCRUMB, [{ title: "报道详情" }]);
-    this.getWordsCloud(this.detailInfo.keywords);
-  },
-  created() {
-    console.log(this.$route.query);
-    //查看是否含有其他页面的传参;
-    if (!this.$route.query.info) {
-      const id = this.$route.query;
-    }
-    this.detailInfo = this.$route.query.info;
-    console.log(this.$route.query);
-    this.getSentimentByDetail();
     //没有参数则请求数据
     //不用路由传参，直接接口获取
-    // this.getDetailInfo().then(() => {
-    //   this.relationLaw = this.detailInfo.lawInfos
-    //     ? this.detailInfo.lawInfos
-    //     : [];
-    //   console.log("相关法律", this.relationLaw);
-    //   let list = [];
-    //   let name = this.detailInfo.punishedOrgan
-    //     ? this.detailInfo.punishedOrgan.name
-    //     : "-";
-    //   let objType = "-";
-    //   let reason = this.detailInfo.decisionResion;
-    //   let punishmentType = this.detailInfo.punishedOrgan
-    //     ? this.detailInfo.punishedOrgan.type
-    //     : "-";
-    //   let decisonName = this.detailInfo.decisionOrganName.name;
-    //   list.push({
-    //     name,
-    //     objType,
-    //     reason,
-    //     punishmentType,
-    //     decisonName
-    //   });
-    //   if (this.detailInfo.punishedPersons) {
-    //     for (let person of this.detailInfo.punishedPersons) {
-    //       list.push({
-    //         name: person.name,
-    //         objType: "-",
-    //         reason,
-    //         punishmentType: person.type,
-    //         decisonName
-    //       });
-    //     }
-    //   }
-    //   this.tableData = list;
-    //   this.getRelationEvents();
-    // });
+    getRecordDetailById(this.newsId).then(re => {
+      this.detailInfo = re.data;
+      this.getSentimentByDetail();
+      this.getWordsCloud(re.data.keywords);
+      this.renderWordClound();
+    });
+  },
+  created() {
+    //查看是否含有其他页面的传参;
+    if (this.$route.query.info && typeof this.$route.query.info !== "string") {
+      this.detailInfo = this.$route.query.info;
+      this.getSentimentByDetail();
+    } else {
+      // //没有参数则请求数据
+      // //不用路由传参，直接接口获取
+      // getRecordDetailById(this.newsId).then(re => {
+      //   console.log(re.data);
+      //   this.detailInfo = re.data;
+      //   this.getSentimentByDetail();
+      //   this.getWordsCloud(re.data.keywords);
+      // });
+    }
   },
   methods: {
     //整理情感分析列表数据、
@@ -391,6 +278,9 @@ export default {
           value: item[1]
         };
       });
+    },
+
+    renderWordClound() {
       // 基于准备好的dom，初始化echarts实例
       this.myChart = this.$echarts.init(this.$refs.chart);
       // 绘制图表
@@ -445,81 +335,7 @@ export default {
       });
       this.isLoading = false;
     },
-    //获取处罚详情
-    async getDetailInfo() {
-      let res = await this.axios.post("/api/sykg/query/punish_infos/basic", {
-        IDs: [this.punishmentId]
-      });
-      console.log("获取处罚详情", res.data);
-      if (res.data.status == 0 && res.data.message.data[0]) {
-        console.log(res.data.message.data);
-        //获取相关法律
-        let res02 = await this.axios.post(
-          "/api/sykg/query/punish_infos/lawrelated",
-          res.data.message.data[0]
-        );
-        // console.log('获取相关法规', res02.data)
-        if (res02.data.status == 0) {
-          this.detailInfo = res02.data.message;
-        }
-      }
-    },
-    getRelationEvents() {
-      this.axios
-        .post("/api/sykg/query/punish_infos/related", {
-          punishName: this.detailInfo.title
-        })
-        .then(data => {
-          console.log(data);
-          if (data.data.status == 0) {
-            this.relationEventsAndCase = data.data.message.data;
-            console.log(this.relationEventsAndCase);
-            let eventIDs = Object.keys(this.relationEventsAndCase.events); //获取事件信息
-            if (eventIDs && eventIDs.length > 0) {
-              return this.axios.post(
-                "/api/sykg/query/events_infos/basicbyeventID",
-                {
-                  IDs: eventIDs
-                }
-              );
-            }
-          }
-        })
-        .then(data => {
-          console.log("案例详情");
-          console.log(data);
-          if (data && data.data && data.data.status == 0) {
-            this.eventInfoList = data.data.message.data;
-          }
 
-          //获取案例信息
-          // console.log(this.relationEventsAndCase)
-          let caseIDs = Object.keys(this.relationEventsAndCase.case); //获取事件信息
-          console.log(caseIDs);
-          if (caseIDs && caseIDs.length > 0) {
-            let params = {
-              ID: caseIDs,
-              startTime: {},
-              endTime: {},
-              or: { content: [], title: [] },
-              and: { subject: [], caseType: [] }
-            };
-            return this.axios.post(
-              "/api/sykg/query/case_infos/keywords",
-              params
-            );
-          }
-        })
-        .then(data => {
-          console.log("案例详情");
-          console.log(data);
-          if (data && data.data && data.data.status == 0) {
-            this.caseInfoList = data.data.message.data[0]
-              ? [data.data.message.data[0]]
-              : [];
-          }
-        });
-    },
     createdSnackbar() {
       console.log("显示提示");
       this.$store.dispatch("snackbar/openSnackbar", {
