@@ -56,14 +56,20 @@
                     <!--begin::Comment-->
                     <div class="card-spacer-x pt-2 pb-5 toggle-off-item">
                       <!--begin::Text-->
-                      <div class="mb-1">
-                        <p
+                      <div class="mb-1" v-if="detailInfo && detailInfo.content">
+                        <!-- <p
                           v-html="
                             detailInfo && detailInfo.content
                               ? detailInfo.content
                               : ''
                           "
-                        ></p>
+                        ></p> -->
+                        <p
+                          v-for="(p, index) in detailInfo.content.split('\n')"
+                          :key="index"
+                        >
+                          {{ p }}
+                        </p>
                       </div>
                       <!--end::Text-->
                       <!--begin::Attachments-->
