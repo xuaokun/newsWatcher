@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: akxu
  * @Date: 2021-09-20 17:53:04
- * @LastEditTime: 2021-10-06 20:58:02
+ * @LastEditTime: 2022-04-10 12:06:47
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -21,22 +21,34 @@
       <div class="card-body">
         <div class="form-group row">
           <div class="col-3">
-            <v-text-field
-              @focus="onDateFocus"
-              v-model="dateRangeText"
-              label="时间范围"
-              prepend-icon="mdi-calendar"
-              readonly
-            ></v-text-field>
-            <div class="date-picker" v-show="datePickerShow">
-              <v-date-picker
-                @change="onDateChange"
-                v-model="dates"
-                :first-day-of-week="0"
-                locale="zh-cn"
-                range
-              ></v-date-picker>
-            </div>
+            <v-menu
+              v-model="menu"
+              :close-on-content-click="false"
+              :nudge-right="40"
+              transition="scale-transition"
+              offset-y
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="dateRangeText"
+                  label="时间范围"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <div class="date-picker">
+                <v-date-picker
+                  @change="onDateChange"
+                  v-model="dates"
+                  :first-day-of-week="0"
+                  locale="zh-cn"
+                  range
+                ></v-date-picker>
+              </div>
+            </v-menu>
           </div>
         </div>
       </div>
@@ -51,7 +63,7 @@ export default {
       dates: [
         this.$moment()
           .startOf("day")
-          .subtract(100, "days")
+          .subtract(7, "days")
           .format("YYYY-MM-DD"),
         this.$moment()
           .startOf("day")
@@ -72,14 +84,9 @@ export default {
     }
   },
   methods: {
-    onDateFocus() {
-      if (!this.datePickerShow) {
-        this.datePickerShow = true;
-      }
-    },
-
     onDateChange() {
-      this.datePickerShow = false;
+      if (this.dates.length !== 2) return;
+      this.menu = false;
       this.$emit("searchKeywords", this.dates);
     }
   }
