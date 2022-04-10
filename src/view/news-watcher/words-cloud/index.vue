@@ -2,7 +2,7 @@
  * @Description: 舆情热点
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2022-04-04 15:45:21
+ * @LastEditTime: 2022-04-09 16:43:04
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -16,7 +16,7 @@
     <v-row justify="center" align-content="center">
       <v-col cols="6">
         <publish-list
-          tableTitle="24小时热点"
+          tableTitle="舆情热点"
           :tableHead="tableHead"
           :dataList="tableData"
           :pageLength="pageLength"
@@ -43,6 +43,15 @@
             absolute
             rounded
           ></v-progress-linear>
+          <!--begin::Header-->
+          <div class="card-header border-0 py-5">
+            <h3 class="card-title align-items-start flex-column">
+              <span class="card-label font-weight-bolder text-dark"
+                >关键词TOP</span
+              >
+            </h3>
+          </div>
+          <!--end::Header-->
           <div class="card-body">
             <div id="chart" ref="chart"></div>
           </div>
@@ -131,7 +140,17 @@ export default {
         },
         {
           name: "热点话题",
-          property: "title"
+          property: "title",
+          maxLen: 30,
+          router: "/newswatcher/newsdetail/"
+        },
+        {
+          name: "话题数",
+          property: "memberCount"
+        },
+        {
+          name: "话题区间",
+          property: "clusterPublishtimeRange"
         }
       ],
       tableData: [
@@ -168,6 +187,7 @@ export default {
   methods: {
     submitSearch(dates) {
       this.isLoading = true;
+      //词云数据
       getWordsCloudData(dates[0], dates[1]).then(re => {
         this.worddata = re.data.map(item => {
           return {
@@ -183,6 +203,10 @@ export default {
           ]
         });
         this.isLoading = false;
+      });
+      //热点舆情
+      get24hHotNews(dates[0], dates[1]).then(re => {
+        this.tableData = re.data;
       });
     },
     getWordsCloud(start, end) {
