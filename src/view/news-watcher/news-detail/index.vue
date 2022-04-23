@@ -245,21 +245,22 @@ export default {
     this.$store.dispatch(SET_BREADCRUMB, [{ title: "报道详情" }]);
     //没有参数则请求数据
     //不用路由传参，直接接口获取
-    if (this.$route.query.info && typeof this.$route.query.info !== "string") {
-      this.detailInfo = this.$route.query.info;
+    // if (this.$route.query.info && typeof this.$route.query.info !== "string") {
+    //   this.detailInfo = this.$route.query.info;
+    //   this.getSentimentByDetail();
+    //   this.getWordsCloud(this.detailInfo.keywords);
+    //   this.renderWordClound();
+    //   this.renderEntityWordClound();
+    // } else
+    // {
+    getRecordDetailById(this.newsId).then(re => {
+      this.detailInfo = re.data;
       this.getSentimentByDetail();
-      this.getWordsCloud(this.detailInfo.keywords);
+      this.getWordsCloud(re.data.keywords);
       this.renderWordClound();
       this.renderEntityWordClound();
-    } else {
-      getRecordDetailById(this.newsId).then(re => {
-        this.detailInfo = re.data;
-        this.getSentimentByDetail();
-        this.getWordsCloud(re.data.keywords);
-        this.renderWordClound();
-        this.renderEntityWordClound();
-      });
-    }
+    });
+    // }
   },
   created() {
     //查看是否含有其他页面的传参;

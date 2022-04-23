@@ -2,7 +2,7 @@
  * @Description: 舆情热点
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2022-04-09 16:43:04
+ * @LastEditTime: 2022-04-23 17:25:02
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -10,10 +10,65 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <form-for-word-cloud-search @searchKeywords="submitSearch" />
+        <!-- <form-for-word-cloud-search @searchKeywords="submitSearch" /> -->
+        <div class="card-toolbar">
+          <ul class="nav nav-pills nav-pills-sm nav-dark-75">
+            <li class="nav-item">
+              <a
+                class="nav-link py-2 px-4"
+                data-toggle="tab"
+                :class="{ active: this.show === 'month' }"
+                href="#kt_tab_pane_2_1"
+                @click="show = 'month'"
+                >近一个月</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link py-2 px-4"
+                data-toggle="tab"
+                :class="{ active: this.show === 'week' }"
+                href="#kt_tab_pane_2_2"
+                @click="show = 'week'"
+                >近一周</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link py-2 px-4"
+                data-toggle="tab"
+                :class="{ active: this.show === 'day' }"
+                href="#kt_tab_pane_2_3"
+                @click="show = 'day'"
+                >近一天</a
+              >
+            </li>
+          </ul>
+        </div>
       </v-col>
     </v-row>
     <v-row justify="center" align-content="center">
+      <!-- <v-col cols="12">
+        <publish-list
+          tableTitle="舆情列表"
+          :tableHead="newsTableHead"
+          :dataList="tableData"
+          :pageLength="pageLength"
+          :showOperate="false"
+        >
+          <template v-slot:operations="slotProps">
+            <div
+              @click="handleClickUrl(slotProps)"
+              class="btn btn-icon btn-light btn-hover-primary btn-sm"
+            >
+              <span class="svg-icon svg-icon-md svg-icon-primary">
+                <inline-svg src="media/svg/misc/015-telegram.svg" />
+              </span>
+            </div>
+          </template>
+        </publish-list>
+      </v-col> -->
+
       <v-col cols="6">
         <publish-list
           tableTitle="舆情热点"
@@ -62,18 +117,19 @@
 </template>
 
 <script>
-import FormForWordCloudSearch from "@/components/FormForWordCloudSearch/index.vue";
+// import FormForWordCloudSearch from "@/components/FormForWordCloudSearch/index.vue";
 import PublishList from "@/components/PublishList/index.vue";
 import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
 import "echarts-wordcloud/dist/echarts-wordcloud";
 import "echarts-wordcloud/dist/echarts-wordcloud.min";
 import {
   getWordsCloudData,
-  get24hHotNews
+  get24hHotNews,
+  getLatestNewsByDate
 } from "@/logic/news-watcher/word-cloud";
 export default {
   components: {
-    FormForWordCloudSearch,
+    // FormForWordCloudSearch,
     PublishList
   },
   data() {
@@ -163,7 +219,34 @@ export default {
           title: "最新！海地7.2级地震已造成至少724人死亡"
         }
       ],
-      pageLength: 1
+      newsTableHead: [
+        {
+          name: "标题",
+          property: "title",
+          router: "/newswatcher/newsdetail/"
+        },
+        {
+          name: "关键词",
+          property: "keywords"
+        },
+        {
+          name: "发表时间",
+          property: "pubdate",
+          maxLen: 30
+        },
+        {
+          name: "作者",
+          property: "author"
+        },
+        {
+          name: "来源网站",
+          property: "siteName"
+        }
+      ],
+      newsTableData: [],
+      newsPageLength: 1,
+      pageLength: 1,
+      show: "day"
     };
   },
   mounted() {
@@ -179,10 +262,34 @@ export default {
       .startOf("day")
       .subtract(7, "days")
       .toDate();
-    this.getWordsCloud(lastDay, today);
-    get24hHotNews(lastDay, today).then(re => {
+    this.getWordsCloud(1);
+    get24hHotNews(1).then(re => {
       this.tableData = re.data;
     });
+    getLatestNewsByDate(lastDay, today, 1).then(re => {
+      console.log(re);
+    });
+  },
+  watch: {
+    show(val) {
+      console.log(val);
+      if (val === "day") {
+        this.getWordsCloud(1);
+        get24hHotNews(1).then(re => {
+          this.tableData = re.data;
+        });
+      } else if (val === "week") {
+        this.getWordsCloud(7);
+        get24hHotNews(7).then(re => {
+          this.tableData = re.data;
+        });
+      } else if (val === "month") {
+        this.getWordsCloud(30);
+        get24hHotNews(30).then(re => {
+          this.tableData = re.data;
+        });
+      }
+    }
   },
   methods: {
     submitSearch(dates) {
@@ -286,6 +393,13 @@ export default {
   #chart {
     width: 100%;
     height: 500px;
+  }
+}
+
+.card-toolbar {
+  display: flex;
+  .nav {
+    margin-left: auto;
   }
 }
 </style>
