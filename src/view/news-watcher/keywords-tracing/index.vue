@@ -2,7 +2,7 @@
  * @Description: 关键词追踪
  * @Author: akxu
  * @Date: 2021-09-20 14:20:56
- * @LastEditTime: 2021-10-12 22:14:50
+ * @LastEditTime: 2022-05-16 12:12:23
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -63,7 +63,15 @@ export default {
     ]);
 
     this.get24HourTopData();
-    this.getKeywordsTrend();
+    this.getKeywordsTrend(
+      this.$moment()
+        .startOf("day")
+        .subtract(7, "days")
+        .format("YYYY-MM-DD"),
+      this.$moment()
+        .startOf("day")
+        .format("YYYY-MM-DD")
+    );
   },
   computed: {
     ...mapGetters(["currentUser"]),

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: akxu
  * @Date: 2021-09-20 17:53:04
- * @LastEditTime: 2021-10-12 21:28:33
+ * @LastEditTime: 2022-05-16 12:13:36
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -48,7 +48,7 @@ export default {
       dates: [
         this.$moment()
           .startOf("day")
-          .subtract(100, "days")
+          .subtract(7, "days")
           .format("YYYY-MM-DD"),
         this.$moment()
           .startOf("day")

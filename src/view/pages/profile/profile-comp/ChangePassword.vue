@@ -104,7 +104,7 @@
               name="current_password"
               ref="current_password"
             />
-            <a href="#" class="text-sm font-weight-bold">忘记密码 ?</a>
+            <!-- <a href="#" class="text-sm font-weight-bold">忘记密码 ?</a> -->
           </div>
         </div>
         <div class="form-group row">

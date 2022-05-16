@@ -239,7 +239,7 @@
                 class="header-menu header-menu-mobile header-menu-layout-default"
               >
                 <k-t-menu :menus="menus5"></k-t-menu>
-                <v-btn
+                <!-- <v-btn
                   color="#7E8299"
                   x-large
                   text
@@ -247,7 +247,7 @@
                   :disabled="loading"
                   @click="generateReport"
                   >生成报告</v-btn
-                >
+                > -->
               </div>
             </b-tab>
           </b-tabs>
@@ -317,11 +317,11 @@ export default {
         {
           menuName: "负面舆情",
           url: "/newswatcher/negativetrend"
-        },
-        {
-          menuName: "数据采集",
-          url: "/newswatcher/siteinfomation"
         }
+        // {
+        //   menuName: "数据采集",
+        //   url: "/newswatcher/siteinfomation"
+        // }
       ],
       loading: false
     };
