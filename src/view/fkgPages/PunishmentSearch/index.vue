@@ -1,48 +1,7 @@
 <template>
   <div>
-    <v-row>
+    <!-- <v-row>
       <v-col cols="12">
-        <!-- <v-btn-toggle v-model="text" tile color="#3699FF" group>
-                    <v-btn value="left">
-                        Left
-                    </v-btn>
-
-                    <v-btn value="center">
-                        Center
-                    </v-btn>
-
-                    <v-btn value="right">
-                        Right
-                    </v-btn>
-
-                    <v-btn value="justify">
-                        Justify
-                    </v-btn>
-
-                    <v-btn value="justify1">
-                        Justify1
-                    </v-btn>
-
-                    <v-btn value="justify2">
-                        Justify2
-                    </v-btn>
-
-                    <v-btn value="justify3">
-                        Justify3
-                    </v-btn>
-
-                    <v-btn value="justify4">
-                        Justify4
-                    </v-btn>
-
-                    <v-btn value="justify5">
-                        Justify5
-                    </v-btn>
-
-                    <v-btn value="justify6">
-                        Justify6
-                    </v-btn>
-                </v-btn-toggle> -->
         <v-tabs v-model="tabs" align-with-title>
           <v-tab :href="'#'.concat(item)" v-for="item in riskType" :key="item">
             {{ item }}
@@ -50,7 +9,7 @@
           <v-tabs-slider color="pink"></v-tabs-slider>
         </v-tabs>
       </v-col>
-    </v-row>
+    </v-row> -->
     <div class="row">
       <div class="col-lg-3">
         <aside-menu
@@ -104,15 +63,15 @@ export default {
     },
     menuData: function() {
       return [
-        {
-          违规类型: []
-        },
+        // {
+        //   违规类型: []
+        // },
         {
           处罚类型: Object.values(this.punish_type)
-        },
-        {
-          所属证监局: []
         }
+        // {
+        //   所属证监局: []
+        // }
       ];
     }
   },
