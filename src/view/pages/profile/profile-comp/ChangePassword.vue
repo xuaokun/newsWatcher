@@ -175,7 +175,7 @@ export default {
         current_password: {
           validators: {
             notEmpty: {
-              message: "Current password is required"
+              message: "您需要输入当前的登录密码"
             }
             // identical: {
             //   compare: function () {
@@ -188,14 +188,14 @@ export default {
         new_password: {
           validators: {
             notEmpty: {
-              message: "New password is required"
+              message: "请您输入新密码后提交"
             }
           }
         },
         verify_password: {
           validators: {
             notEmpty: {
-              message: "Confirm password is required"
+              message: "请您再次输入密码"
             },
             identical: {
               compare: function() {
@@ -203,7 +203,7 @@ export default {
                   '[name="new_password"]'
                 ).value;
               },
-              message: "The password and its confirm are not the same"
+              message: "您两次输入的密码不一致"
             }
           }
         }
@@ -249,7 +249,7 @@ export default {
       this.fv.on("core.form.invalid", () => {
         Swal.fire({
           title: "",
-          text: "Please, provide correct data!",
+          text: "提交失败",
           icon: "error",
           confirmButtonClass: "btn btn-secondary"
         });

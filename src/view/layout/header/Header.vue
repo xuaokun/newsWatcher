@@ -30,7 +30,7 @@
                 >首页</router-link
               >
             </li>
-            <li class="nav-item mr-3">
+            <!-- <li class="nav-item mr-3">
               <a
                 class="nav-link py-4 px-6"
                 @click="setActiveTab"
@@ -41,7 +41,7 @@
                 aria-selected="true"
                 >法律法规</a
               >
-            </li>
+            </li> -->
             <li class="nav-item mr-3">
               <a
                 class="nav-link py-4 px-6"
@@ -54,7 +54,7 @@
                 >行政处罚</a
               >
             </li>
-            <li class="nav-item mr-3">
+            <!-- <li class="nav-item mr-3">
               <a
                 class="nav-link py-4 px-6"
                 @click="setActiveTab"
@@ -65,8 +65,8 @@
                 aria-selected="true"
                 >违规事件</a
               >
-            </li>
-            <li class="nav-item mr-3">
+            </li> -->
+            <!-- <li class="nav-item mr-3">
               <router-link
                 class="nav-link py-4 px-6"
                 @click.native="setActiveTab"
@@ -77,9 +77,7 @@
                 aria-selected="true"
                 >我的收藏</router-link
               >
-              <!-- <a class="nav-link py-4 px-6" @click="setActiveTab" data-tab="4" data-toggle="tab" href="#" role="tab"
-                aria-selected="true">我的收藏</a> -->
-            </li>
+            </li> -->
             <li class="nav-item mr-3">
               <router-link
                 class="nav-link py-4 px-6"
@@ -284,11 +282,11 @@ export default {
         {
           menuName: "处罚检索",
           url: "/fkgHome/punishmentSearch"
-        },
-        {
-          menuName: "处罚概况",
-          url: "/fkgHome/punishmentLibrary"
         }
+        // {
+        //   menuName: "处罚概况",
+        //   url: "/fkgHome/punishmentLibrary"
+        // }
       ],
       menus3: [
         {

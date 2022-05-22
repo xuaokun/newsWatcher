@@ -2,7 +2,7 @@
  * @Description: 负面舆情走势
  * @Author: akxu
  * @Date: 2021-11-04 13:32:46
- * @LastEditTime: 2022-04-05 11:34:46
+ * @LastEditTime: 2022-05-22 10:49:25
  * @LastEditors: AKXU-NB1
  * @LastEditContent: 
 -->
@@ -206,6 +206,7 @@ import {
   getNegativeNews,
   getCompanyNewsStatistics
 } from "@/logic/news-watcher/negative-trend";
+import store from "@/core/services/store";
 export default {
   components: {
     NegativeTrend,
@@ -278,6 +279,13 @@ export default {
     },
     //根据关键词查询
     submitSearch() {
+      if (!this.companyName) {
+        store.dispatch("snackbar/openSnackbar", {
+          msg: "请输入企业关键词后查询",
+          color: "error"
+        });
+        return;
+      }
       this.searchTrendByDate(this.companyName);
     },
     getPageData(pageNum) {

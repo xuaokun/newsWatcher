@@ -2,9 +2,9 @@
  * @Description: 
  * @Author: akxu
  * @Date: 2021-10-09 22:00:02
- * @LastEditTime: 2022-03-28 23:14:25
+ * @LastEditTime: 2022-05-22 11:12:31
  * @LastEditors: AKXU-NB1
- * @LastEditContent: 
+ * @LastEditContent: 趋势图y轴展示整数
 -->
 <template>
   <!--begin::Mixed Widget 14-->
@@ -108,6 +108,13 @@ export default {
         },
         xaxis: {
           categories: this.nameList
+        },
+        yaxis: {
+          labels: {
+            formatter: value => {
+              return parseInt(value);
+            }
+          }
         },
         grid: {
           borderColor: "#f1f1f1"
